@@ -1,8 +1,8 @@
 # Handlers are responsible for dealing with HTTP details (headers, body, methods)
-
 import json
 from core.responses import send_json, send_404
 from core.request import parse_json_body
+
 from services.menu import (
     service_get_all
     , service_get_one
@@ -11,7 +11,7 @@ from services.menu import (
     , service_delete
 )
 
-def get_all_menu(handler):
+def get_all_menus(handler):
     return send_json(handler, 200, service_get_all())
 
 def get_menu(handler, menu_id):

@@ -1,0 +1,201 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Management System</title>
+
+   <link rel="icon" type="image/png" href=".png">
+
+
+    <!-- Tailwind -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Beautiful, attention-grabbing font: Outfit -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- Project CSS -->
+    <link rel="stylesheet" href="/frontend/assets/css/style.css">
+
+    <!-- Apply Outfit globally -->
+    <style>
+        body {
+            font-family: "Outfit", sans-serif;
+            letter-spacing: 0.3px;
+        }
+    </style>
+</head>
+
+
+
+
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+    <!-- Environment variables -->
+    <script src="/frontend/env.js"></script>
+
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- SPA Root Container -->
+    <main id="app" class="max-w-2xl mx-auto p-6 flex-grow"></main>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <!-- JS Modules -->
+    <script type="module">
+        import { loadComponent } from "/frontend/assets/js/utils/loadComponent.js";
+        import { initRouterEvents, router } from "/frontend/assets/js/router/viewRouter.js";
+
+        // Load header/footer templates
+        loadComponent("#header", "/frontend/assets/js/components/Header.html");
+        loadComponent("#footer", "/frontend/assets/js/components/Footer.html");
+
+        initRouterEvents();
+        router();
+    </script>
+ <header class="navbar">
+    <div class="logo">🍽 Undine</div>
+    <nav>
+      
+      <a href="#">Menu</a>
+      <a href="#">Staff</a>
+      <a href="#">Billing</a>
+    </nav>
+    <button class="btn-outline">See Locations</button>
+  </header>
+  <section class="hero">
+    <h1>Savor the Taste of <br> <span>Perfection.</span></h1>
+    <p>
+      Fresh ingredients, mouth-watering recipes, and a passion for good food
+      delivered to your door or ready for pick-up.
+    </p>
+    <button class="btn-primary">Order Now</button>
+
+    <div class="hero-image">
+      <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092" alt="Wrap">
+    </div>
+  </section>
+
+  <!-- FEAST SECTION -->
+  <section class="feast">
+    <h2>A Feast for Your Eyes</h2>
+    <div class="feast-images">
+      <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe">
+      <img src="https://images.unsplash.com/photo-1553621042-f6e147245754">
+      <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c">
+    </div>
+  </section>
+
+  <!-- SIGNATURE DISHES -->
+  <section class="dishes">
+    <h2>Our Signature Dishes</h2>
+    <p>
+      From classic favorites to modern culinary creations, our menu is designed
+      to tantalize your taste buds.
+    </p>
+
+    <div class="filters">
+      <button class="active">All Menu</button>
+      <button>Burger</button>
+      <button>Pizza</button>
+      <button>Subway</button>
+    </div>
+
+    <div class="dish-grid">
+      <div class="dish-card">
+        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd">
+        <h4>Classic Burger</h4>
+      </div>
+
+      <div class="dish-card">
+        <img src="https://images.unsplash.com/photo-1542281286-9e0a16bb7366">
+        <h4>Cheese Pizza</h4>
+      </div>
+
+      <div class="dish-card">
+        <img src="https://images.unsplash.com/photo-1605475128023-6b3c43df8c3a">
+        <h4>Grilled Wrap</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <h2>They Love Us</h2>
+
+    <div class="testimonial-grid">
+      <div class="testimonial-card pink">
+        <h4>Best Salad Man!</h4>
+        <p>Every slice is like a little piece of heaven.</p>
+        <span>— Larry Alexander</span>
+      </div>
+
+      <div class="testimonial-card peach">
+        <h4>Best Salad Man!</h4>
+        <p>Always a hit for special occasions.</p>
+        <span>— Larry Alexander</span>
+      </div>
+<div class="testimonial-card purple">
+        <h4>Best Salad Man!</h4>
+        <p>Fresh, delicious and beautifully presented.</p>
+        <span>— Larry Alexander</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Don’t Wait – Order Now!</h2>
+    <p>
+        Fresh ingredients, mouth-watering recipes, and a passion for good food.
+    </p>
+    <button class="btn-primary">Order Now</button>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <h4>Navigate</h4>
+        
+        <a href="#">Menu</a>
+        <a href="#">Staff</a>
+        <a href="#">Billing</a>
+      </div>
+       <div>
+        <h4>Menu</h4>
+        <a href="#">Breakfast</a>
+        <a href="#">Lunch</a>
+        <a href="#">Dinner</a>
+      </div>
+
+      <div>
+        <h4>Follow Us</h4>
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">Twitter</a>
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <p>📞 602-774-4735</p>
+        <p>📍 Phoenix, AZ</p>
+        <p>✉ hi@undine.co</p>
+      </div>
+    </div>
+
+    <p class="copyright">
+      © 2025 Undine. All rights reserved.
+    </p>
+  </footer>
+  <script src="script.js"></script>
+
+</body>
+
+</html> -->

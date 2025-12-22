@@ -1,7 +1,7 @@
 # Contains business logic (validation, processing, rules)
 # Does NOT know about HTTP — only works with Python data
 
-from database.bqueries import (
+from database.billing_queries import (
     db_get_all
     , db_get_one
     , db_create

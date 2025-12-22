@@ -1,8 +1,8 @@
 # Handlers are responsible for dealing with HTTP details (headers, body, methods)
-
 import json
 from core.responses import send_json, send_404
 from core.request import parse_json_body
+
 from services.staff import (
     service_get_all
     , service_get_one
@@ -11,7 +11,7 @@ from services.staff import (
     , service_delete
 )
 
-def get_all_staff(handler):
+def get_all_staffs(handler):
     return send_json(handler, 200, service_get_all())
 
 def get_staff(handler, staff_id):
@@ -20,7 +20,7 @@ def get_staff(handler, staff_id):
 
 def create_staff(handler):
     data = parse_json_body(handler)
-    new_staff= service_create(data)
+    new_staff = service_create(data)
     return send_json(handler, 201, new_staff)
 
 def update_staff(handler, staff_id):
