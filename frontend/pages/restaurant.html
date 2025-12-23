@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>this is my restaurant page</h1>
+</body>
+</html>
+<div class="max-w-3xl mx-auto p-6">
+
+  <div class="flex items-center justify-between mb-6">
+    <h1 class="text-3xl font-bold">🍽️ Restaurant Management System</h1>
+    <a href="/home" data-link class="text-sm text-blue-600 underline">← Back to Home</a>
+  </div>
+   <section>
+  <!-- Add / Edit menu Form -->
+  <div class="bg-white p-5 rounded shadow mb-8">
+    <h2 class="font-semibold mb-3 text-lg">Add New Menus </h2>
+    <form id="studentForm" class="space-y-3">
+      <input type="text" id="category" placeholder="Category" required class="w-full border rounded px-3 py-2">
+      <input type="text" id="name" placeholder="Name" required class="w-full border rounded px-3 py-2">
+      <input type="price" id="price" placeholder="Price" required class="w-full border rounded px-3 py-2">
+      <input type="rating" id="rating" placeholder="Rating" required class="w-full border rounded px-3 py-2">
+      
+      <div class="flex space-x-2">
+        <button type="submit" id="submitBtn"
+          class="flex-1 bg-blue-500 hover:bg-blue-600 text-white py-2 rounded">
+          Add Menu
+        </button>
+
+        <button type="button" id="cancelBtn"
+          class="flex-1 bg-gray-400 hover:bg-gray-500 text-white py-2 rounded hidden">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- menus Table -->
+  <div class="bg-white p-5 rounded shadow">
+    <h2 class="font-semibold mb-4 text-lg">All Menus</h2>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="text-center py-4">
+      <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-500 mx-auto"></div>
+    </div>
+
+    <!-- menus Table Container -->
+    <div id="MenusTableContainer" class="hidden overflow-x-auto">
+      <table class="min-w-full text-left border">
+        <thead class="bg-gray-200">
+          <tr>
+            <th class="px-3 py-2">Id</th>
+            <th class="px-3 py-2">Category</th>
+            <th class="px-3 py-2">Name</th>
+            <th class="px-3 py-2">rice</th>
+            <th class="px-3 py-2">Rating</th>
+            <th class="px-3 py-2">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="menusTableBody"></tbody>
+      </table>
+
+      <p id="noMenus" class="text-center text-gray-500 mt-3 hidden">
+        No menus found. Add one using the form above.
+      </p>
+    </div>
+  </div>
+
+  <!-- Alert container -->
+  <div id="alertContainer" class="fixed top-4 right-4 space-y-2 z-50"></div>
+</section>
+
+<section>
+    <!-- Add / Edit billing Form -->
+  <div class="bg-white p-5 rounded shadow mb-8">
+    <h2 class="font-semibold mb-3 text-lg">Add New Billings </h2>
+    <form id="studentForm" class="space-y-3">
+      <input type="text" id="order_by" placeholder="order_by" required class="w-full border rounded px-3 py-2">
+      <input type="text" id="total_items" placeholder="total_items" required class="w-full border rounded px-3 py-2">
+      <input type="text" id="amount" placeholder="amount" required class="w-full border rounded px-3 py-2">
+     
+      <div class="flex space-x-2">
+        <button type="submit" id="submitBtn"
+          class="flex-1 bg-blue-500 hover:bg-blue-600 text-white py-2 rounded">
+          Add Billing
+        </button>
+
+        <button type="button" id="cancelBtn"
+          class="flex-1 bg-gray-400 hover:bg-gray-500 text-white py-2 rounded hidden">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- billing Table -->
+  <div class="bg-white p-5 rounded shadow">
+    <h2 class="font-semibold mb-4 text-lg">All Billings</h2>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="text-center py-4">
+      <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-500 mx-auto"></div>
+    </div>
+
+    <!-- billings Table Container -->
+    <div id="BillingsTableContainer" class="hidden overflow-x-auto">
+      <table class="min-w-full text-left border">
+        <thead class="bg-gray-200">
+          <tr>
+            <th class="px-3 py-2">Id</th>
+            <th class="px-3 py-2">Order_by</th>
+            <th class="px-3 py-2">Total_items</th>
+            <th class="px-3 py-2">Amount</th>
+            <th class="px-3 py-2">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="billingTableBody"></tbody>
+      </table>
+
+      <p id="noBillings" class="text-center text-gray-500 mt-3 hidden">
+        No billings found. Add one using the form above.
+      </p>
+    </div>
+  </div>
+
+  <!-- Alert container -->
+  <div id="alertContainer" class="fixed top-4 right-4 space-y-2 z-50"></div>
+</section>
+
+<section>
+  <!-- Add / Edit Staffs Form -->
+  <div class="bg-white p-5 rounded shadow mb-8">
+    <h2 class="font-semibold mb-3 text-lg">Add New Staff</h2>
+    <form id="studentForm" class="space-y-3">
+      <input type="text" id="name" placeholder="Name" required class="w-full border rounded px-3 py-2">
+      <input type="email" id="email" placeholder="Email" required class="w-full border rounded px-3 py-2">
+      <input type="text" id="age" placeholder="Age" required class="w-full border rounded px-3 py-2">
+
+      <div class="flex space-x-2">
+        <button type="submit" id="submitBtn"
+          class="flex-1 bg-blue-500 hover:bg-blue-600 text-white py-2 rounded">
+          Add Student
+        </button>
+
+        <button type="button" id="cancelBtn"
+          class="flex-1 bg-gray-400 hover:bg-gray-500 text-white py-2 rounded hidden">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+
+     <!-- Staffs Table -->
+  <div class="bg-white p-5 rounded shadow">
+    <h2 class="font-semibold mb-4 text-lg">All Staffs</h2>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="text-center py-4">
+      <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-500 mx-auto"></div>
+    </div>
+    <!-- Staffs Table Container -->
+    <div id="staffsTableContainer" class="hidden overflow-x-auto">
+      <table class="min-w-full text-left border">
+        <thead class="bg-gray-200">
+          <tr>
+            <th class="px-3 py-2">ID</th>
+            <th class="px-3 py-2">Name</th>
+            <th class="px-3 py-2">Email</th>
+            <th class="px-3 py-2">Age</th>
+            <th class="px-3 py-2">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="staffsTableBody"></tbody>
+      </table>
+
+      <p id="noStaffs" class="text-center text-gray-500 mt-3 hidden">
+        No staffs found. Add one using the form above.
+      </p>
+    </div>
+  </div>
+
+  <!-- Alert container -->
+  <div id="alertContainer" class="fixed top-4 right-4 space-y-2 z-50"></div>
+</section>
+</div>
