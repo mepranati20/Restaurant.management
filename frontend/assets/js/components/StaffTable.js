@@ -1,5 +1,5 @@
 import { $ } from "../utils/dom.js";
-import { editStaff, deleteStaffAction } from "../../controllers/staffController.js";
+import { editStaff, deleteStaffAction } from "../controllers/staffController.js";
 
 // Renders the list of Staffs into an HTML table
 export function renderStaffTable(staffs) {
@@ -21,7 +21,7 @@ export function renderStaffTable(staffs) {
   noStaffs.style.display = "none";
 
   // Iterate over each student object in the provided array
-  students.forEach(staff => {
+  staffs.forEach(staff => {
     // Create a new table row element for the current Staff
     const row = document.createElement("tr");
     row.className = "border-b"; // Add styling class (likely Tailwind CSS)
@@ -31,7 +31,7 @@ export function renderStaffTable(staffs) {
       <td class="px-3 py-2">${staff.id}</td>
       <td class="px-3 py-2">${staff.name}</td>
       <td class="px-3 py-2">${staff.email}</td>
-      <td class="px-3 py-2">${staff.Age}</td>
+      <td class="px-3 py-2">${staff.age}</td>
       
       <td class="px-3 py-2 flex space-x-2">
         <!-- Buttons are created with data attributes holding the staff ID -->

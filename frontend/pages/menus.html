@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>this is my menu page</h1>
+</body
+</html>
+  <!-- Add / Edit menu Form -->
+  <div class="bg-white p-5 rounded shadow mb-8">
+    <h2 class="font-semibold mb-3 text-lg">Add New Menus </h2>
+    <form id="menuForm" class="space-y-3">
+      <input type="text" id="Category" placeholder="Category" required class="w-full border rounded px-3 py-2">
+      <input type="text" id="name" placeholder="Name" required class="w-full border rounded px-3 py-2">
+      <input type="price" id="price" placeholder="Price" required class="w-full border rounded px-3 py-2">
+      <input type="rating" id="rating" placeholder="Rating" required class="w-full border rounded px-3 py-2">
+      
+      <div class="flex space-x-2">
+        <button type="submit" id="submitBtn"
+          class="flex-1 bg-blue-500 hover:bg-blue-600 text-white py-2 rounded">
+          Add Menu
+        </button>
+
+        <button type="button" id="cancelBtn"
+          class="flex-1 bg-gray-400 hover:bg-gray-500 text-white py-2 rounded hidden">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- menus Table -->
+  <div class="bg-white p-5 rounded shadow">
+    <h2 class="font-semibold mb-4 text-lg">All Menus</h2>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="text-center py-4">
+      <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-500 mx-auto"></div>
+    </div>
+
+    <!-- menus Table Container -->
+    <div id="menusTableContainer" class="hidden overflow-x-auto">
+      <table class="min-w-full text-left border">
+        <thead class="bg-gray-200">
+          <tr>
+            <th class="px-3 py-2">Id</th>
+            <th class="px-3 py-2">Category</th>
+            <th class="px-3 py-2">Name</th>
+            <th class="px-3 py-2">Price</th>
+            <th class="px-3 py-2">Rating</th>
+            <th class="px-3 py-2">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="menusTableBody"></tbody>
+      </table>
+
+      <p id="noMenus" class="text-center text-gray-500 mt-3 hidden">
+        No menus found. Add one using the form above.
+      </p>
+    </div>
+  </div>
+
+  <!-- Alert container -->
+  <div id="alertContainer" class="fixed top-4 right-4 space-y-2 z-50"></div>
+ </section>

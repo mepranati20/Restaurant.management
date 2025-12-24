@@ -1,5 +1,5 @@
 import { $ } from "../utils/dom.js";
-import { editMenu, deleteMenuAction } from "../../controllers/menuController.js";
+import { editMenu, deleteMenuAction } from "../controllers/menuController.js";
 
 // Renders the list of menus into an HTML table
 export function renderMenuTable(menus) {
@@ -28,10 +28,10 @@ export function renderMenuTable(menus) {
 
     // Populate the row with dynamic HTML content using a template literal
     row.innerHTML = `
-      <td class="px-3 py-2">${menu.no}</td>
+      <td class="px-3 py-2">${menu.id}</td>
       <td class="px-3 py-2">${menu.Category}</td>
-      <td class="px-3 py-2">${menu.Name}</td>
-      <td class="px-3 py-2">${menu.Price}</td>
+      <td class="px-3 py-2">${menu.name}</td>
+      <td class="px-3 py-2">${menu.price}</td>
       <td class="px-3 py-2">${menu.rating}</td>
       <td class="px-3 py-2 flex space-x-2">
         <!-- Buttons are created with data attributes holding the menu id -->

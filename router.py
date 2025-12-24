@@ -2,14 +2,6 @@ from datetime import datetime
 from http.server import BaseHTTPRequestHandler
 from urllib.parse import urlparse
 
-from controllers.billing import (
-    get_all_billings
-    , get_billing
-    , create_billing
-    , update_billing
-    , delete_billing
-)
-
 from controllers.menu import (
     get_all_menus
     , get_menu
@@ -17,6 +9,13 @@ from controllers.menu import (
     , update_menu
     , delete_menu
     
+)
+from controllers.billing import (
+    get_all_billings
+    , get_billing
+    , create_billing
+    , update_billing
+    , delete_billing
 )
 
 from controllers.staff import (
@@ -33,7 +32,7 @@ from core.responses import send_404
 from core.middleware import add_cors_headers
 
 
-FRONTEND_ROUTES = {"/", "/home", "/billings", "/menus", "/staffs", "/docs"}
+FRONTEND_ROUTES = {"/", "/home", "/menus", "/billings", "/staffs", "/docs"}
 
 def handle_ui_routes(handler, path):
     if path in FRONTEND_ROUTES:
@@ -65,6 +64,17 @@ class restaurantRouter(BaseHTTPRequestHandler):
 
         if handle_ui_routes(self, path):
             return
+        
+# ==================================================
+# menu 
+# ==================================================
+        if path == "/api/menus":
+            return get_all_menus(self)
+          
+        if path.startswith("/api/menus/"):
+            menu_id = int(path.split("/")[-1])
+            return get_menu(self, menu_id)
+             
 # ==================================================
 # BILLING 
 # ==================================================
@@ -77,16 +87,6 @@ class restaurantRouter(BaseHTTPRequestHandler):
             billing_id = int(path.split("/")[-1])
             return get_billing(self, billing_id)
                        
-# ==================================================
-# menu 
-# ==================================================
-        if path == "/api/menus":
-            return get_all_menus(self)
-          
-        if path.startswith("/api/menus/"):
-            menu_id = int(path.split("/")[-1])
-            return get_menu(self, menu_id)
-             
 # ==================================================
 # staff
 # ==================================================
@@ -102,11 +102,11 @@ class restaurantRouter(BaseHTTPRequestHandler):
     
 # ---------- POST ----------
     def do_POST(self):
-        if self.path == "/api/billings":
-            return create_billing(self)
-       
         if self.path == "/api/menus":
             return create_menu(self)
+
+        if self.path == "/api/billings":
+            return create_billing(self)
         
         if self.path == "/api/staffs":
             return create_staff(self)
@@ -115,14 +115,15 @@ class restaurantRouter(BaseHTTPRequestHandler):
     
     # ---------- put ----------
     def do_PUT(self):
-        if self.path.startswith("/api/billings/"):
-            billing_id = int(self.path.split("/")[-1])
-            return update_billing(self, billing_id)
-        
+
         if self.path.startswith("/api/menus/"):
             menu_id = int(self.path.split("/")[-1])
             return update_menu(self, menu_id)
 
+        if self.path.startswith("/api/billings/"):
+            billing_id = int(self.path.split("/")[-1])
+            return update_billing(self, billing_id)
+        
         if self.path.startswith("/api/staffs/"):
             staff_id = int(self.path.split("/")[-1])
             return update_staff(self, staff_id)
@@ -131,13 +132,14 @@ class restaurantRouter(BaseHTTPRequestHandler):
     
     # ---------- delete ----------
     def do_DELETE(self):
-        if self.path.startswith("/api/billings/"):
-            billing_id = int(self.path.split("/")[-1])
-            return delete_billing(self, billing_id)
-        
         if self.path.startswith("/api/menus/"):
              menu_id = int(self.path.split("/")[-1])
              return delete_menu(self, menu_id)
+
+
+        if self.path.startswith("/api/billings/"):
+            billing_id = int(self.path.split("/")[-1])
+            return delete_billing(self, billing_id)
         
         if self.path.startswith("/api/staffs/"):
              staff_id = int(self.path.split("/")[-1])

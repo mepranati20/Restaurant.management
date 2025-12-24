@@ -7,8 +7,8 @@ import {
 } from "../services/billingService.js";
 
 import { showAlert } from "../components/Alert.js";
-import { renderBillingTable } from "../components/Table/BillingTable.js";
-import { resetForm, fillForm } from "../components/Form/BillingForm.js";
+import { renderBillingTable } from "../components/BillingTable.js";
+import { resetForm, fillForm } from "../components/BillingForm.js";
 
 import { setState, getState } from "../state/store.js";
 import { $, createElement } from "../utils/dom.js";

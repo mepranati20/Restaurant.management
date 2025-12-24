@@ -13,18 +13,6 @@ def get_connection():
 def init_database():
     conn = get_connection()
     conn.execute(""" 
-        CREATE TABLE IF NOT EXISTS billings (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            order_by TEXT,
-            total_items INTEGER,
-            amount INTEGER,
-            created_at TEXT,
-            updated_at TEXT
-            
-        ) 
-    """)
-
-    conn.execute(""" 
         CREATE TABLE IF NOT EXISTS menus (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             Category TEXT,
@@ -36,6 +24,18 @@ def init_database():
             
         ) 
     """)
+    conn.execute(""" 
+        CREATE TABLE IF NOT EXISTS billings (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            order_by TEXT,
+            total_items INTEGER,
+            amount INTEGER,
+            created_at TEXT,
+            updated_at TEXT
+            
+        ) 
+    """)
+
 
     conn.execute(""" 
         CREATE TABLE IF NOT EXISTS staffs (

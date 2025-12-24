@@ -7,8 +7,8 @@ import {
 } from "../services/menuService.js";
 
 import { showAlert } from "../components/Alert.js";
-import { renderMenuTable } from "../components/Table/MenuTable.js";
-import { resetForm, fillForm } from "../components/Form/MenuForm.js";
+import { renderMenuTable } from "../components/MenuTable.js";
+import { resetForm, fillForm } from "../components/MenuForm.js";
 
 import { setState, getState } from "../state/store.js";
 import { $, createElement } from "../utils/dom.js";
@@ -29,8 +29,8 @@ export function initMenuController() {
     // Collect data from the input fields using the custom '$' selector
     const data = {
       Category: $("Category").value.trim(),   // Get name value, remove whitespace
-      email: $("Name").value.trim(), // Get email value
-      price: $("Price").value.trim(), // Get course value
+      name: $("name").value.trim(), // Get email value
+      price: $("price").value.trim(), // Get course value
       rating: $("rating").value.trim()    // Get year value
     };
 

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurant Management System</title>
 
-   <link rel="icon" type="image/png" href=".png">
+   <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/3135/3135755.png">
 
 
     <!-- Tailwind -->
@@ -36,7 +36,7 @@
 <body class="bg-gray-100 min-h-screen flex flex-col">
 
     <!-- Environment variables -->
-    <script src="./env.js"></script>
+    <script src="/frontend/env.js"></script>
 
     <!-- Header -->
     <div id="header"></div>
@@ -49,12 +49,12 @@
 
     <!-- JS Modules -->
     <script type="module">
-        import { loadComponent } from "./assets/js/utils/loadComponent.js";
-        import { initRouterEvents, router } from "./assets/js/router/viewRouter.js";
+        import { loadComponent } from "/frontend/assets/js/utils/loadComponent.js";
+        import { initRouterEvents, router } from "/frontend/assets/js/router/viewRouter.js";
 
         // Load header/footer templates
-        loadComponent("#header", "./assets/js/components/Header.html");
-        loadComponent("#footer", "./assets/js/components/Footer.html");
+        loadComponent("#header", "/frontend/assets/js/components/Header.html");
+        loadComponent("#footer", "/frontend/assets/js/components/Footer.html");
 
         initRouterEvents();
         router();

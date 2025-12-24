@@ -14,16 +14,16 @@ export async function router() {
   if (path === "/" || path === "/home") {
     await loadView("/frontend/pages/home.html");
   }
-else if (path === "/billing") {
-    await loadView("/frontend/pages/restaurant.html");
+else if (path === "/billings") {
+    await loadView("/frontend/pages/billings.html");
     initBillingController();
   }
-  else if (path === "/menu") {
-    await loadView("/frontend/pages/restaurant.html");
+  else if (path === "/menus") {
+    await loadView("/frontend/pages/menus.html");
     initMenuController();
   }
-  else if (path === "/staff") {
-    await loadView("/frontend/pages/restaurant.html");
+  else if (path === "/staffs") {
+    await loadView("/frontend/pages/staffs.html");
     initStaffController();
   }
 

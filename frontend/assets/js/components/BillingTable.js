@@ -1,5 +1,5 @@
 import { $ } from "../utils/dom.js";
-import { editBilling, deleteBillingAction } from "../../controllers/billingController.js";
+import { editBilling, deleteBillingAction } from "../controllers/billingController.js";
 
 // Renders the list of billings into an HTML table
 export function renderBillingTable(billings) {

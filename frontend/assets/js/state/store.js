@@ -1,9 +1,9 @@
 // Global app state
 let state = {
-  editingId: null,   // which item is being edited
-  staff: [],           // list of all staff members
-  menu: [],            // list of all menu items
-  billing: []       // list of all students
+  editingId: null,   // which item is being edited         
+  menus: [],            // list of all menu items
+  billings: [] ,         // list of all billing
+  staffs: []      // list of all staff members 
 };
 
 // Update part of the state

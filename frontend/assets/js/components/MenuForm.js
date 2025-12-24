@@ -15,10 +15,10 @@ export function resetForm() {
 // Populates the input form fields with data from a selected billing object (for editing)
 export function fillForm(menu) {
   // Fill each input field with the corresponding property from the billing data
-  $("category").value = menu.category;
-  $("came").value = menu.name;
-  $("crice").value = menu.price;
-  $("cating").value = menu.rating;
+  $("Category").value = menu.Category;
+  $("name").value = menu.name;
+  $("price").value = menu.price;
+  $("rating").value = menu.rating;
 
   // Change the submit button text to "Update billing"
   $("submitBtn").textContent = "Update menu";
