@@ -7,7 +7,7 @@ body {
   min-height: 100vh;
   font-family: "Outfit", Arial, sans-serif;
   color: #1f2937;
-  transition: background 0.4s ease;
+  transition: background 0.5s ease;
 }
 
 
@@ -153,5 +153,45 @@ a:hover i {
     padding: 12px;
   }
 }
+.glass {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+/* ===============================
+   Global Defaults
+================================ */
+
+
+/* ===============================
+   HOME – Cute & Welcoming
+================================ */
+.page-home {
+  background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+}
+
+/* ===============================
+   MENU – Warm Food Tones
+================================ */
+.page-menu {
+  background: linear-gradient(135deg, #fff7ed, #fde68a);
+}
+
+/* ===============================
+   BILLING – Clean & Trustworthy
+================================ */
+.page-billing {
+  background: linear-gradient(135deg, #eff6ff, #dbeafe);
+}
+
+/* ===============================
+   STAFF – Calm & Professional
+================================ */
+.page-staff {
+  background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+}
+
+
 
 
