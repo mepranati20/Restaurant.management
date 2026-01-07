@@ -42,7 +42,7 @@ class TestDatabaseBasics(unittest.TestCase):
         """
 
         # Open a connection to the SQLite database
-        conn = sqlite3.connect("students.db")
+        conn = sqlite3.connect("restaurant.db")
 
         # Create a cursor to run SQL queries
         cur = conn.cursor()
@@ -66,6 +66,7 @@ class TestDatabaseBasics(unittest.TestCase):
         self.assertIn (
             "menus",
             "billings",
-            "staffs"
+            "staffs",
+            tables
             
                       )
