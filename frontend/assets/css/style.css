@@ -167,9 +167,9 @@ a:hover i {
 /* ===============================
    HOME – Cute & Welcoming
 ================================ */
-.page-home {
+/* .page-home {
   background: linear-gradient(135deg, #ffdde1, #ee9ca7);
-}
+} */
 
 /* ===============================
    MENU – Warm Food Tones
@@ -191,6 +191,7 @@ a:hover i {
 .page-staff {
   background: linear-gradient(135deg, #ecfdf5, #d1fae5);
 }
+
 
 
 

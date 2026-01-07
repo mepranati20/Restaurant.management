@@ -1,58 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DAWAT - Home</title>
+
+  <!-- Keep your existing CSS file if you have -->
+  <link rel="stylesheet" href="../assets/style.css">
+
+  <style>
+    /* ---- REQUIRED BACKGROUND VIDEO CSS ---- */
+    .video-container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .bg-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* overlay so text stays readable */
+    .video-container::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 1;
+    }
+  </style>
 </head>
+
 <body class="page-home">
-    <h1>WELCOME</h1>
-</body>
-</html>
-<div class="max-w-2xl mx-auto p-6">
 
-  <h1 class="text-3xl font-bold mb-4 text-gray-800">Welcome</h1>
+<div class="video-container">
 
-  <p class="text-gray-600 mb-8 leading-relaxed">
-    Welcome to DAWAT🍱- YOUR TABLE IS READY
-  </p>
+  <!-- 🎬 BACKGROUND VIDEO -->
+  <video autoplay muted loop playsinline class="bg-video">
+    <source src="../assets/videos/bg.mp4" type="video/mp4">
+  </video>
 
-  <div class="space-y-4">
+  <!-- ===== YOUR EXISTING UI ===== -->
+  <div class="content">
 
-<a href="/menus" data-link
-    class="block w-full px-4 py-3 text-center border border-gray-300 rounded hover:bg-gray-200 transition flex items-center justify-center gap-2">
-    <i class="fa-solid fa-users"></i>
-     Menu Management
-</a>
-<a href="/billings" data-link
-    class="block w-full px-4 py-3 text-center border border-gray-300 rounded hover:bg-gray-200 transition flex items-center justify-center gap-2">
-    <i class="fa-solid fa-users"></i>
-    Billing System
-</a>
-<a href="/staffs" data-link
-    class="block w-full px-4 py-3 text-center border border-gray-300 rounded hover:bg-gray-200 transition flex items-center justify-center gap-2">
-    <i class="fa-solid fa-users"></i>
-    Staff Management
-</a>
+    <div class="max-w-2xl mx-auto p-6">
 
-<a href="/api/menus" target="_blank"
-    class="block w-full px-4 py-3 text-center border border-gray-300 rounded hover:bg-gray-200 transition flex items-center justify-center gap-2">
-    <i class="fa-solid fa-code"></i>
-   Raw JSON API of Menus
-</a>
+      <h1 class="text-3xl font-bold mb-4 text-gray-800">Welcome</h1>
 
-<a href="/api/billings" target="_blank"
-    class="block w-full px-4 py-3 text-center border border-gray-300 rounded hover:bg-gray-200 transition flex items-center justify-center gap-2">
-    <i class="fa-solid fa-code"></i>
-   Raw JSON API of Billings
-</a>
+      <p class="text-gray-600 mb-8 leading-relaxed">
+        Welcome to DAWAT🍱- YOUR TABLE IS READY
+      </p>
 
-<a href="/api/staffs" target="_blank"
-    class="block w-full px-4 py-3 text-center border border-gray-300 rounded hover:bg-gray-200 transition flex items-center justify-center gap-2">
-    <i class="fa-solid fa-code"></i>
-   Raw JSON API of Staffs
-</a>
+      <div class="space-y-4">
+
+        <a href="/menus" data-link class="block w-full px-4 py-3 text-center border border-gray-300 rounded">
+           Menu Management
+        </a>
+
+        <a href="/billings" data-link class="block w-full px-4 py-3 text-center border border-gray-300 rounded">
+           Billing System
+        </a>
+
+        <a href="/staffs" data-link class="block w-full px-4 py-3 text-center border border-gray-300 rounded">
+           Staff Management
+        </a>
+
+        <a href="/api/menus" target="_blank" class="block w-full px-4 py-3 text-center border border-gray-300 rounded">
+          Raw JSON API of Menus
+        </a>
+
+        <a href="/api/billings" target="_blank" class="block w-full px-4 py-3 text-center border border-gray-300 rounded">
+          Raw JSON API of Billings
+        </a>
+
+        <a href="/api/staffs" target="_blank" class="block w-full px-4 py-3 text-center border border-gray-300 rounded">
+          Raw JSON API of Staffs
+        </a>
+
+      </div>
+    </div>
+
   </div>
 </div>
-<div class="bg-white p-5 rounded shadow glass">
+
+</div>
+
+</body>
+</html>
 
