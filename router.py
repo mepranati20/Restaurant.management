@@ -1,6 +1,7 @@
 from datetime import datetime
 from http.server import BaseHTTPRequestHandler
 from urllib.parse import urlparse
+from join_service import join_operation
 
 from controllers.menu import (
     get_all_menus
@@ -52,6 +53,8 @@ def handle_ui_routes(handler, path):
 
 
 class restaurantRouter(BaseHTTPRequestHandler):
+    
+    
 
     def do_OPTIONS(self):
         
@@ -60,6 +63,16 @@ class restaurantRouter(BaseHTTPRequestHandler):
         self.end_headers()
 
     def do_GET(self):
+    
+
+        if self.path == "/api/join":
+         data = join_operation()
+
+        self.send_response(200)
+        self.send_header("Content-type", "application/json")
+        self.end_headers()
+        self.wfile.write(data.encode())
+        
         path = urlparse(self.path).path
 
         if handle_ui_routes(self, path):

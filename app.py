@@ -3,6 +3,7 @@
 from http.server import HTTPServer
 from router import restaurantRouter
 from database.connection import init_database
+from services.join_service import join_operation
 
             
 def run_server(port=8000):
