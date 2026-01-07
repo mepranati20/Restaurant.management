@@ -63,17 +63,10 @@ class restaurantRouter(BaseHTTPRequestHandler):
         self.end_headers()
 
     def do_GET(self):
+        path = urlparse(self.path).path
     
 
-        if self.path == "/api/join":
-         data = join_operation()
-
-        self.send_response(200)
-        self.send_header("Content-type", "application/json")
-        self.end_headers()
-        self.wfile.write(data.encode())
         
-        path = urlparse(self.path).path
 
         if handle_ui_routes(self, path):
             return
