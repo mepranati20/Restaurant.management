@@ -64,13 +64,21 @@ class restaurantRouter(BaseHTTPRequestHandler):
 
     def do_GET(self):
         path = urlparse(self.path).path
+        
     
 
-        
+    # ---------- STATIC FILES ----------
+        if path.startswith("/static/"):
+           serve_static(self, path.lstrip("/"))
+           return
 
+    # ---------- FRONTEND ROUTES ----------
         if handle_ui_routes(self, path):
-            return
-        
+           return
+      
+
+    # ✅ ADD THIS BLOCK (STATIC FILES)
+       
 # ==================================================
 # menu 
 # ==================================================
