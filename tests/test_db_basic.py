@@ -48,9 +48,9 @@ class TestDatabaseBasics(unittest.TestCase):
         cur = conn.cursor()
 
         # Ask SQLite for all table names
-        cur.execute("SELECT order_by FROM sqlite_master WHERE type='table';")
-        cur.execute("SELECT name FROM sqlite_master WHERE type='table';")
-        cur.execute("SELECT name FROM sqlite_master WHERE type='table';")
+        cur.execute("SELECT order_by FROM sqlite_billings WHERE type='table';")
+        cur.execute("SELECT name FROM sqlite_menus WHERE type='table';")
+        cur.execute("SELECT name FROM sqlite_staffs WHERE type='table';")
 
         # Extract table names into a Python list
         tables = [row[0] for row in cur.fetchall()]
