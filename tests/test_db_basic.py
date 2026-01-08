@@ -19,7 +19,7 @@ import os
 
 class TestDatabaseBasics(unittest.TestCase):
 
-    def test_restaurant_db_exists(self):
+    def test_restaurants_db_exists(self):
         """
         Check that the database file is present in the project.
 
@@ -28,7 +28,7 @@ class TestDatabaseBasics(unittest.TestCase):
         - the test should fail immediately
         """
 
-        # Check: does 'students.db' file exist?
+        # Check: does 'restaurant.db' file exist?
         self.assertTrue(
             os.path.exists("restaurant.db"),
             "restaurant.db file is missing"
@@ -48,9 +48,8 @@ class TestDatabaseBasics(unittest.TestCase):
         cur = conn.cursor()
 
         # Ask SQLite for all table names
-        cur.execute("SELECT order_by FROM sqlite_billings WHERE type='table';")
-        cur.execute("SELECT name FROM sqlite_menus WHERE type='table';")
-        cur.execute("SELECT name FROM sqlite_staffs WHERE type='table';")
+        
+        cur.execute("SELECT name FROM sqlite_master WHERE type='table';")
 
         # Extract table names into a Python list
         tables = [row[0] for row in cur.fetchall()]
@@ -65,10 +64,19 @@ class TestDatabaseBasics(unittest.TestCase):
         )
 
         # Check: expected table should exist
-        self.assertIn (
+        self.assertIn(
             "menus",
-            "billings",
-            "staffs",
             tables
-            
-                      )
+        )
+        self.assertIn(
+            "menus",
+            tables
+        )
+        self.assertIn(
+           "billings",
+           tables
+        )
+        self.assertIn(
+            "staffs", 
+            tables
+        )
