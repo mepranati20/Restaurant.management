@@ -3,25 +3,11 @@
 ================================ */
 
 body {
-  
+  background: linear-gradient(135deg, #ffdde1, #ee9ca7);
   min-height: 100vh;
   font-family: "Outfit", Arial, sans-serif;
   color: #1f2937;
   transition: background 0.4s ease;
-   background:
-    linear-gradient(
-      rgba(0, 0, 0, 0.45),
-      rgba(0, 0, 0, 0.45)
-    ),
-    url("https://pin.it/dhbE4nD4W");
-
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-
-  transition: background 0.4s ease;
-
 }
 
 
@@ -167,4 +153,5 @@ a:hover i {
     padding: 12px;
   }
 }
+
 

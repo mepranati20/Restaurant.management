@@ -1,7 +1,6 @@
 from datetime import datetime
 from http.server import BaseHTTPRequestHandler
 from urllib.parse import urlparse
-# from join_service import join_operation
 
 from controllers.menu import (
     get_all_menus
@@ -12,11 +11,12 @@ from controllers.menu import (
     
 )
 from controllers.billing import (
-    get_all_billings
-    , get_billing
-    , create_billing
-    , update_billing
-    , delete_billing
+    get_all_billings,
+    get_billing,
+    get_billing_details,
+    create_billing,
+     update_billing,
+     delete_billing
 )
 
 from controllers.staff import (
@@ -53,8 +53,6 @@ def handle_ui_routes(handler, path):
 
 
 class restaurantRouter(BaseHTTPRequestHandler):
-    
-    
 
     def do_OPTIONS(self):
         
@@ -64,21 +62,10 @@ class restaurantRouter(BaseHTTPRequestHandler):
 
     def do_GET(self):
         path = urlparse(self.path).path
-        
-    
 
-    # ---------- STATIC FILES ----------
-        if path.startswith("/static/"):
-           serve_static(self, path.lstrip("/"))
-           return
-
-    # ---------- FRONTEND ROUTES ----------
         if handle_ui_routes(self, path):
-           return
-      
-
-    # ✅ ADD THIS BLOCK (STATIC FILES)
-       
+            return
+        
 # ==================================================
 # menu 
 # ==================================================
@@ -92,7 +79,8 @@ class restaurantRouter(BaseHTTPRequestHandler):
 # ==================================================
 # BILLING 
 # ==================================================
-
+        if path == "/api/billings/details":
+            return get_all_details(self)
         if path == "/api/billings":
             return get_all_billings(self)
         
@@ -165,4 +153,6 @@ class restaurantRouter(BaseHTTPRequestHandler):
     def log_message(self, format, *args):
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         print(f"[{timestamp}] [Server] {format % args}")
+        
+    
     

@@ -49,3 +49,48 @@ def db_delete(billing_id):
     conn.commit()
     conn.close()
     return billing
+def db_get_billings_with_menu():
+    conn = get_connection()
+
+    query = """
+    SELECT
+        b.id AS billing_id,
+        b.order_by,
+        b.total_items,
+        b.amount,
+        b.created_at,
+
+        m.id AS menu_id,
+        m.name AS menu_name,
+        m.price AS menu_price,
+
+        bi.quantity,
+        (m.price * bi.quantity) AS item_total
+    FROM billings b
+    INNER JOIN billing_items bi
+        ON b.id = bi.billing_id
+    INNER JOIN menus m
+        ON bi.menu_id = m.id
+    ORDER BY b.id DESC
+    """
+from .connection import get_connection
+
+def db_get_billings_with_menu():
+    conn = get_connection()
+
+    rows = conn.execute("""
+        SELECT
+            b.id,
+            b.order_by,
+            b.total_items,
+            b.amount,
+            m.name AS menu_name,
+            m.price AS menu_price
+        FROM billings b
+        JOIN menus m ON b.menu_id = m.id
+        ORDER BY b.id DESC
+    """).fetchall()
+
+    conn.close()
+    return [dict(r) for r in rows]
+

@@ -5,7 +5,7 @@ from core.responses import send_404
 
 # Fix JS MIME type for ES modules
 mimetypes.add_type("application/javascript", ".js")
-mimetypes.add_type("static/bg.mp4", "bg.mp4")
+
 
 def serve_static(handler, filepath):
     # Normalize path
