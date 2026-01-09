@@ -3,69 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
- 
-
+    <title>DAWAT - Staff Management</title>
+    
+    <link rel="stylesheet" href="/static/css/style.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
+
 <body class="page-staff">
 
-    <h1>MEET OUR TEAM🧑🏻‍🍳👨🏻‍🍳👩🏻‍🍳</h1>
-   
+    <h1 class="staff-title">MEET OUR TEAM 🧑🏻‍🍳</h1>
+    <section class="p-6">
+        <div class="bg-white/90 backdrop-blur-md p-6 rounded-xl shadow-xl max-w-4xl mx-auto">
+             <h2 class="text-xl font-bold mb-4">Add New Staff</h2>
+             </div>
+    </section>
+
+            <form id="staffForm" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <input type="text" id="name" placeholder="Name" required class="border rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-yellow-500">
+                <input type="email" id="email" placeholder="Email" required class="border rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-yellow-500">
+                <input type="text" id="age" placeholder="Age" required class="border rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-yellow-500">
+
+                <div class="md:col-span-3 flex space-x-2">
+                    <button type="submit" id="submitBtn" class="flex-1 bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 rounded-lg transition">
+                        Add Staff
+                    </button>
+                    <button type="button" id="cancelBtn" class="flex-1 bg-gray-400 hover:bg-gray-500 text-white py-2 rounded-lg hidden">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="glass-panel p-6 rounded-xl shadow-2xl">
+            <h2 class="font-bold mb-4 text-xl text-gray-800 border-b pb-2">All Staffs</h2>
+            <div id="loadingSpinner" class="text-center py-4">
+                <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-yellow-600 mx-auto"></div>
+            </div>
+            <div id="staffsTableContainer" class="hidden overflow-x-auto">
+                <table class="min-w-full text-left">
+                    <thead class="bg-yellow-100">
+                        <tr>
+                            <th class="px-4 py-3">Id</th>
+                            <th class="px-4 py-3">Name</th>
+                            <th class="px-4 py-3">Email</th>
+                            <th class="px-4 py-3">Age</th>
+                            <th class="px-4 py-3">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="staffsTableBody" class="divide-y divide-gray-200"></tbody>
+                </table>
+                <p id="noStaffs" class="text-center text-gray-500 mt-3 hidden">No staffs found.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="alertContainer" class="fixed top-4 right-4 space-y-2 z-50"></div>
+
 </body>
-</html> 
-<section>
-  <!-- Add / Edit Staffs Form -->
-  <div class="bg-white p-5 rounded shadow mb-8">
-    <h2 class="font-semibold mb-3 text-lg">Add New Staff</h2>
-    <form id="staffForm" class="space-y-3">
-      <input type="text" id="name" placeholder="Name" required class="w-full border rounded px-3 py-2">
-      <input type="email" id="email" placeholder="Email" required class="w-full border rounded px-3 py-2">
-      <input type="text" id="age" placeholder="Age" required class="w-full border rounded px-3 py-2">
-
-      <div class="flex space-x-2">
-        <button type="submit" id="submitBtn"
-          class="flex-1 bg-blue-500 hover:bg-blue-600 text-white py-2 rounded">
-          Add Staff
-        </button>
-
-        <button type="button" id="cancelBtn"
-          class="flex-1 bg-gray-400 hover:bg-gray-500 text-white py-2 rounded hidden">
-          Cancel
-        </button>
-      </div>
-    </form>
-  </div>
-
-     <!-- Staffs Table -->
-  <div class="bg-white p-5 rounded shadow">
-    <h2 class="font-semibold mb-4 text-lg">All Staffs</h2>
-
-    <!-- Loading Spinner -->
-    <div id="loadingSpinner" class="text-center py-4">
-      <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-500 mx-auto"></div>
-    </div>
-    <!-- Staffs Table Container -->
-    <div id="staffsTableContainer" class="hidden overflow-x-auto">
-      <table class="min-w-full text-left border">
-        <thead class="bg-gray-200">
-          <tr>
-            <th class="px-3 py-2">Id</th>
-            <th class="px-3 py-2">Name</th>
-            <th class="px-3 py-2">Email</th>
-            <th class="px-3 py-2">Age</th>
-            <th class="px-3 py-2">Actions</th>
-          </tr>
-        </thead>
-        <tbody id="staffsTableBody"></tbody>
-      </table>
-
-      <p id="noStaffs" class="text-center text-gray-500 mt-3 hidden">
-        No staffs found. Add one using the form above.
-      </p>
-    </div>
-  </div>
-
-  <!-- Alert container -->
-  <div id="alertContainer" class="fixed top-4 right-4 space-y-2 z-50"></div>
- </section>
-</div> --> -->
+</html>
