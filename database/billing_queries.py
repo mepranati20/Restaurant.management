@@ -49,11 +49,11 @@ def db_delete(billing_id):
     conn.commit()
     conn.close()
     return billing
-def db_get_billings_with_menu():
+def db_get_all_with_menu():
     conn = get_connection()
 
-    query = """
-    SELECT
+    rows = conn.execute("""
+     SELECT
         b.id AS billing_id,
         b.order_by,
         b.total_items,
@@ -72,25 +72,46 @@ def db_get_billings_with_menu():
     INNER JOIN menus m
         ON bi.menu_id = m.id
     ORDER BY b.id DESC
-    """
-from .connection import get_connection
-
-def db_get_billings_with_menu():
-    conn = get_connection()
-
-    rows = conn.execute("""
-        SELECT
-            b.id,
-            b.order_by,
-            b.total_items,
-            b.amount,
-            m.name AS menu_name,
-            m.price AS menu_price
-        FROM billings b
-        JOIN menus m ON b.menu_id = m.id
-        ORDER BY b.id DESC
     """).fetchall()
-
     conn.close()
-    return [dict(r) for r in rows]
+
+    result = []
+    for r in rows:
+        result.append({
+            "id": r["billing_id"],
+            "order_by": r["order_by"],
+            "total_items": r["total_items"],
+            "amount": r["amount"],
+            "created_at": r["billing_created_at"],
+            "menu": {
+                "id": r["menu_id"],
+                "category": r["category"],
+                "name": r["name"],
+                "destination": r["destination"],
+                "departure_time": r["departure_time"],
+                "arrival_time": r["arrival_time"]
+            }
+        })
+
+
+# from .connection import get_connection
+
+# def db_get_billings_with_menu():
+#     conn = get_connection()
+
+#     rows = conn.execute("""
+#         SELECT
+#             b.id,
+#             b.order_by,
+#             b.total_items,
+#             b.amount,
+#             m.name AS menu_name,
+#             m.price AS menu_price
+#         FROM billings b
+#         JOIN menus m ON b.menu_id = m.id
+#         ORDER BY b.id DESC
+#     """).fetchall()
+
+#     conn.close()
+#     return [dict(r) for r in rows]
 
