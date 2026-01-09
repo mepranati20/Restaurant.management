@@ -49,69 +49,55 @@ def db_delete(billing_id):
     conn.commit()
     conn.close()
     return billing
-def db_get_all_with_menu():
+def db_get_all_with_menus():
     conn = get_connection()
 
     rows = conn.execute("""
      SELECT
         b.id AS billing_id,
-        b.order_by,
+        b.order_by AS billing_order_by,
         b.total_items,
         b.amount,
-        b.created_at,
+        b.created_at AS billing_created_at,
 
         m.id AS menu_id,
+        m.Cat AS menu_Category,
         m.name AS menu_name,
-        m.price AS menu_price,
+        m.price AS menu_price
+        m.created_at AS menu_created_at
 
-        bi.quantity,
-        (m.price * bi.quantity) AS item_total
+        
     FROM billings b
-    INNER JOIN billing_items bi
-        ON b.id = bi.billing_id
     INNER JOIN menus m
-        ON bi.menu_id = m.id
+        ON b.menu_id = m.id
+    
     ORDER BY b.id DESC
     """).fetchall()
     conn.close()
 
-    result = []
-    for r in rows:
-        result.append({
+    
+    
+    return[
+            {"billing":{
+
+        
             "id": r["billing_id"],
             "order_by": r["order_by"],
             "total_items": r["total_items"],
             "amount": r["amount"],
-            "created_at": r["billing_created_at"],
+            "created_at": r["billings_created_at"],
+            },
             "menu": {
                 "id": r["menu_id"],
-                "category": r["category"],
+                "Category": r["Category"],
                 "name": r["name"],
                 "price": r["price"],
                 "created_at": r["created_at"]
                
             }
-        })
+        }
 
+        for r in rows
+        ]
 
-# from .connection import get_connection
-
-# def db_get_billings_with_menu():
-#     conn = get_connection()
-
-#     rows = conn.execute("""
-#         SELECT
-#             b.id,
-#             b.order_by,
-#             b.total_items,
-#             b.amount,
-#             m.name AS menu_name,
-#             m.price AS menu_price
-#         FROM billings b
-#         JOIN menus m ON b.menu_id = m.id
-#         ORDER BY b.id DESC
-#     """).fetchall()
-
-#     conn.close()
-#     return [dict(r) for r in rows]
 

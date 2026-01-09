@@ -2,13 +2,13 @@
 import json
 from core.responses import send_json, send_404
 from core.request import parse_json_body
-
 from services.billing import (
-     service_get_all
+     service_get_all_with_menus
     , service_get_one
     , service_create
     , service_update
-    , service_delete
+    , service_delete,
+    service_get_all
 )
 
 def get_all_billings(handler):
@@ -31,24 +31,10 @@ def update_billing(handler, billing_id):
 def delete_billing(handler, billing_id):
     deleted = service_delete(billing_id)
     return send_json(handler, 200, {"deleted": True}) if deleted else send_404(handler)
-from database.billing_queries import (
-    db_get_all,
-    db_get_one,
-    db_create,
-    db_update,
-    db_delete,
-    db_get_billings_with_menu
-)
-from core.responses import send_json
 
 
-def get_all_billings(handler):
-    data = db_get_billings_with_menu()
-    return send_json(handler, data)
-
-def get_billing(handler, billing_id):
-    return send_json(handler, db_get_one(billing_id))
 
 # 🔥 JOIN CONTROLLER
-def get_billing_details(handler):
-    return send_json(handler, db_get_billings_with_menu())
+def get_all_billings_with_menus(handler):
+    data = service_get_all_with_menus()
+    return send_json(handler, 200, data)
