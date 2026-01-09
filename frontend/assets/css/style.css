@@ -1,103 +1,69 @@
+/* Premium Rooftop Background */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Outfit', sans-serif;
+  /* Using a direct high-quality source for your Pinterest selection */
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+              url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop'); 
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* Elegant Title */
+.welcome-title {
+  text-align: center;
+  color: #ffffff; /* Changed to white to pop against the photo */
+  font-size: 3.5rem;
+  padding-top: 80px;
+  margin: 0;
+  letter-spacing: 3px;
+  font-family: 'Playfair Display', serif;
+  text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Card Container */
 .card-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-  max-width: 900px;
-  margin: 80%;
+  gap: 30px;
+  max-width: 1000px;
+  margin: 60px auto;
   padding: 20px;
-  align-items: center;
 }
 
-/* Individual Card */
+/* Glassmorphism Cards */
 .feature-card {
-  background: rgba(228, 244, 1, 0.08);
-  backdrop-filter: blur(12px);
-  border-radius: 18px;
-  padding: 28px 32px;
+  background: rgba(255, 255, 255, 0.15); /* Light glass effect */
+  backdrop-filter: blur(10px); /* Frosted glass look */
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 40px 30px;
   text-decoration: none;
-  color: #b91616;
-  font-size: 1.1rem;
-  font-weight: 500;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  transition: all 0.3s ease;
+  color: #ffffff; /* White text for a cleaner look */
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.4s ease;
 }
 
 .feature-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.4);
+  transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-/* Icon */
-.feature-card .icon {
-  font-size: 40px;
-  margin-bottom: 15px;
-}
-
-/* Title */
+/* Icon & Description colors */
 .feature-card h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
-  font-weight: 600;
+  font-size: 22px;
+  margin: 15px 0;
+  color: #f1c40f; /* Warm gold to match the fairy lights */
 }
 
-/* Description */
 .feature-card p {
-  font-size: 14px;
-  color: #555;
+  font-size: 15px;
+  color: #e0e0e0;
+  line-height: 1.5;
 }
-
-/* Mobile Responsive */
-@media (max-width: 768px) {
-  .card-container {
-    grid-template-columns: 1fr;
-  }
-}
-/* Home page background */
-
-  /* Premium restaurant-style background */
-.home-page {
-  .home-page::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(
-      120deg,
-      transparent 30%,
-      hsla(69, 76%, 52%, 0.06),
-      transparent 70%
-    );
-  animation: shine 8s infinite linear;
-  pointer-events: none;
-}
-
-@keyframes shine {
-  from { transform: translateX(-100%); }
-  to   { transform: translateX(100%); }
-}
-}
-
-.welcome-title {
-  text-align: center;
-  color: #110d0d;
-  font-size: 32px;
-  margin-top: 60px;
-  letter-spacing: 1px;
-}
-/* Left card */
-.menu-card {
-  justify-self: start;
-}
-
-/* Center card */
-.billing-card {
-  justify-self: center;
-}
-
-/* Right card slightly higher */
-.staff-card {
-  justify-self: end;
-  transform: translateY(-30px);
-}
-
-
