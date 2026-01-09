@@ -87,9 +87,9 @@ def db_get_all_with_menu():
                 "id": r["menu_id"],
                 "category": r["category"],
                 "name": r["name"],
-                "destination": r["destination"],
-                "departure_time": r["departure_time"],
-                "arrival_time": r["arrival_time"]
+                "price": r["price"],
+                "created_at": r["created_at"]
+               
             }
         })
 
