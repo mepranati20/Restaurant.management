@@ -28,6 +28,7 @@ export function initBillingController() {
 
     // Collect data from the input fields using the custom '$' selector
     const data = {
+      menu_id: $("menu_id").value.trim(),
       order_by: $("order_by").value.trim(), 
       total_items: $("total_items").value.trim(), 
       amount: $("amount").value.trim()  

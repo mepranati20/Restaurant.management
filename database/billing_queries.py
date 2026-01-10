@@ -31,10 +31,9 @@ def db_update(billing_id, data):
     conn = get_connection()
     now = datetime.now().isoformat()
     conn.execute(
-        "UPDATE billings SET menu_id=?, order_by=?, total_items=?, amount=?, updated_at=? WHERE id=?",
-        ( data["order_by"], data["total_items"], data["amount"], now, billing_id)
+        "UPDATE billings SET order_by=?, order_by=?, total_items=?, amount=?, updated_at=? WHERE id=?",
+        (data["menu_id"], data["order_by"], data["total_items"], data["amount"], now, billing_id)
     )
-    
     conn.commit()
     conn.close()
     return db_get_one(billing_id)

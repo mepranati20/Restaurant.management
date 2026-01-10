@@ -1,5 +1,7 @@
 # Opens a connection to SQLite and returns it for DB operations
 
+# Opens a connection to SQLite and returns it for DB operations
+
 import sqlite3
 
 DB_FILE = "restaurant.db"
@@ -24,7 +26,7 @@ def init_database():
             
         ) 
     """)
-
+ 
     conn.execute(""" 
          CREATE TABLE IF NOT EXISTS billings (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -49,6 +51,18 @@ def init_database():
             
         ) 
     """)
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS enrollments (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            student_id INTEGER NOT NULL,
+            course_id INTEGER NOT NULL,
+            enrolled_on TEXT,
+            created_at TEXT,
+            updated_at TEXT,
+            FOREIGN KEY(billing_id) REFERENCES billings(id),
+            FOREIGN KEY(menu_id) REFERENCES menus(id)
+        )
+    """)
     conn.commit()
     conn.close()
-    print("✓ Database initialized")               
+    print("✓ Database initialized")        

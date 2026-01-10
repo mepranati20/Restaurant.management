@@ -3,239 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Billing & Subscription | Cuisine</title>
-    <style>
-        :root {
-            --primary-color: #e67e22; /* Cuisine Orange */
-            --bg-body: #f8fafc;
-            --white: #ffffff;
-            --text-dark: #1e293b;
-            --text-muted: #64748b;
-            --border: #e2e8f0;
-            --success: #10b981;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', -apple-system, sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-body);
-            color: var(--text-dark);
-            display: flex;
-            min-height: 100vh;
-        }
-
-        /* Sidebar Navigation Mockup */
-        .sidebar {
-            width: 260px;
-            background: #1a1a1a;
-            color: white;
-            padding: 30px 20px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .sidebar h2 {
-            font-size: 1.2rem;
-            color: var(--primary-color);
-            margin-bottom: 40px;
-            letter-spacing: 2px;
-        }
-
-        .nav-item {
-            padding: 12px 15px;
-            margin-bottom: 5px;
-            border-radius: 8px;
-            cursor: pointer;
-            color: #cbd5e1;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .nav-item.active {
-            background: var(--primary-color);
-            color: white;
-        }
-
-        .nav-item:hover:not(.active) {
-            background: #2d2d2d;
-        }
-
-        /* Main Content */
-        .main-content {
-            flex: 1;
-            padding: 40px 5%;
-            overflow-y: auto;
-        }
-
-        header h1 {
-            font-size: 1.8rem;
-            margin-bottom: 30px;
-        }
-
-        /* Billing Cards */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-
-        .card {
-            background: var(--white);
-            padding: 25px;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
-        }
-
-        .card-title {
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            margin-bottom: 15px;
-        }
-
-        .plan-price {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .badge {
-            background: #dcfce7;
-            color: #166534;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-
-        /* Billing History Table */
-        .history-section {
-            background: var(--white);
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            padding: 20px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-        }
-
-        th {
-            text-align: left;
-            padding: 12px;
-            color: var(--text-muted);
-            font-weight: 500;
-            border-bottom: 1px solid var(--border);
-        }
-
-        td {
-            padding: 15px 12px;
-            border-bottom: 1px solid var(--border);
-            font-size: 0.95rem;
-        }
-
-        .download-btn {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .action-btn {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-            margin-top: 15px;
-        }
-
-        @media (max-width: 768px) {
-            body { flex-direction: column; }
-            .sidebar { width: 100%; padding: 15px; }
-            .nav-item { display: inline-block; margin-right: 10px; }
-        }
-    </style>
+    <title>Document</title>
 </head>
 <body>
-
-    <aside class="sidebar">
-        <h2>CUISINE</h2>
-        <a href="#" class="nav-item">Dashboard</a>
-        <a href="#" class="nav-item">Websites</a>
-        <a href="#" class="nav-item active">Billing</a>
-        <a href="#" class="nav-item">Settings</a>
-    </aside>
-
-    <main class="main-content">
-        <header>
-            <h1>Billing & Subscription</h1>
-        </header>
-
-        <div class="grid">
-            <div class="card">
-                <div class="card-title">Current Plan</div>
-                <div class="plan-price">$20 <span style="font-size: 1rem; color: var(--text-muted);">/ month</span></div>
-                <p style="margin-bottom: 10px;">Premium Plan <span class="badge">Active</span></p>
-                <p style="font-size: 0.85rem; color: var(--text-muted);">Your next renewal is on Feb 10, 2026.</p>
-                <button class="action-btn">Change Plan</button>
-            </div>
-
-            <div class="card">
-                <div class="card-title">Payment Method</div>
-                <div style="display: flex; align-items: center; margin-top: 10px;">
-                    <div style="background: #eee; padding: 5px 10px; border-radius: 4px; margin-right: 15px; font-weight: bold;">VISA</div>
-                    <div>
-                        <p style="font-weight: 600;">•••• •••• •••• 4242</p>
-                        <p style="font-size: 0.85rem; color: var(--text-muted);">Expires 12/28</p>
-                    </div>
-                </div>
-                <button class="action-btn" style="background: transparent; border: 1px solid var(--border); color: var(--text-dark);">Edit Card</button>
-            </div>
-        </div>
-
-        <div class="history-section">
-            <h3 style="margin-bottom: 10px;">Billing History</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Description</th>
-                        <th>Amount</th>
-                        <th>Status</th>
-                        <th>Invoice</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Jan 10, 2026</td>
-                        <td>Premium Plan - Monthly</td>
-                        <td>$20.00</td>
-                        <td><span style="color: var(--success);">Paid</span></td>
-                        <td><a href="#" class="download-btn">Download PDF</a></td>
-                    </tr>
-                    <tr>
-                        <td>Dec 10, 2025</td>
-                        <td>Premium Plan - Monthly</td>
-                        <td>$20.00</td>
-                        <td><span style="color: var(--success);">Paid</span></td>
-                        <td><a href="#" class="download-btn">Download PDF</a></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </main>
-
-</body>
+    <h1>this is my billing page</h1>
+</body
 </html>
+<section>
+    <!-- Add / Edit billing Form -->
+  <div class="bg-white p-5 rounded shadow mb-8">
+    <h2 class="font-semibold mb-3 text-lg">Add New Billings </h2>
+    <form id="billingForm" class="space-y-3">
+      
+      <input type="text" id="order_by" placeholder="Order_by" required class="w-full border rounded px-3 py-2">
+      <input type="text" id="total_items" placeholder="Total_items" required class="w-full border rounded px-3 py-2">
+      <input type="text" id="amount" placeholder="Amount" required class="w-full border rounded px-3 py-2">
+     
+      <div class="flex space-x-2">
+        <button type="submit" id="submitBtn"
+          class="flex-1 bg-blue-500 hover:bg-blue-600 text-white py-2 rounded">
+          Add Billing
+        </button>
+
+        <button type="button" id="cancelBtn"
+          class="flex-1 bg-gray-400 hover:bg-gray-500 text-white py-2 rounded hidden">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- billing Table -->
+  <div class="bg-white p-5 rounded shadow">
+    <h2 class="font-semibold mb-4 text-lg">All Billings</h2>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="text-center py-4">
+      <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-500 mx-auto"></div>
+    </div>
+
+    <!-- billings Table Container -->
+    <div id="billingsTableContainer" class="hidden overflow-x-auto">
+      <table class="min-w-full text-left border">
+        <thead class="bg-gray-200">
+          <tr>
+            <th class="px-3 py-2">Id</th>
+           
+            <th class="px-3 py-2">Order_by</th>
+            <th class="px-3 py-2">Total_items</th>
+            <th class="px-3 py-2">Amount</th>
+            <th class="px-3 py-2">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="billingsTableBody"></tbody>
+      </table>
+
+      <p id="noBillings" class="text-center text-gray-500 mt-3 hidden">
+        No billings found. Add one using the form above.
+      </p>
+    </div>
+  </div>
+
+  <!-- Alert container -->
+  <div id="alertContainer" class="fixed top-4 right-4 space-y-2 z-50"></div>
+ </section>

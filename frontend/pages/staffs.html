@@ -3,141 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Staff</title>
-    <style>
-        /* Exact Butternut Styling Defaults */
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            color: #111827;
-        }
-
-        /* Hero/Title Section */
-        .section-header {
-            padding: 80px 20px 40px;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .section-header h2 {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 16px;
-            letter-spacing: -0.025em;
-            color: #111827;
-        }
-
-        .section-header p {
-            font-size: 1.25rem;
-            color: #4b5563;
-            line-height: 1.6;
-        }
-
-        /* Staff Grid Layout */
-        .staff-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px 100px;
-        }
-
-        .staff-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        /* Circle Images - Butternut Style */
-        .staff-image-container {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-bottom: 24px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-
-        .staff-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .staff-name {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 4px;
-            color: #111827;
-        }
-
-        .staff-position {
-            font-size: 1rem;
-            color: #e67e22; /* Your primary theme color */
-            font-weight: 600;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .staff-description {
-            font-size: 1rem;
-            color: #6b7280;
-            line-height: 1.5;
-            max-width: 300px;
-        }
-
-        /* Mobile Adjustments */
-        @media (max-width: 1024px) {
-            .staff-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        @media (max-width: 640px) {
-            .staff-grid { grid-template-columns: 1fr; }
-            .section-header h2 { font-size: 2.25rem; }
-        }
-    </style>
+    <title>Document</title>
 </head>
 <body>
-
-    <div class="section-header">
-        <h2>Our Dedicated Team</h2>
-        <p>Expert chefs and hospitality professionals committed to making your dining experience unforgettable.</p>
-    </div>
-
-    <div class="staff-grid">
-        <div class="staff-item">
-            <div class="staff-image-container">
-                <img src="https://images.unsplash.com/photo-1577214495708-4c12a44a95e5?q=80&w=500&auto=format&fit=crop" alt="Chef">
-            </div>
-            <div class="staff-name">Chef Marco</div>
-            <div class="staff-position">Head Chef</div>
-            <div class="staff-description">Passionate about traditional flavors and modern presentation.</div>
-        </div>
-
-        <div class="staff-item">
-            <div class="staff-image-container">
-                <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?q=80&w=500&auto=format&fit=crop" alt="Chef">
-            </div>
-            <div class="staff-name">Sarah Jenkins</div>
-            <div class="staff-position">Pastry Expert</div>
-            <div class="staff-description">Creating sweet masterpieces that delight all the senses.</div>
-        </div>
-
-        <div class="staff-item">
-            <div class="staff-image-container">
-                <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=500&auto=format&fit=crop" alt="Staff">
-            </div>
-            <div class="staff-name">David Chen</div>
-            <div class="staff-position">Sommelier</div>
-            <div class="staff-description">Curating the perfect wine pairings for every culinary journey.</div>
-        </div>
-    </div>
-
-</body>
+    <h1>this is my staff page</h1>
+</body
 </html>
+<section>
+  <!-- Add / Edit Staffs Form -->
+  <div class="bg-white p-5 rounded shadow mb-8">
+    <h2 class="font-semibold mb-3 text-lg">Add New Staff</h2>
+    <form id="staffForm" class="space-y-3">
+      <input type="text" id="name" placeholder="Name" required class="w-full border rounded px-3 py-2">
+      <input type="email" id="email" placeholder="Email" required class="w-full border rounded px-3 py-2">
+      <input type="text" id="age" placeholder="Age" required class="w-full border rounded px-3 py-2">
+
+      <div class="flex space-x-2">
+        <button type="submit" id="submitBtn"
+          class="flex-1 bg-blue-500 hover:bg-blue-600 text-white py-2 rounded">
+          Add Staff
+        </button>
+
+        <button type="button" id="cancelBtn"
+          class="flex-1 bg-gray-400 hover:bg-gray-500 text-white py-2 rounded hidden">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+
+     <!-- Staffs Table -->
+  <div class="bg-white p-5 rounded shadow">
+    <h2 class="font-semibold mb-4 text-lg">All Staffs</h2>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="text-center py-4">
+      <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-500 mx-auto"></div>
+    </div>
+    <!-- Staffs Table Container -->
+    <div id="staffsTableContainer" class="hidden overflow-x-auto">
+      <table class="min-w-full text-left border">
+        <thead class="bg-gray-200">
+          <tr>
+            <th class="px-3 py-2">Id</th>
+            <th class="px-3 py-2">Name</th>
+            <th class="px-3 py-2">Email</th>
+            <th class="px-3 py-2">Age</th>
+            <th class="px-3 py-2">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="staffsTableBody"></tbody>
+      </table>
+
+      <p id="noStaffs" class="text-center text-gray-500 mt-3 hidden">
+        No staffs found. Add one using the form above.
+      </p>
+    </div>
+  </div>
+
+  <!-- Alert container -->
+  <div id="alertContainer" class="fixed top-4 right-4 space-y-2 z-50"></div>
+ </section>
+</div>

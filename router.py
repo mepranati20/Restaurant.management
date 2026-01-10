@@ -1,6 +1,7 @@
 from datetime import datetime
 from http.server import BaseHTTPRequestHandler
 from urllib.parse import urlparse
+from controllers.reports import get_enrollment_report
 
 from controllers.menu import (
     get_all_menus
@@ -11,12 +12,12 @@ from controllers.menu import (
     
 )
 from controllers.billing import (
-    
+  
     get_all_billings,
     get_billing, 
     create_billing,
     update_billing,
-    delete_billing
+    delete_billing,
      
 )
 
@@ -34,7 +35,7 @@ from core.responses import send_404
 from core.middleware import add_cors_headers
 
 
-FRONTEND_ROUTES = {"/", "/home", "/menus", "/billings", "/staffs", "/docs"}
+FRONTEND_ROUTES = {"/", "/home", "/menus", "/billings", "/staffs","/enrollments" "/docs"}
 
 def handle_ui_routes(handler, path):
     if path in FRONTEND_ROUTES:
@@ -46,8 +47,14 @@ def handle_ui_routes(handler, path):
         if stripped in FRONTEND_ROUTES:
             serve_static(handler, "frontend/pages/index.html")
             return True
+    if path.startswith("/assets/"):
+        serve_static(handler, "frontend" + path)
+        return True
     if path.startswith("/frontend/"):
         serve_static(handler, path.lstrip("/"))
+        return True
+    if path == "/openapi.yaml":
+        serve_static(handler, "openapi.yaml")
         return True
 
     return False
@@ -66,7 +73,7 @@ class restaurantRouter(BaseHTTPRequestHandler):
 
         if handle_ui_routes(self, path):
             return
-        
+       
 # ==================================================
 # menu 
 # ==================================================
@@ -82,7 +89,6 @@ class restaurantRouter(BaseHTTPRequestHandler):
 # ==================================================
         if path == "/api/billings":
             return get_all_billings(self)
-       
         
         
         if path.startswith("/api/billings/"):
@@ -102,6 +108,23 @@ class restaurantRouter(BaseHTTPRequestHandler):
         
         return send_404(self)
     
+# ---------------------------
+# ENROLLMENTS
+# ---------------------------
+        if path == "/api/enrollments":
+            return get_all_enrollments(self)
+
+        if path.startswith("/api/enrollments/"):
+            enrollment_id = int(path.split("/")[-1])
+            return get_enrollment(self, enrollment_id)
+  # ---------------------------
+        # REPORTS (JOIN)
+        # ---------------------------
+        if path == "/api/reports/enrollments":
+            return get_enrollment_report(self)
+
+        return send_404(self)       
+    
 # ---------- POST ----------
     def do_POST(self):
         if self.path == "/api/menus":
@@ -112,6 +135,8 @@ class restaurantRouter(BaseHTTPRequestHandler):
         
         if self.path == "/api/staffs":
             return create_staff(self)
+        if self.path == "/api/enrollments":
+            return create_enrollment(self)
         
         return send_404(self)
     
@@ -129,6 +154,7 @@ class restaurantRouter(BaseHTTPRequestHandler):
         if self.path.startswith("/api/staffs/"):
             staff_id = int(self.path.split("/")[-1])
             return update_staff(self, staff_id)
+       
         
         return send_404(self)
     
@@ -146,6 +172,10 @@ class restaurantRouter(BaseHTTPRequestHandler):
         if self.path.startswith("/api/staffs/"):
              staff_id = int(self.path.split("/")[-1])
              return delete_staff(self, staff_id)
+        if self.path.startswith("/api/enrollments/"):
+            enrollment_id = int(self.path.split("/")[-1])
+            return delete_enrollment(self, enrollment_id)
+
         
         return send_404(self)
     

@@ -15,6 +15,7 @@ export function resetForm() {
 // Populates the input form fields with data from a selected billing object (for editing)
 export function fillForm(billing) {
   // Fill each input field with the corresponding property from the billing data
+  $("menu_id").value = billing.menu_id;
   $("order_by").value = billing.order_by;
   $("total_items").value = billing.total_items;
   $("amount").value = billing.amount;

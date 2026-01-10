@@ -29,11 +29,10 @@ export function renderBillingTable(billings) {
     // Populate the row with dynamic HTML content using a template literal
     row.innerHTML = `
       <td class="px-3 py-2">${billing.id}</td>
+      <td class="px-3 py-2">${billing.menu_id}</td>
       <td class="px-3 py-2">${billing.order_by}</td>
       <td class="px-3 py-2">${billing.total_items}</td>
       <td class="px-3 py-2">${billing.amount}</td>
-      <td class="px-3 py-2">${billing.menu_name}</td>
-
 
       <td class="px-3 py-2 flex space-x-2">
         <!-- Buttons are created with data attributes holding the billing ID -->
