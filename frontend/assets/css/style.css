@@ -1,129 +1,84 @@
-/* Premium Rooftop Background */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Outfit', sans-serif;
-  /* Using a direct high-quality source for your Pinterest selection */
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
-              url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop'); 
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  min-height: 100vh;
-}
-
-/* Elegant Title */
-.welcome-title {
-  text-align: center;
-  color: #ffffff; /* Changed to white to pop against the photo */
-  font-size: 3.5rem;
-  padding-top: 80px;
-  margin: 0;
-  letter-spacing: 3px;
-  font-family: 'Playfair Display', serif;
-  text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-}
-
-/* Card Container */
-.card-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  max-width: 1000px;
-  margin: 60px auto;
-  padding: 20px;
-}
-
-/* Glassmorphism Cards */
-.feature-card {
-  background: rgba(255, 255, 255, 0.15); /* Light glass effect */
-  backdrop-filter: blur(10px); /* Frosted glass look */
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 40px 30px;
-  text-decoration: none;
-  color: #ffffff; /* White text for a cleaner look */
-  text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: all 0.4s ease;
-}
-
-.feature-card:hover {
-  transform: translateY(-10px);
-  background: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-}
-
-/* Icon & Description colors */
-.feature-card h3 {
-  font-size: 22px;
-  margin: 15px 0;
-  color: #f1c40f; /* Warm gold to match the fairy lights */
-}
-
-.feature-card p {
-  font-size: 15px;
-  color: #e0e0e0;
-  line-height: 1.5;
-}
-/* Staff Page Specific Styling */
+/* --- STAFF PAGE BACKGROUND --- */
 body.page-staff {
-  margin: 0;
-  padding: 0;
-  font-family: 'Outfit', sans-serif;
-  /* Direct high-quality link to the waiter serving friends image */
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-              url('https://img.freepik.com/free-photo/happy-waiter-serving-food-group-cheerful-friends-pub_2829-14352.jpg') !important;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  min-height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                url('https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1974') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-attachment: fixed !important;
+    min-height: 100vh !important;
 }
 
-/* Elegant Header for Staff Page */
-.page-staff h1 {
-  text-align: center;
-  color: #ffffff;
-  font-family: 'Playfair Display', serif;
-  font-size: 3.2rem;
-  padding: 50px 0 20px 0;
-  letter-spacing: 2px;
-  text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+/* --- MENU PAGE BACKGROUND --- */
+body.page-menu {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), 
+                url('https://images.unsplash.com/photo-1476224489481-f010a88b8824?q=80&w=2070') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-attachment: fixed !important;
+    min-height: 100vh !important;
 }
 
-
-/* Making the Tailwind Cards look like "Glass" */
-.page-staff .bg-white {
-  background: rgba(255, 255, 255, 0.85) !important; /* Semi-transparent white */
-  backdrop-filter: blur(12px); /* Beautiful frost effect */
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 20px !important;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.3) !important;
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
+/* --- BILLING PAGE BACKGROUND --- */
+body.page-billing {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                url('https://images.unsplash.com/photo-1552566626-52f8b828add9?q=80&w=2070') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-attachment: fixed !important;
+    min-height: 100vh !important;
 }
 
-/* Styling the Table Header to match the "Dawat" Gold theme */
-.page-staff thead {
-  background-color: #f1c40f !important; /* Gold header */
+/* --- 6. FIXING VISIBILITY (The White Boxes & Text) --- */
+.bg-white {
+    /* Making the box solid enough so the background photo doesn't hide the text */
+    background: rgba(255, 255, 255, 0.95) !important; 
+    backdrop-filter: blur(10px);
+    border: 2px solid #d4a017;
+    border-radius: 12px;
 }
 
-.page-staff thead th {
-  color: #2c3e50;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 0.85rem;
+/* Make the Labels (Name, Email, Age) visible outside the boxes */
+label {
+    color: white !important;
+    font-weight: bold;
+    text-shadow: 1px 1px 5px rgba(0,0,0,1);
+    display: block;
+    margin-bottom: 5px;
 }
 
-/* Custom button color for the Staff page */
-.page-staff #submitBtn {
-  background-color: #b91616; /* Deep red to match your brand */
-  transition: all 0.3s ease;
+/* Make the text INSIDE the input fields black and bold */
+input {
+    color: #000000 !important;
+    font-weight: 600 !important;
+    border: 1px solid #333 !important;
 }
 
-.page-staff #submitBtn:hover {
-  background-color: #901010;
-  transform: scale(1.02);
+/* Style the Table Data so the entered info is sharp */
+td, th {
+    color: #000000 !important;
+    font-weight: 600 !important;
+}
+
+/* --- 7. BUTTONS --- */
+#submitBtn {
+    background-color: #d4a017 !important;
+    color: white !important;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+#submitBtn:hover {
+    background-color: #b08512 !important;
+}
+
+/* --- 8. HOME PAGE CARDS (Keep your Rooftop style) --- */
+.feature-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-decoration: none;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: 0.4s;
 }
