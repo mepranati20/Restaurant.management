@@ -3,55 +3,272 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DAWAT - Menus</title>
-    <link rel="stylesheet" href="/static/css/style.css">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Our Menu | Cuisine</title>
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #e67e22; /* Burnt Orange */
+            --secondary-color: #2c3e50; /* Dark Navy */
+            --accent-color: #f39c12;
+            --text-main: #333;
+            --text-light: #7f8c8d;
+            --bg-page: #ffffff;
+            --bg-alt: #fcfcfc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Playfair Display', serif, 'Segoe UI', Tahoma;
+        }
+
+        body {
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        header {
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fff;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            letter-spacing: 1px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            margin-left: 25px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Menu Header */
+        .menu-hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), 
+                        url('https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .menu-hero h1 {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .menu-hero p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Menu Section Layout */
+        .menu-container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .menu-category {
+            margin-bottom: 60px;
+        }
+
+        .category-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .category-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 2px;
+            background: var(--primary-color);
+            margin: 10px auto;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 1px dashed #ddd;
+            padding-bottom: 15px;
+        }
+
+        .item-info {
+            flex: 1;
+        }
+
+        .item-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        .item-desc {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        .item-price {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            margin-left: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary-color);
+            color: #fff;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 80px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            .menu-hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
 </head>
-<body class="page-menu">
-    <h1 class="page-title">🍽️ FIND YOUR FAVORITE 🍽️</h1>
+<body>
 
-    <section class="max-w-5xl mx-auto p-6">
-        <div class="bg-white p-5 rounded-xl shadow-lg mb-8">
-            <h2 class="font-semibold mb-3 text-lg">Add New Menu</h2>
-            <form id="menuForm" class="space-y-3">
-                <input type="text" id="Category" placeholder="Category" required class="w-full border rounded px-3 py-2 text-black">
-                <input type="text" id="name" placeholder="Name" required class="w-full border rounded px-3 py-2 text-black">
-                <input type="text" id="price" placeholder="Price" required class="w-full border rounded px-3 py-2 text-black">
-                <input type="text" id="rating" placeholder="Rating" required class="w-full border rounded px-3 py-2 text-black">
-                
-                <div class="flex space-x-2">
-                    <button type="submit" id="submitBtn" class="flex-1 bg-yellow-600 hover:bg-yellow-700 text-white py-2 rounded font-bold">
-                        Add Menu
-                    </button>
-                    <button type="button" id="cancelBtn" class="flex-1 bg-gray-400 hover:bg-gray-500 text-white py-2 rounded hidden">
-                        Cancel
-                    </button>
-                </div>
-            </form>
-        </div>
+    <header>
+        <div class="logo">CUISINE</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="#menus">Menus</a>
+            <a href="#">Reservations</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
 
-        <div class="bg-white p-5 rounded-xl shadow-lg">
-            <h2 class="font-semibold mb-4 text-lg">All Menus</h2>
-            <div id="loadingSpinner" class="text-center py-4">
-                <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-yellow-600 mx-auto"></div>
-            </div>
-            <div id="menusTableContainer" class="hidden overflow-x-auto">
-                <table class="min-w-full text-left">
-                    <thead class="bg-yellow-100">
-                        <tr>
-                            <th class="px-3 py-2">Id</th>
-                            <th class="px-3 py-2">Category</th>
-                            <th class="px-3 py-2">Name</th>
-                            <th class="px-3 py-2">Price</th>
-                            <th class="px-3 py-2">Rating</th>
-                            <th class="px-3 py-2">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="menusTableBody"></tbody>
-                </table>
-            </div>
-        </div>
+    <section class="menu-hero">
+        <h1>Our Culinary Creations</h1>
+        <p>A curated selection of seasonal dishes inspired by traditional techniques and modern flair.</p>
     </section>
-    <div id="alertContainer" class="fixed top-4 right-4 space-y-2 z-50"></div>
+
+    <div class="menu-container" id="menus">
+        
+        <div class="menu-category">
+            <h2 class="category-title">Appetizers</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Truffle Arancini</div>
+                        <div class="item-desc">Crispy risotto balls with wild mushroom and truffle oil.</div>
+                    </div>
+                    <div class="item-price">$14</div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Burrata & Heirloom</div>
+                        <div class="item-desc">Creamy burrata cheese with seasonal heirloom tomatoes and pesto.</div>
+                    </div>
+                    <div class="item-price">$16</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-category">
+            <h2 class="category-title">Main Courses</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Pan-Seared Scallops</div>
+                        <div class="item-desc">Served over a bed of saffron risotto and buttered leeks.</div>
+                    </div>
+                    <div class="item-price">$32</div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Herb-Crusted Lamb Chops</div>
+                        <div class="item-desc">Garlic mashed potatoes and red wine reduction.</div>
+                    </div>
+                    <div class="item-price">$38</div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Wild Mushroom Pappardelle</div>
+                        <div class="item-desc">Fresh pasta with a creamy thyme and porcini sauce.</div>
+                    </div>
+                    <div class="item-price">$26</div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Grilled Sea Bass</div>
+                        <div class="item-desc">With Mediterranean vegetables and lemon-caper butter.</div>
+                    </div>
+                    <div class="item-price">$34</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-category">
+            <h2 class="category-title">Desserts</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Dark Chocolate Fondant</div>
+                        <div class="item-desc">Molten center with Madagascar vanilla bean gelato.</div>
+                    </div>
+                    <div class="item-price">$12</div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Classic Tiramisu</div>
+                        <div class="item-desc">Espresso-soaked ladyfingers with whipped mascarpone.</div>
+                    </div>
+                    <div class="item-price">$10</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Cuisine Restaurant. Crafted with Excellence.</p>
+    </footer>
+
 </body>
 </html>
