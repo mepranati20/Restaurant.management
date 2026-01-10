@@ -54,8 +54,8 @@ def init_database():
     conn.execute("""
         CREATE TABLE IF NOT EXISTS enrollments (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            student_id INTEGER NOT NULL,
-            course_id INTEGER NOT NULL,
+            billing_id INTEGER NOT NULL,
+            menu_id INTEGER NOT NULL,
             enrolled_on TEXT,
             created_at TEXT,
             updated_at TEXT,

@@ -1,7 +1,7 @@
 # services/enrollment_service.py
 # Business logic for enrollments (no HTTP here)
 
-from database.queries import (
+from database.enrollment_queries import (
     enrollments_get_all,
     enrollments_get_one,
     enrollments_create,
