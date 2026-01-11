@@ -80,3 +80,11 @@ class TestDatabaseBasics(unittest.TestCase):
             "staffs", 
             tables
         )
+        self.assertIn(
+            "enrollments", 
+            tables
+        )
+        self.assertIn(
+            "report_enrollmets", 
+            tables
+        )

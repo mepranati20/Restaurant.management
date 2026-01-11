@@ -1,5 +1,5 @@
 // Base API URL from env.js
-const API_URL = window.ENV.API_billing_URL;
+const API_URL = window.ENV.API_BASE_URL;
 
 // Helper: safely parse JSON or return null
 async function safeJson(res) {
@@ -10,20 +10,21 @@ async function safeJson(res) {
   }
 }
 
-// Fetch all billing
+// Fetch all students
 export async function apiGetAll() {
   const res = await fetch(API_URL);
   if (!res.ok) return [];
   return safeJson(res);
 }
-// Fetch one billing by ID
+
+// Fetch one student by ID
 export async function apiGetOne(id) {
   const res = await fetch(`${API_URL}/${id}`);
   if (!res.ok) return null;
   return safeJson(res);
 }
 
-// Create a new billing
+// Create a new student
 export function apiCreate(data) {
   return fetch(API_URL, {
     method: "POST",
@@ -32,7 +33,7 @@ export function apiCreate(data) {
   });
 }
 
-// Update a billing
+// Update a student
 export function apiUpdate(id, data) {
   return fetch(`${API_URL}/${id}`, {
     method: "PUT",
@@ -41,7 +42,7 @@ export function apiUpdate(id, data) {
   });
 }
 
-// Delete a billing
+// Delete a student
 export function apiDelete(id) {
   return fetch(`${API_URL}/${id}`, { method: "DELETE" });
 }

@@ -4,13 +4,21 @@ import { initStaffController } from "../controllers/staffController.js";
 import { initEnrollmentReportController } from "../controllers/reportController.js";
 // Load a view into #app container
 async function loadView(path) {
-  const html = await fetch(path).then(res => res.text());
-  document.querySelector("#app").innerHTML = html;
-}
+const res = await fetch(path);
 
-// Decide which view to load based on URL
+    if (!res.ok) {
+    const fallback = await fetch("/frontend/pages/404.html").then((r) => r.text());
+    document.querySelector("#app").innerHTML = fallback;
+    return;
+  }
+  
+
+  const html = await res.text();
+  document.querySelector("#app").innerHTML = html;
 export async function router() {
-  const path = window.location.pathname;
+  // Normalize path: remove trailing slash (except "/")
+  let path = window.location.pathname;
+   if (path.length > 1) path = path.replace(/\/$/, "");
 
   if (path === "/" || path === "/home") {
     await loadView("/frontend/pages/home.html");

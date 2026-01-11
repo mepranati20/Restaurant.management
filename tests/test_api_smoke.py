@@ -53,6 +53,8 @@ class TestApiSmoke(unittest.TestCase):
         url = f"http://127.0.0.1:{self.port}/api/billings"
         url = f"http://127.0.0.1:{self.port}/api/menus"
         url = f"http://127.0.0.1:{self.port}/api/staffs"
+        url = f"http://127.0.0.1:{self.port}/api/enrollments"
+        url = f"http://127.0.0.1:{self.port}/api/report_enrollments"
         # Make an HTTP GET request to the API
         with urllib.request.urlopen(url) as resp:
 

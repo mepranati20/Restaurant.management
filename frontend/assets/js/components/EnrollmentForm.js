@@ -1,23 +1,23 @@
 import { $ } from "../utils/dom.js";
 
-export function fillEnrollmentDropdowns(students, courses) {
-  const studentSel = $("billing_id");
-  const courseSel = $("menu_id");
+export function fillEnrollmentDropdowns(billings, menus) {
+  const billingSel = $("billing_id");
+  const menuSel = $("menu_id");
 
-  studentSel.innerHTML = `<option value="">Select billing</option>`;
-  courseSel.innerHTML = `<option value="">Select menu</option>`;
+  billingSel.innerHTML = `<option value="">Select billing</option>`;
+  menuSel.innerHTML = `<option value="">Select menu</option>`;
 
-  (billing || []).forEach(s => {
+  (billings || []).forEach(s => {
     const opt = document.createElement("option");
-    opt.value = s.id;
-    opt.textContent = `${s.name} (ID: ${s.id})`;
-    studentSel.appendChild(opt);
+    opt.value = b.id;
+    opt.textContent = `${b.name} (ID: ${b.id})`;
+    billingSel.appendChild(opt);
   });
 
-  (menu || []).forEach(c => {
+  (menus || []).forEach(m => {
     const opt = document.createElement("option");
-    opt.value = c.id;
-    opt.textContent = `${c.title} (ID: ${c.id})`;
-    courseSel.appendChild(opt);
+    opt.value = m.id;
+    opt.textContent = `${m.title} (ID: ${m.id})`;
+    menuSel.appendChild(opt);
   });
 }
