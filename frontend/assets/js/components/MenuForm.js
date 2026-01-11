@@ -16,7 +16,7 @@ export function resetForm() {
 export function fillForm(menu) {
   // Fill each input field with the corresponding property from the billing data
   $("Category").value = menu.Category;
-  
+  $("Category").value = menu.Category;
   $("price").value = menu.price;
   $("rating").value = menu.rating;
 

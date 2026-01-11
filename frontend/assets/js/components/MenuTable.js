@@ -30,6 +30,7 @@ export function renderMenuTable(menus) {
     row.innerHTML = `
       <td class="px-3 py-2">${menu.id}</td>
       <td class="px-3 py-2">${menu.Category}</td>
+      <td class="px-3 py-2">${menu.name}</td>
       
       <td class="px-3 py-2">${menu.price}</td>
       <td class="px-3 py-2">${menu.rating}</td>

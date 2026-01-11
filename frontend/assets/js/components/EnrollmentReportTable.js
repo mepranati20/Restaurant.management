@@ -17,10 +17,10 @@ export function renderEnrollmentReportTable(rows) {
     tr.innerHTML = `
       <td class="px-3 py-2 border">${r.enrollment_id ?? ""}</td>
       <td class="px-3 py-2 border">
-        ${r.student_name ?? ""} <span class="text-xs text-gray-500">(ID: ${r.student_id ?? ""})</span>
+        ${r.billing_name ?? ""} <span class="text-xs text-gray-500">(ID: ${r.billing_id ?? ""})</span>
       </td>
       <td class="px-3 py-2 border">
-        ${r.course_title ?? ""} <span class="text-xs text-gray-500">(ID: ${r.course_id ?? ""})</span>
+        ${r.menu_title ?? ""} <span class="text-xs text-gray-500">(ID: ${r.menu_id ?? ""})</span>
       </td>
       <td class="px-3 py-2 border">${r.enrolled_on ?? ""}</td>
     `;

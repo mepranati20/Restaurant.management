@@ -17,10 +17,10 @@ export function renderStaffTable(staffs) {
     return;
   }
 
-  // If students exist, hide the 'no Staffs' message
+  // If staffs exist, hide the 'no Staffs' message
   noStaffs.style.display = "none";
 
-  // Iterate over each student object in the provided array
+  // Iterate over each staff object in the provided array
   staffs.forEach(staff => {
     // Create a new table row element for the current Staff
     const row = document.createElement("tr");
