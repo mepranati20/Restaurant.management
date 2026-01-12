@@ -20,7 +20,7 @@ export function renderEnrollmentReportTable(rows) {
         ${r.billing_name ?? ""} <span class="text-xs text-gray-500">(ID: ${r.billing_id ?? ""})</span>
       </td>
       <td class="px-3 py-2 border">
-        ${r.menu_title ?? ""} <span class="text-xs text-gray-500">(ID: ${r.menu_id ?? ""})</span>
+        ${r.menu_Category ?? ""} <span class="text-xs text-gray-500">(ID: ${r.menu_id ?? ""})</span>
       </td>
       <td class="px-3 py-2 border">${r.enrolled_on ?? ""}</td>
     `;

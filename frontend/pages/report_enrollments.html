@@ -78,7 +78,7 @@
 SELECT
     e.id AS enrollment_id,
     b.name AS name,
-    m.title AS menu_title,
+    m.title AS menu_Category,
     e.enrolled_on
 FROM enrollments e
 JOIN menus s ON e.billing_id = b.id
