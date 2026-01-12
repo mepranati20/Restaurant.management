@@ -15,8 +15,8 @@ export function initEnrollmentController() {
     e.preventDefault();
 
     const data = {
-      student_id: Number($("billing_id").value),
-      course_id: Number($("menu_id").value),
+    billing_id: Number($("billing_id").value),
+     menu_id: Number($("menu_id").value),
     };
 
     const res = await apiCreate(data);
@@ -28,12 +28,12 @@ export function initEnrollmentController() {
 }
 
 async function loadEverything() {
-  await Promise.all([loadbillingAndmenu(), loadEnrollmentsOnly()]);
+  await Promise.all([loadbillingsAndmenus(), loadEnrollmentsOnly()]);
 }
 
-async function loadbillingAndmenu() {
-  const [billing, menu] = await Promise.all([apiGetAllbillings(), apiGetAllmenus()]);
-  fillEnrollmentDropdowns(billing, menu);
+async function loadbillingsAndmenus() {
+  const [billings, menus] = await Promise.all([apiGetAllbillings(), apiGetAllmenus()]);
+  fillEnrollmentDropdowns(billings, menus);
 }
 
 async function loadEnrollmentsOnly() {

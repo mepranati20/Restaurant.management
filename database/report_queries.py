@@ -16,7 +16,7 @@ def enrollment_report():
             m.title AS menu_title
         FROM enrollments e
         JOIN billings s ON s.id = e.billing_id
-        JOIN menu c ON c.id = e.menu_id
+        JOIN menus c ON c.id = e.menu_id
         ORDER BY e.id DESC;
     """).fetchall()
     conn.close()
