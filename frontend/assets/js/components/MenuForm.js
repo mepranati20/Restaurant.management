@@ -13,7 +13,7 @@ export function resetMenuForm() {
 }
 
 // Populates the input form fields with data from a selected billing object (for editing)
-export function fillForm(menu) {
+export function fillMenuForm(menu) {
   // Fill each input field with the corresponding property from the billing data
   $("name").value = menu.name ?? "";
   $("Category").value = menu.Category  ?? "";
