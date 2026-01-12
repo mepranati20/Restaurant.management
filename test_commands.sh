@@ -49,7 +49,6 @@ curl -X GET "https://symmetrical-space-trout-jjvrjvxw7xvr35qr5-8000.app.github.d
 curl -X POST "https://symmetrical-space-trout-jjvrjvxw7xvr35qr5-8000.app.github.dev/api/billings" \
   -H "Content-Type: application/json" \
   -d '{
-    "menu_id": 1,
     "order_by": "aki",
     "total_items": "8",
     "amount": "657"
@@ -59,7 +58,6 @@ curl -X POST "https://symmetrical-space-trout-jjvrjvxw7xvr35qr5-8000.app.github.
 curl -X PUT "https://symmetrical-space-trout-jjvrjvxw7xvr35qr5-8000.app.github.dev/api/billings/1" \
   -H "Content-Type: application/json" \
   -d '{
-    "menu_id": 2,
     "order_by": "aki",
     "total_items": "30",
     "amount": "4577"

@@ -42,7 +42,6 @@ jobs:
         run: |
           curl -i http://127.0.0.1:8000/ | head -n 20
           curl -i http://127.0.0.1:8000/api/billings | head -n 50
-          curl -i http://127.0.0.1:8000/api/menus | head -n 50
           curl -i http://127.0.0.1:8000/api/staffs | head -n 50
 
       - name: Stop server
