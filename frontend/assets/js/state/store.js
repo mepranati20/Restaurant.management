@@ -1,7 +1,6 @@
 // Global app state
 let state = {
   editingId: null,   // which item is being edited         
-             // list of all menu items
   billings: [] ,         // list of all billing
   staffs: []      // list of all staff members 
 };

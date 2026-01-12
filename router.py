@@ -29,13 +29,20 @@ from controllers.staff import (
     , delete_staff
     
 )
+from controllers.enrollments import (
+    get_all_enrollments,
+    get_enrollment,
+    create_enrollment,
+    delete_enrollment,
+)
+
 
 from core.static import serve_static
 from core.responses import send_404
 from core.middleware import add_cors_headers
 
 
-FRONTEND_ROUTES = {"/", "/home", "/menus", "/billings", "/staffs","/enrollments" "/docs"}
+FRONTEND_ROUTES = {"/", "/home", "/menus", "/billings", "/staffs", "/enrollments", "/reports/enrollments", "/docs"}
 
 def handle_ui_routes(handler, path):
     if path in FRONTEND_ROUTES:
@@ -105,8 +112,6 @@ class restaurantRouter(BaseHTTPRequestHandler):
         if path.startswith("/api/staffs/"):
             staff_id = int(path.split("/")[-1])
             return get_staff(self, staff_id)
-        
-        return send_404(self)
     
 # ---------------------------
 # ENROLLMENTS
@@ -118,10 +123,10 @@ class restaurantRouter(BaseHTTPRequestHandler):
             enrollment_id = int(path.split("/")[-1])
             return get_enrollment(self, enrollment_id)
   # ---------------------------
-        # REPORTS (JOIN)
-        # ---------------------------
+  # REPORTS (JOIN)
+  # ---------------------------
         if path == "/api/reports/enrollments":
-            return get_enrollment_report(self)
+         return get_enrollment_report(self)
 
         return send_404(self)       
     
@@ -172,6 +177,7 @@ class restaurantRouter(BaseHTTPRequestHandler):
         if self.path.startswith("/api/staffs/"):
              staff_id = int(self.path.split("/")[-1])
              return delete_staff(self, staff_id)
+        
         if self.path.startswith("/api/enrollments/"):
             enrollment_id = int(self.path.split("/")[-1])
             return delete_enrollment(self, enrollment_id)

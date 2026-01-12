@@ -1,20 +1,22 @@
 import { initBillingController } from "../controllers/billingController.js";
 import { initMenuController } from "../controllers/menuController.js";
 import { initStaffController } from "../controllers/staffController.js";
+import { initEnrollmentController } from "../controllers/enrollmentController.js";
 import { initEnrollmentReportController } from "../controllers/reportController.js";
 // Load a view into #app container
 async function loadView(path) {
 const res = await fetch(path);
 
+// If the view file is missing, show 404 view
     if (!res.ok) {
     const fallback = await fetch("/frontend/pages/404.html").then((r) => r.text());
     document.querySelector("#app").innerHTML = fallback;
     return;
   }
   
-
   const html = await res.text();
   document.querySelector("#app").innerHTML = html;
+}
 export async function router() {
   // Normalize path: remove trailing slash (except "/")
   let path = window.location.pathname;
@@ -44,8 +46,6 @@ else if (path === "/billings") {
     await loadView("/frontend/pages/report_enrollments.html");
     initEnrollmentReportController();
   }
-
-
   else {
     await loadView("/frontend/pages/404.html");
   }

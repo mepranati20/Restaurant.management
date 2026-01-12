@@ -1,6 +1,6 @@
 import { apiGetAll as apiGetAllEnrollments, apiCreate, apiDelete } from "../services/enrollmentService.js";
-import { apiGetAll as apiGetAllStudents } from "../services/billingService.js";
-import { apiGetAll as apiGetAllCourses } from "../services/menuService.js";
+import { apiGetAll as apiGetAllbillings } from "../services/billingService.js";
+import { apiGetAll as apiGetAllmenus } from "../services/menuService.js";
 
 import { showAlert } from "../components/Alert.js";
 import { renderEnrollmentTable } from "../components/EnrollmentTable.js";
@@ -32,7 +32,7 @@ async function loadEverything() {
 }
 
 async function loadbillingAndmenu() {
-  const [billing, menu] = await Promise.all([apiGetAllbilling(), apiGetAllmenu()]);
+  const [billing, menu] = await Promise.all([apiGetAllbillings(), apiGetAllmenus()]);
   fillEnrollmentDropdowns(billing, menu);
 }
 
