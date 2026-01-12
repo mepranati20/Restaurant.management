@@ -46,7 +46,7 @@ class TestApiSmoke(unittest.TestCase):
     def test_api_restaurants_returns_200(self):
         """
         This test checks one thing:
-        - When we call /api/billings, /api/men, /api/staffs the server responds correctly
+        - When we call /api/billings,/api/staffs the server responds correctly
         """
 
         # Build the API URL using the test server port

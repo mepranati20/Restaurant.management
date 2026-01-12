@@ -11,20 +11,20 @@ async function safeJson(res) {
   }
 }
 
-// Fetch all students
+// Fetch all staffs
 export async function apiGetAll() {
   const res = await fetch(API_URL);
   if (!res.ok) return [];
   return safeJson(res);
 }
-// Fetch one student by ID
+// Fetch one staff by ID
 export async function apiGetOne(id) {
   const res = await fetch(`${API_URL}/${id}`);
   if (!res.ok) return null;
   return safeJson(res);
 }
 
-// Create a new student
+// Create a new staff
 export function apiCreate(data) {
   return fetch(API_URL, {
     method: "POST",
@@ -33,7 +33,7 @@ export function apiCreate(data) {
   });
 }
 
-// Update a student
+// Update a staff
 export function apiUpdate(id, data) {
   return fetch(`${API_URL}/${id}`, {
     method: "PUT",
@@ -42,7 +42,7 @@ export function apiUpdate(id, data) {
   });
 }
 
-// Delete a student
+// Delete a staff
 export function apiDelete(id) {
   return fetch(`${API_URL}/${id}`, { method: "DELETE" });
 }

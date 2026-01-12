@@ -7,17 +7,17 @@ export function fillEnrollmentDropdowns(billings, menus) {
   billingSel.innerHTML = `<option value="">Select billing</option>`;
   menuSel.innerHTML = `<option value="">Select menu</option>`;
 
-  (billings || []).forEach(s => {
+  (billings || []).forEach(b => {
     const opt = document.createElement("option");
     opt.value = b.id;
-    opt.textContent = `${b.name} (ID: ${b.id})`;
+    opt.textContent = `${b.order_by} (ID: ${b.id})`;
     billingSel.appendChild(opt);
   });
 
   (menus || []).forEach(m => {
     const opt = document.createElement("option");
     opt.value = m.id;
-    opt.textContent = `${m.title} (ID: ${m.id})`;
+    opt.textContent = `${m.name} (ID: ${m.id})`;
     menuSel.appendChild(opt);
   });
 }

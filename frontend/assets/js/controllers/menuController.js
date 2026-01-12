@@ -8,7 +8,7 @@ import {
 
 import { showAlert } from "../components/Alert.js";
 import { renderMenuTable } from "../components/MenuTable.js";
-import { resetForm, fillForm } from "../components/MenuForm.js";
+import { resetMenuForm, fillMenuForm } from "../components/MenuForm.js";
 
 import { setState, getState } from "../state/store.js";
 import { $, createElement } from "../utils/dom.js";
@@ -28,10 +28,10 @@ export function initMenuController() {
 
     // Collect data from the input fields using the custom '$' selector
     const data = {
-      Category: $("Category").value.trim(),   // Get name value, remove whitespace
-      
-      price: $("price").value.trim(), // Get course value
-      rating: $("rating").value.trim()    // Get year value
+      Category: $("Category").value.trim(),   // Get Category value, remove whitespace
+      name: $("name").value.trim(), // Get name value
+      price: $("price").value.trim(), // Get price value
+      rating: $("rating").value.trim()    // Get rating value
     };
 
     // Check the application state to see if we are currently editing an existing record
@@ -50,7 +50,7 @@ export function initMenuController() {
     // Clear the editing state (set the ID to null)
     setState({ editingId: null });
     // Clear all input fields in the form
-    resetForm();
+    resetMenuForm();
   });
 }
 
@@ -84,7 +84,7 @@ export async function createNewMenu(data) {
   const res = await apiCreate(data);
   if (res.ok) {
     showAlert("Menu added!");
-    resetForm();
+    resetMenuForm();
     loadMenus();
   }
 }
@@ -94,7 +94,7 @@ export async function editMenu(id) {
   const menu = await apiGetOne(id);
 
   setState({ editingId: id });
-  fillForm(menu);
+  fillMenuForm(menu);
 
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
@@ -104,7 +104,7 @@ export async function updateMenu(id, data) {
   const res = await apiUpdate(id, data);
   if (res.ok) {
     showAlert("Updated!");
-    resetForm();
+    resetMenuForm();
     setState({ editingId: null });
     loadMenus();
   }

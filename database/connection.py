@@ -15,7 +15,7 @@ def get_connection():
 def init_database():
     conn = get_connection()
     conn.execute(""" 
-                  CREATE TABLE IF NOT EXISTS menus (
+            CREATE TABLE IF NOT EXISTS menus (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             Category TEXT,
             name TEXT,
@@ -64,4 +64,4 @@ def init_database():
     """)
     conn.commit()
     conn.close()
-    print("✓ Database initialized")        
+    print("✓ Database initialized")              

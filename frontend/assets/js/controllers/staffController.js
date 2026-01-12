@@ -30,7 +30,7 @@ export function initStaffController() {
     const data = {
       name: $("name").value.trim(),   // Get name value, remove whitespace
       email: $("email").value.trim(), // Get email value
-      age: $("age").value.trim(), // Get course value
+      age: $("age").value.trim(), // Get age value
     };
 
     // Check the application state to see if we are currently editing an existing record

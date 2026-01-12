@@ -18,7 +18,7 @@
 
         <ul class="list-disc list-inside mt-2">
             <li><strong>Billing</strong> — who the customer is</li>
-            <li><strong>Menu</strong> — what is the bill</li>
+            <li><strong>Menu</strong> — what is the order</li>
             <li><strong>Enrollment</strong> — Which customer has what amount of bill</li>
         </ul>
 
@@ -46,7 +46,7 @@
                     <tr>
                         <th class="px-3 py-2">Enrollment ID</th>
                         <th class="px-3 py-2">Billing</th>
-                        <th class="px-3 py-2">Course</th>
+                        <th class="px-3 py-2">Menu</th>
                         <th class="px-3 py-2">Enrolled On</th>
                     </tr>
                 </thead>
@@ -77,12 +77,12 @@
                 <pre class="bg-white px-4 py-4 text-sm overflow-x-auto leading-relaxed">
 SELECT
     e.id AS enrollment_id,
-    b.name AS name,
-    m.title AS menu_Category,
+    b.order_by AS order_by,
+    m.name AS menu_name,
     e.enrolled_on
 FROM enrollments e
-JOIN menus s ON e.billing_id = b.id
-JOIN billings c ON e.menu_id = m.id;
+JOIN billings b ON e.billing_id = b.id
+JOIN menus m ON e.menu_id = m.id;
                 </pre>
 
                 <div class="bg-gray-50 px-4 py-3 text-xs text-gray-600">

@@ -1,60 +1,39 @@
 import { $ } from "../utils/dom.js";
 import { editMenu, deleteMenuAction } from "../controllers/menuController.js";
 
-// Renders the list of menus into an HTML table
 export function renderMenuTable(menus) {
-  // Get references to the table body where rows will be inserted and the 'no menus' message
   const body = $("menusTableBody");
-  const noMenus = $("noMenus");
+  const empty = $("noMenus");
 
-  // Clear any existing rows from the table body before rendering new data
   body.innerHTML = "";
 
-  // Check if the menu array is empty
-  if (menus.length === 0) {
-    // If no menus are found, display the 'no menus' message and stop execution
-    noMenus.style.display = "block";
+  if (!menus || menus.length === 0) {
+    empty.classList.remove("hidden");
     return;
   }
+  empty.classList.add("hidden");
 
-  // If menus exist, hide the 'no menus' message
-  noMenus.style.display = "none";
-
-  // Iterate over each menu object in the provided array
-  menus.forEach(menu => {
-    // Create a new table row element for the current menu
-    const row = document.createElement("tr");
-    row.className = "border-b"; // Add styling class (likely Tailwind CSS)
-
-    // Populate the row with dynamic HTML content using a template literal
-    row.innerHTML = `
-      <td class="px-3 py-2">${menu.id}</td>
-      <td class="px-3 py-2">${menu.Category}</td>
-      <td class="px-3 py-2">${menu.name}</td>
-      
-      <td class="px-3 py-2">${menu.price}</td>
-      <td class="px-3 py-2">${menu.rating}</td>
-      <td class="px-3 py-2 flex space-x-2">
-        <!-- Buttons are created with data attributes holding the menu id -->
-        <button class="bg-yellow-400 hover:bg-yellow-500 text-black py-1 px-3 rounded"
-          data-edit="${menu.id}">Edit</button>
-
-        <button class="bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded"
-          data-delete="${menu.id}">Delete</button>
+  menus.forEach(m => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td class="px-3 py-2 border">${m.id}</td>
+      <td class="px-3 py-2 border">${m.name ?? ""}</td>
+      <td class="px-3 py-2 border">${m.Category ?? ""}</td>
+      <td class="px-3 py-2 border">${m.price ?? ""}</td>
+      <td class="px-3 py-2 border">${m.rating ?? ""}</td>
+      <td class="px-3 py-2 border">
+        <button class="text-blue-600 underline mr-3" data-edit="${m.id}">Edit</button>
+        <button class="text-red-600 underline" data-del="${m.id}">Delete</button>
       </td>
     `;
+    body.appendChild(tr);
+  });
 
-    // --- Attach event listeners to the newly created buttons ---
+  body.querySelectorAll("[data-edit]").forEach(btn => {
+    btn.addEventListener("click", () => editMenu(Number(btn.dataset.edit)));
+  });
 
-    // Find the 'Edit' button within this specific row and attach a click handler
-    // When clicked, call the editmenu function with the correct menu ID
-    row.querySelector("[data-edit]").onclick = () => editMenu(menu.id);
-    
-    // Find the 'Delete' button within this specific row and attach a click handler
-    // When clicked, call the deletemenuAction function with the correct menu ID
-    row.querySelector("[data-delete]").onclick = () => deleteMenuAction(menu.id);
-
-    // Append the fully constructed row to the table body
-    body.appendChild(row);
+  body.querySelectorAll("[data-del]").forEach(btn => {
+    btn.addEventListener("click", () => deleteMenuAction(Number(btn.dataset.del)));
   });
 }

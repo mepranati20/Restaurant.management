@@ -1,7 +1,7 @@
-import { $, createElement } from "../utils/dom.js";
+import { $ } from "../utils/dom.js";
 
 // Resets the input form to its default state for creating a new billing
-export function resetForm() {
+export function resetMenuForm() {
   // Use the native .reset() method on the HTML form element
   $("menuForm").reset();
 
@@ -9,20 +9,20 @@ export function resetForm() {
   $("submitBtn").textContent = "Add Menu";
 
   // Hide the "Cancel" button, as we are no longer in 'edit' mode
-  $("cancelBtn").style.display = "none";
+  $("cancelBtn").classList.add("hidden");
 }
 
 // Populates the input form fields with data from a selected billing object (for editing)
 export function fillForm(menu) {
   // Fill each input field with the corresponding property from the billing data
-  $("Category").value = menu.Category;
-  $("Category").value = menu.Category;
-  $("price").value = menu.price;
-  $("rating").value = menu.rating;
+  $("name").value = menu.name ?? "";
+  $("Category").value = menu.Category  ?? "";
+  $("price").value = menu.price  ?? "";
+  $("rating").value = menu.rating  ?? "";
 
   // Change the submit button text to "Update billing"
   $("submitBtn").textContent = "Update menu";
 
   // Show the "Cancel" button, allowing the user to exit 'edit' mode
-  $("cancelBtn").style.display = "inline-block";
+   $("cancelBtn").classList.remove("hidden");
 } 
