@@ -19,6 +19,18 @@
             backdrop-filter: blur(10px);
             border: 2px solid rgba(59, 130, 246, 0.1);
         }
+
+        /* --- UPDATED SARCASTIC ANIMATION --- */
+        @keyframes sarcasticSwing {
+            0% { transform: rotate(5deg); }
+            50% { transform: rotate(-5deg); }
+            100% { transform: rotate(5deg); }
+        }
+        .animate-swing {
+            display: inline-block;
+            transform-origin: top center;
+            animation: sarcasticSwing 1.5s ease-in-out infinite;
+        }
     </style>
 </head>
 <body class="min-h-screen p-4 md:p-8">
@@ -38,7 +50,7 @@
                     <select id="billing_id" required 
                         class="w-full border-2 border-blue-100 rounded-xl px-10 py-2 focus:ring-2 focus:ring-blue-400 outline-none bg-white/70 appearance-none">
                         <option value="">Select Billing</option>
-                        </select>
+                    </select>
                 </div>
 
                 <div class="relative">
@@ -46,7 +58,7 @@
                     <select id="menu_id" required 
                         class="w-full border-2 border-blue-100 rounded-xl px-10 py-2 focus:ring-2 focus:ring-blue-400 outline-none bg-white/70 appearance-none">
                         <option value="">Select Menu</option>
-                        </select>
+                    </select>
                 </div>
 
                 <button type="submit" id="submitBtn"
@@ -62,14 +74,14 @@
     </section>
 
     <div class="flex flex-col items-center justify-center mb-16">
-    <div class="rounded-3xl border-8 border-white shadow-2xl overflow-hidden bg-white">
-        <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3ZhcHoxZndscjM2dThqZnN0eXhxeHpxeHpxeHpxeHpxeHpxeHpxJnB0PWEmZXA9djFfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0PWc/XreQmk7ETC2Y0/giphy.webp" 
-             alt="Thumbs Up GIF" class="w-72 h-auto">
+        <div class="rounded-3xl border-8 border-white shadow-2xl overflow-hidden bg-white">
+            <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3ZhcHoxZndscjM2dThqZnN0eXhxeHpxeHpxeHpxeHpxeHpxeHpxJnB0PWEmZXA9djFfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0PWc/XreQmk7ETC2Y0/giphy.webp" 
+                 alt="Thumbs Up GIF" class="w-72 h-auto">
+        </div>
+        <p class="mt-4 text-blue-700 font-bold italic text-lg text-center px-4">
+            <span class="animate-swing">"Connecting data... revolutionary stuff." 👍🙄</span>
+        </p>
     </div>
-    <p class="mt-4 text-blue-700 font-bold italic text-lg text-center px-4">
-        "Wow, you clicked a button. You're basically a genius." 👍🙄
-    </p>
-</div>
 
     <section class="max-w-5xl mx-auto mb-20">
         <div class="p-6">
@@ -94,7 +106,7 @@
                         </tr>
                     </thead>
                     <tbody id="enrollmentsTableBody" class="divide-y divide-blue-100">
-                        </tbody>
+                    </tbody>
                 </table>
                 <p id="noEnrollments" class="text-center text-gray-500 p-10 hidden">No connections yet. Start linking!</p>
             </div>
