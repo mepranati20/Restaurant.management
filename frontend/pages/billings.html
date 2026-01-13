@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
-            /* Using the same aesthetic background as your other pages */
             background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), 
                         url('https://img.freepik.com/free-vector/hand-drawn-fast-food-background_23-2149013389.jpg');
             background-size: cover;
@@ -25,29 +24,29 @@
 <body class="min-h-screen p-4 md:p-8">
 
     <header class="text-center mb-6">
-        <h1 class="text-3xl font-bold text-gray-800">Billing Page 💸</h1>
+        <h1 class="text-4xl font-bold text-gray-800">Billing Page 💸</h1>
     </header>
 
     <section class="max-w-xl mx-auto mt-[5vh] mb-10">
-        <div class="p-6 rounded-2xl">
+        <div class="p-6">
             <h2 class="font-bold mb-5 text-xl text-center text-green-600 uppercase tracking-wide">Add New Billings</h2>
             <form id="billingForm" class="space-y-4">
                 <div class="relative">
                     <i class="fa-solid fa-user-tag absolute left-3 top-3 text-green-400"></i>
                     <input type="text" id="order_by" placeholder="Order By (Customer Name)" required 
-                        class="w-full border-2 border-green-100 rounded-xl px-10 py-2 focus:ring-2 focus:ring-green-400 outline-none bg-white/60">
+                        class="w-full border-2 border-green-100 rounded-xl px-10 py-2 focus:ring-2 focus:ring-green-400 outline-none bg-white/70">
                 </div>
                 
                 <div class="relative">
                     <i class="fa-solid fa-boxes-stacked absolute left-3 top-3 text-green-400"></i>
-                    <input type="text" id="total_items" placeholder="Total Items (e.g. 5)" required 
-                        class="w-full border-2 border-green-100 rounded-xl px-10 py-2 focus:ring-2 focus:ring-green-400 outline-none bg-white/60">
+                    <input type="text" id="total_items" placeholder="Total Items" required 
+                        class="w-full border-2 border-green-100 rounded-xl px-10 py-2 focus:ring-2 focus:ring-green-400 outline-none bg-white/70">
                 </div>
 
                 <div class="relative">
                     <i class="fa-solid fa-indian-rupee-sign absolute left-3 top-3 text-green-400"></i>
                     <input type="number" id="amount" placeholder="Final Amount" required 
-                        class="w-full border-2 border-green-100 rounded-xl px-10 py-2 focus:ring-2 focus:ring-green-400 outline-none bg-white/60">
+                        class="w-full border-2 border-green-100 rounded-xl px-10 py-2 focus:ring-2 focus:ring-green-400 outline-none bg-white/70">
                 </div>
 
                 <div class="flex space-x-3">
@@ -55,9 +54,8 @@
                         class="flex-1 bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-xl shadow-lg transition transform hover:scale-105 active:scale-95">
                         Add Billing
                     </button>
-
                     <button type="button" id="cancelBtn"
-                        class="flex-1 bg-gray-400 hover:bg-gray-500 text-white py-3 rounded-xl hidden transition">
+                        class="flex-1 bg-gray-400 hover:bg-gray-500 text-white py-3 rounded-xl hidden">
                         Cancel
                     </button>
                 </div>
@@ -66,10 +64,12 @@
     </section>
 
     <div class="flex flex-col items-center justify-center mb-16">
-        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3VxdXByZGE3bnU2YXFzNW16bnR5YmZrdzNxdzNxdzNxdzNxdzNxdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/YJjvE9AmfAsTe/giphy.gif" 
-             alt="Funny Money Gif" 
-             class="w-72 h-48 object-cover rounded-3xl border-8 border-white shadow-2xl">
-        <p class="mt-4 text-green-700 font-bold italic animate-bounce">Tipping is not a city in China! 😉</p>
+        <div class="rounded-3xl border-8 border-white shadow-2xl overflow-hidden bg-white">
+            <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHY1eHd0azZ4YnF4Z3p5Z3Z4eHpxeHpxeHpxeHpxeHpxeHpxJnB0PWEmZXA9djFfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0PWc/L7RfV1l7pM6uA/giphy.gif" 
+                 alt="Funny Money Eating Duck" 
+                 class="w-72 h-auto">
+        </div>
+        <p class="mt-4 text-green-700 font-bold italic animate-bounce text-lg">POV: Counting the daily profits! 🦆💰</p>
     </div>
 
     <section class="max-w-5xl mx-auto mb-20">
@@ -80,10 +80,10 @@
 
             <div id="loadingSpinner" class="text-center py-8">
                 <div class="animate-spin rounded-full h-10 w-10 border-b-4 border-green-500 mx-auto"></div>
-                <p class="text-gray-500 mt-2">Calculating profits...</p>
+                <p class="text-gray-500 mt-2">Fetching the gold...</p>
             </div>
 
-            <div id="billingsTableContainer" class="hidden overflow-hidden rounded-3xl glass-effect shadow-xl">
+            <div id="staffsTableContainer" class="hidden overflow-hidden rounded-3xl glass-effect shadow-xl">
                 <table class="min-w-full text-left">
                     <thead class="bg-green-500 text-white">
                         <tr>
@@ -97,10 +97,7 @@
                     <tbody id="billingsTableBody" class="divide-y divide-green-100">
                         </tbody>
                 </table>
-
-                <p id="noBillings" class="text-center text-gray-500 p-10 hidden">
-                    No billings found. Time to open the register!
-                </p>
+                <p id="noBillings" class="text-center text-gray-500 p-10 hidden">No billings found.</p>
             </div>
         </div>
     </section>
