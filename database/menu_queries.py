@@ -18,8 +18,8 @@ def db_create(data):
     conn = get_connection()
     now = datetime.now().isoformat()
     cur = conn.execute(
-        "INSERT INTO menus (Category,price, rating, created_at) VALUES (?, ?, ?, ?, ?)",
-        (data["Category"], data["price"], data["rating"], now)
+        "INSERT INTO menus (Category, name, price, rating, created_at) VALUES (?, ?, ?, ?, ?)",
+        (data["Category"], data["name"], data["price"], data["rating"], now)
     )
     conn.commit()
     new_id = cur.lastrowid
@@ -31,8 +31,8 @@ def db_update(menu_id, data):
     conn = get_connection()
     now = datetime.now().isoformat()
     conn.execute(
-        "UPDATE menus SET Category=?,  price=?, rating=?, updated_at=? WHERE id=?",
-        (data["Category"], data["price"], data["rating"], now, menu_id)
+        "UPDATE menus SET Category=?, name=?,  price=?, rating=?, updated_at=? WHERE id=?",
+        (data["Category"], data["name"], data["price"], data["rating"], now, menu_id)
     )
     conn.commit()
     conn.close()

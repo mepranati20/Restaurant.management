@@ -1,11 +1,11 @@
 import { $, createElement } from "../utils/dom.js";
 
-// Resets the input form to its default state for creating a new billing
+// Resets the input form to its default state for creating a new Staff
 export function resetForm() {
   // Use the native .reset() method on the HTML form element
   $("staffForm").reset();
 
-  // Change the submit button text back to "Add billing"
+  // Change the submit button text back to "Add Staff"
   $("submitBtn").textContent = "Add Staff";
 
   // Hide the "Cancel" button, as we are no longer in 'edit' mode

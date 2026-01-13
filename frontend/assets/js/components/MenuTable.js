@@ -22,8 +22,8 @@ export function renderMenuTable(menus) {
       <td class="px-3 py-2 border">${m.price ?? ""}</td>
       <td class="px-3 py-2 border">${m.rating ?? ""}</td>
       <td class="px-3 py-2 border">
-        <button class="text-blue-600 underline mr-3" data-edit="${m.id}">Edit</button>
-        <button class="text-red-600 underline" data-del="${m.id}">Delete</button>
+        <button class="bg-yellow-400 hover:bg-yellow-500 text-black py-1 px-3 rounded" data-edit="${m.id}">Edit</button>
+        <button class="bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded" data-del="${m.id}">Delete</button>
       </td>
     `;
     body.appendChild(tr);
