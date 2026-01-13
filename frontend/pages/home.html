@@ -3,72 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>DAWAT - Welcome Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-cartoon {
+            animation: float 4s ease-in-out infinite;
+        }
+        body {
+            /* Replace with a cartoony food pattern or aesthetic gradient */
+            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), 
+                        url('https://img.freepik.com/free-vector/hand-drawn-fast-food-background_23-2149013389.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;
+        }
+    </style>
 </head>
-<body>
-    <h1>WELCOME HOME
-         😊 Have a nice day</h1>
-</body>
-</html>
-<div class="max-w-2xl mx-auto p-6">
+<body class="min-h-screen">
 
-  <h1 class="text-3xl font-bold mb-4 text-gray-800">Welcome</h1>
+    <nav class="bg-white/90 backdrop-blur shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-orange-500">DAWAT 🍱</div>
+            <div class="hidden md:flex space-x-8 font-medium">
+                <a href="/staffs" class="hover:text-orange-500 transition">Staffs</a>
+                <a href="/billings" class="hover:text-orange-500 transition">Billings</a>
+                <a href="/menus" class="hover:text-orange-500 transition">Menus</a>
+                <a href="/enrollments" class="hover:text-orange-500 transition">Enrollments</a>
+                <a href="/reports" class="hover:text-orange-500 transition">Report</a>
+            </div>
+        </div>
+    </nav>
 
-  <p class="text-gray-600 mb-8 leading-relaxed">
-     Welcome to DAWAT🍱- YOUR TABLE IS READY
-  </p>
+    <div class="max-w-4xl mx-auto p-6 text-center mt-10">
+        <h1 class="text-4xl font-bold mb-2 text-gray-800 animate-cartoon">WELCOME HOME 😊</h1>
+        <p class="text-xl text-gray-600 mb-8">Welcome to DAWAT — YOUR TABLE IS READY</p>
 
-  <div class="space-y-4">
-
-<a href="/menus" data-link
-    class="block w-full px-4 py-3 text-center border border-gray-300 rounded hover:bg-gray-200 transition flex items-center justify-center gap-2">
-    <i class="fa-solid fa-users"></i>
-     Menu Management
-</a>
-<a href="/api/menus" target="_blank"
-    class="block w-full px-4 py-3 text-center border border-gray-300 rounded hover:bg-gray-200 transition flex items-center justify-center gap-2">
-    <i class="fa-solid fa-code"></i>
-   Raw JSON API of Menus
-</a>
-
-<a href="/billings" data-link
-    class="block w-full px-4 py-3 text-center border border-gray-300 rounded hover:bg-gray-200 transition flex items-center justify-center gap-2">
-    <i class="fa-solid fa-users"></i>
-    Billing System
-</a>
-<a href="/api/billings" target="_blank"
-    class="block w-full px-4 py-3 text-center border border-gray-300 rounded hover:bg-gray-200 transition flex items-center justify-center gap-2">
-    <i class="fa-solid fa-code"></i>
-   Raw JSON API of Billings
-</a>
-
-<a href="/staffs" data-link
-    class="block w-full px-4 py-3 text-center border border-gray-300 rounded hover:bg-gray-200 transition flex items-center justify-center gap-2">
-    <i class="fa-solid fa-users"></i>
-    Staff Management
-</a>
-<a href="/api/staffs" target="_blank"
-    class="block w-full px-4 py-3 text-center border border-gray-300 rounded hover:bg-gray-200 transition flex items-center justify-center gap-2">
-    <i class="fa-solid fa-code"></i>
-   Raw JSON API of Staffs
-</a>
-
-<a href="/enrollments" data-link
-      class="block w-full px-4 py-3 text-center border border-gray-300 rounded hover:bg-gray-200 transition flex items-center justify-center gap-2">
-      <i class="fa-solid fa-link"></i>
-      Enrollment App (UI)
-    </a>
-<a href="/api/enrollments" target="_blank"
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto mb-16">
+            <a href="/menus" class="p-4 bg-white border-2 border-orange-200 rounded-xl shadow-sm hover:shadow-orange-200 hover:scale-105 transition flex items-center justify-center gap-3">
+                <i class="fa-solid fa-utensils text-orange-500"></i> Menu Management
+            </a>
+            <a href="/billings" class="p-4 bg-white border-2 border-orange-200 rounded-xl shadow-sm hover:shadow-orange-200 hover:scale-105 transition flex items-center justify-center gap-3">
+                <i class="fa-solid fa-file-invoice-dollar text-orange-500"></i> Billing System
+            </a>
+            <a href="/staffs" class="p-4 bg-white border-2 border-orange-200 rounded-xl shadow-sm hover:shadow-orange-200 hover:scale-105 transition flex items-center justify-center gap-3">
+                <i class="fa-solid fa-users text-orange-500"></i> Staff Management
+            </a>
+            <a href="/enrollments" class="p-4 bg-white border-2 border-orange-200 rounded-xl shadow-sm hover:shadow-orange-200 hover:scale-105 transition flex items-center justify-center gap-3">
+                <i class="fa-solid fa-clipboard-list text-orange-500"></i> Enrollment App
+            </a>
+            <a href="/api/enrollments" target="_blank"
       class="block w-full px-4 py-3 text-center border border-gray-300 rounded hover:bg-gray-200 transition flex items-center justify-center gap-2">
       <i class="fa-solid fa-code"></i>
       Enrollment API (JSON)
     </a>
+            <a href="/reports/enrollments" class="p-4 bg-white border-2 border-orange-200 rounded-xl shadow-sm hover:shadow-orange-200 hover:scale-105 transition flex items-center justify-center gap-3">
+                <i class="fa-solid fa-clipboard-list text-orange-500"></i> Enrollment App
+            </a>
+        </div>
 
- <a href="/reports/enrollments" data-link
-      class="block w-full px-4 py-3 text-center border border-gray-300 rounded hover:bg-gray-200 transition flex items-center justify-center gap-2">
-      <i class="fa-solid fa-chart-column"></i>
-      Enrollment Report (JOIN)
-    </a>
+        <div class="my-12 flex justify-center">
+            <div class="rounded-2xl overflow-hidden shadow-2xl border-4 border-white max-w-md">
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Y1dmt2Z3pueHByZ2E2bm80Z3R6Z3ZxeHpxeHpxeHpxeHpxeHpxJnB0PWEmZXA9djFfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0PWc/3o7btXv9mGrO6S9E5S/giphy.gif" 
+                     alt="Pizza slicing" class="w-full">
+            </div>
+        </div>
 
-  </div>
-</div>
+        <h2 class="text-2xl font-bold mb-6 text-gray-800">What Our Guests Say</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div class="bg-white p-6 rounded-2xl shadow-sm border-b-4 border-orange-400">
+                <img src="https://i.pravatar.cc/150?u=1" class="w-16 h-16 rounded-full mx-auto mb-4 border-2 border-orange-200">
+                <p class="text-sm italic">"The best pizza in town! The crust is so fluffy."</p>
+                <p class="mt-2 font-bold text-orange-600">- Alex J.</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-sm border-b-4 border-orange-400">
+                <img src="https://i.pravatar.cc/150?u=2" class="w-16 h-16 rounded-full mx-auto mb-4 border-2 border-orange-200">
+                <p class="text-sm italic">"Love the cartoony vibe here. Staff is amazing!"</p>
+                <p class="mt-2 font-bold text-orange-600">- Sarah K.</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-sm border-b-4 border-orange-400">
+                <img src="https://i.pravatar.cc/150?u=3" class="w-16 h-16 rounded-full mx-auto mb-4 border-2 border-orange-200">
+                <p class="text-sm italic">"Great place for family dinners. 10/10!"</p>
+                <p class="mt-2 font-bold text-orange-600">- Mike R.</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-sm border-b-4 border-orange-400">
+                <img src="https://i.pravatar.cc/150?u=4" class="w-16 h-16 rounded-full mx-auto mb-4 border-2 border-orange-200">
+                <p class="text-sm italic">"Affordable and delicious. Try the Biryani!"</p>
+                <p class="mt-2 font-bold text-orange-600">- Priya M.</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-sm border-b-4 border-orange-400">
+                <img src="https://i.pravatar.cc/150?u=5" class="w-16 h-16 rounded-full mx-auto mb-4 border-2 border-orange-200">
+                <p class="text-sm italic">"Fast service and very clean environment."</p>
+                <p class="mt-2 font-bold text-orange-600">- David W.</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-sm border-b-4 border-orange-400">
+                <img src="https://i.pravatar.cc/150?u=6" class="w-16 h-16 rounded-full mx-auto mb-4 border-2 border-orange-200">
+                <p class="text-sm italic">"The ambiance is so fun! Will come back."</p>
+                <p class="mt-2 font-bold text-orange-600">- Elena S.</p>
+            </div>
+        </div>
+
+        <div class="bg-orange-500 text-white p-8 rounded-3xl shadow-lg mb-10">
+            <h3 class="text-xl font-bold mb-2">Order Now or Book a Table</h3>
+            <p class="text-3xl font-black flex items-center justify-center gap-3">
+                <i class="fa-solid fa-phone-volume"></i> +91 8260999133
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>
