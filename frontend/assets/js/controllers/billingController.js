@@ -62,7 +62,7 @@ export async function loadBillings() {
 
   // Show the spinner and hide the table to indicate a loading state
   spinner.style.display = "block";
-  table.style.display = "none";
+  table.style.display = "";
 
   // Asynchronously fetch all Billing records from the backend API
   const billings = await apiGetAll();

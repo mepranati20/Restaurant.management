@@ -9,7 +9,7 @@
     <style>
         body {
             background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), 
-                        url('https://www.flaticon.com/free-sticker/money_7400892?term=money&page=1&position=84&origin=search&related_id=7400892');
+                        url('https://img.freepik.com/free-vector/hand-drawn-fast-food-background_23-2149013389.jpg');
             background-size: cover;
             background-attachment: fixed;
             font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;
@@ -19,19 +19,7 @@
             backdrop-filter: blur(8px);
             border: 2px solid rgba(34, 197, 94, 0.2);
         }
-
-        /* --- ADDED ANIMATION --- */
-        @keyframes moneyJiggle {
-            0% { transform: rotate(0deg); }
-            25% { transform: rotate(3deg) scale(1.1); }
-            50% { transform: rotate(-3deg); }
-            75% { transform: rotate(1deg); }
-            100% { transform: rotate(0deg); }
-        }
-        .animate-money {
-            display: inline-block;
-            animation: moneyJiggle 0.8s ease-in-out infinite;
-        }
+        /* I removed the @keyframes moneyJiggle to prevent errors */
     </style>
 </head>
 <body class="min-h-screen p-4 md:p-8">
@@ -78,11 +66,10 @@
 
     <div class="flex flex-col items-center justify-center mb-16">
         <div class="rounded-3xl border-8 border-white shadow-2xl overflow-hidden bg-white">
-            <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3VxdXByZGE3bnU2YXFzNW16bnR5YmZrdzNxdzNxdzNxdzNxdzNxdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/L7RfV1l7pM6uA/giphy.webp" 
-                 alt="Money GIF" class="w-72 h-auto">
+            <img src="billing.gif" alt="Billing Animation" class="w-72 h-auto">
         </div>
         <p class="mt-4 text-green-700 font-bold italic text-lg text-center">
-            <span class="animate-money">POV: Watching the money disappear! 💸🤑</span>
+            Managing the dough! 💸🤑
         </p>
     </div>
 
