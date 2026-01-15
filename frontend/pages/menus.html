@@ -35,19 +35,24 @@
             <form id="menuForm" class="space-y-4">
                 <div class="relative">
                     <i class="fa-solid fa-bowl-food absolute left-3 top-3 text-red-400"></i>
-                    <input type="text" id="dish_name" placeholder="Dish Name (e.g., Spicy Paneer)" required 
+                    <input type="text" id="name" placeholder="Dish Name (e.g., Spicy Paneer)" required 
                         class="w-full border-2 border-red-100 rounded-xl px-10 py-2 focus:ring-2 focus:ring-red-400 outline-none bg-white/70">
                 </div>
                 
                 <div class="relative">
                     <i class="fa-solid fa-layer-group absolute left-3 top-3 text-red-400"></i>
-                    <input type="text" id="category" placeholder="Category (Starters, Main, Drinks)" required 
+                    <input type="text" id="Category" placeholder="Category (Starters, Main, Drinks)" required 
                         class="w-full border-2 border-red-100 rounded-xl px-10 py-2 focus:ring-2 focus:ring-red-400 outline-none bg-white/70">
                 </div>
 
                 <div class="relative">
                     <i class="fa-solid fa-tag absolute left-3 top-3 text-red-400"></i>
                     <input type="number" id="price" placeholder="Price (₹)" required 
+                        class="w-full border-2 border-red-100 rounded-xl px-10 py-2 focus:ring-2 focus:ring-red-400 outline-none bg-white/70">
+                </div>
+                <div class="relative">
+                    <i class="fa-solid fa-tag absolute left-3 top-3 text-red-400"></i>
+                    <input type="number" id="rating" placeholder="Rating⭐" required 
                         class="w-full border-2 border-red-100 rounded-xl px-10 py-2 focus:ring-2 focus:ring-red-400 outline-none bg-white/70">
                 </div>
 
@@ -93,6 +98,7 @@
                             <th class="px-6 py-4">Dish Name</th>
                             <th class="px-6 py-4">Category</th>
                             <th class="px-6 py-4">Price (₹)</th>
+                             <th class="px-3 py-2">Rating</th>
                             <th class="px-6 py-4 text-center">Actions</th>
                         </tr>
                     </thead>

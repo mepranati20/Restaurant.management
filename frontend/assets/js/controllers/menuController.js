@@ -28,8 +28,8 @@ export function initMenuController() {
 
     // Collect data from the input fields using the custom '$' selector
     const data = {
-      Category: $("Category").value.trim(),   // Get Category value, remove whitespace
-      name: $("name").value.trim(), // Get name value
+      name: $("name").value.trim(),
+      Category: $("Category").value.trim(), // Get name value
       price: $("price").value.trim(), // Get price value
       rating: $("rating").value.trim()    // Get rating value
     };
