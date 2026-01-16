@@ -10,6 +10,6 @@ def run_server(port=8000):
     print(f"🚀 Server running at http://localhost:{port}")
     server.serve_forever()
 
-
+ 
 if __name__ == "__main__":
     run_server()
