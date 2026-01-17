@@ -42,7 +42,9 @@ else if (path === "/billings") {
     initEnrollmentController();
   }
 
-  else if (path === "/reports/enrollments") {
+    
+   
+else if (path === "/reports/enrollments") {
     await loadView("/frontend/pages/report_enrollments.html");
     initEnrollmentReportController();
   }
