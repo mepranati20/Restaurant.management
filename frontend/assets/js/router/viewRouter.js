@@ -41,6 +41,9 @@ else if (path === "/billings") {
     await loadView("/frontend/pages/enrollments.html");
     initEnrollmentController();
   }
+  else if (path === "/events") {
+        await loadView("/frontend/pages/events.html");
+    }
 
     
    
