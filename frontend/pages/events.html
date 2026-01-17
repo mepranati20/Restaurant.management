@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAWAT - Events</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), 
+                        url('https://img.freepik.com/free-vector/hand-drawn-fast-food-background_23-2149013389.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: transform 0.3s ease;
+        }
+        .glass-effect:hover {
+            transform: translateY(-5px);
+        }
+        .date-box {
+            min-width: 80px;
+            height: 80px;
+        }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8">
+
+    <header class="text-center mb-10">
+        <div class="flex justify-between items-center max-w-5xl mx-auto mb-6">
+             <button onclick="window.history.back()" class="bg-white/50 hover:bg-white px-4 py-2 rounded-lg text-sm font-bold shadow-sm">
+                <i class="fa-solid fa-arrow-left mr-2"></i> Back to Dashboard
+            </button>
+            <h1 class="text-4xl font-bold text-gray-800">2026 Event Calendar 🗓️</h1>
+            <div class="w-32"></div> </div>
+        <p class="text-gray-600">Plan your special moments with DAWAT catering and event management.</p>
+    </header>
+
+    <main class="max-w-4xl mx-auto space-y-6">
+
+        <div class="glass-effect rounded-3xl p-6 flex items-center gap-6 shadow-lg">
+            <div class="date-box bg-pink-500 text-white rounded-2xl flex flex-col items-center justify-center shadow-md">
+                <span class="text-xs uppercase font-bold">JAN</span>
+                <span class="text-3xl font-bold">15</span>
+            </div>
+            <div class="flex-grow">
+                <h3 class="text-2xl font-bold text-gray-800">Grand Wedding Ceremony</h3>
+                <p class="text-gray-600 mb-3">Traditional reception with a 5-course meal and live buffet stations.</p>
+                <div class="flex flex-wrap gap-4 text-sm font-semibold text-gray-500">
+                    <span class="bg-white/50 px-3 py-1 rounded-full"><i class="fa-regular fa-clock text-pink-500 mr-2"></i>07:00 PM</span>
+                    <span class="bg-white/50 px-3 py-1 rounded-full"><i class="fa-solid fa-location-dot text-pink-500 mr-2"></i>Royal Ballroom</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-effect rounded-3xl p-6 flex items-center gap-6 shadow-lg">
+            <div class="date-box bg-red-500 text-white rounded-2xl flex flex-col items-center justify-center shadow-md">
+                <span class="text-xs uppercase font-bold">FEB</span>
+                <span class="text-3xl font-bold">14</span>
+            </div>
+            <div class="flex-grow">
+                <h3 class="text-2xl font-bold text-gray-800">Valentine's Dinner Special</h3>
+                <p class="text-gray-600 mb-3">Romantic candle-light dinner setup with customized dessert menu.</p>
+                <div class="flex flex-wrap gap-4 text-sm font-semibold text-gray-500">
+                    <span class="bg-white/50 px-3 py-1 rounded-full"><i class="fa-regular fa-clock text-red-500 mr-2"></i>All Day</span>
+                    <span class="bg-white/50 px-3 py-1 rounded-full"><i class="fa-solid fa-location-dot text-red-500 mr-2"></i>Main Lobby / Rooftop</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-effect rounded-3xl p-6 flex items-center gap-6 shadow-lg">
+            <div class="date-box bg-blue-500 text-white rounded-2xl flex flex-col items-center justify-center shadow-md">
+                <span class="text-xs uppercase font-bold">MAR</span>
+                <span class="text-3xl font-bold">22</span>
+            </div>
+            <div class="flex-grow">
+                <h3 class="text-2xl font-bold text-gray-800">1st Birthday Celebration</h3>
+                <p class="text-gray-600 mb-3">Colorful theme-based decorations and kid-friendly snack bar.</p>
+                <div class="flex flex-wrap gap-4 text-sm font-semibold text-gray-500">
+                    <span class="bg-white/50 px-3 py-1 rounded-full"><i class="fa-regular fa-clock text-blue-500 mr-2"></i>04:00 PM</span>
+                    <span class="bg-white/50 px-3 py-1 rounded-full"><i class="fa-solid fa-location-dot text-blue-500 mr-2"></i>Garden Area</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-effect rounded-3xl p-6 flex items-center gap-6 shadow-lg">
+            <div class="date-box bg-green-500 text-white rounded-2xl flex flex-col items-center justify-center shadow-md">
+                <span class="text-xs uppercase font-bold">APR</span>
+                <span class="text-3xl font-bold">10</span>
+            </div>
+            <div class="flex-grow">
+                <h3 class="text-2xl font-bold text-gray-800">Corporate Annual Gala</h3>
+                <p class="text-gray-600 mb-3">Professional catering for corporate excellence awards and networking.</p>
+                <div class="flex flex-wrap gap-4 text-sm font-semibold text-gray-500">
+                    <span class="bg-white/50 px-3 py-1 rounded-full"><i class="fa-regular fa-clock text-green-500 mr-2"></i>06:00 PM</span>
+                    <span class="bg-white/50 px-3 py-1 rounded-full"><i class="fa-solid fa-location-dot text-green-500 mr-2"></i>Virtual / Main Hall</span>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="mt-20 text-center text-gray-500 text-sm">
+        <p>&copy; 2026 DAWAT Billing & Event System. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
