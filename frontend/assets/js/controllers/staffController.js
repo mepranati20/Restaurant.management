@@ -8,7 +8,7 @@ import {
 
 import { showAlert } from "../components/Alert.js";
 import { renderStaffTable } from "../components/StaffTable.js";
-import { resetForm, fillForm } from "../components/StaffForm.js";
+import { resetStaffForm, fillStaffForm } from "../components/StaffForm.js";
 
 import { setState, getState } from "../state/store.js";
 import { $, createElement } from "../utils/dom.js";
@@ -49,7 +49,7 @@ export function initStaffController() {
     // Clear the editing state (set the ID to null)
     setState({ editingId: null });
     // Clear all input fields in the form
-    resetForm();
+    resetStaffForm();
   });
 }
 
@@ -83,7 +83,7 @@ export async function createNewStaff(data) {
   const res = await apiCreate(data);
   if (res.ok) {
     showAlert("Staff added!");
-    resetForm();
+    resetStaffForm();
     loadStaffs();
   }
 }
@@ -93,7 +93,7 @@ export async function editStaff(id) {
   const staff = await apiGetOne(id);
 
   setState({ editingId: id });
-  fillForm(staff);
+  fillStaffForm(staff);
 
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
@@ -103,7 +103,7 @@ export async function updateStaff(id, data) {
   const res = await apiUpdate(id, data);
   if (res.ok) {
     showAlert("Updated!");
-    resetForm();
+    resetStaffForm();
     setState({ editingId: null });
     loadStaffs();
   }

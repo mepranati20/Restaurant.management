@@ -13,11 +13,8 @@
             50% { transform: translateY(-10px); }
             100% { transform: translateY(0px); }
         }
-        .animate-cartoon {
-            animation: float 4s ease-in-out infinite;
-        }
+        .animate-cartoon { animation: float 4s ease-in-out infinite; }
         body {
-            /* Replace with a cartoony food pattern or aesthetic gradient */
             background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), 
                         url('https://img.freepik.com/free-vector/hand-drawn-fast-food-background_23-2149013389.jpg');
             background-size: cover;
@@ -32,11 +29,11 @@
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="text-2xl font-bold text-orange-500">DAWAT 🍱</div>
             <div class="hidden md:flex space-x-8 font-medium">
-                <a href="/staffs" class="hover:text-orange-500 transition">Staffs</a>
-                <a href="/billings" class="hover:text-orange-500 transition">Billings</a>
-                <a href="/menus" class="hover:text-orange-500 transition">Menus</a>
-                <a href="/enrollments" class="hover:text-orange-500 transition">Enrollments</a>
-                 <a href="/events" class="hover:text-orange-500 transition">Events</a>
+                <a href="/staffs" data-link class="hover:text-orange-500 transition">Staffs</a>
+                <a href="/billings" data-link class="hover:text-orange-500 transition">Billings</a>
+                <a href="/menus" data-link class="hover:text-orange-500 transition">Menus</a>
+                <a href="/receipts" data-link class="hover:text-orange-500 transition">Enrollments</a>
+                <a href="/events" data-link class="hover:text-orange-500 transition">Events</a>
             </div>
         </div>
     </nav>
@@ -46,37 +43,29 @@
         <p class="text-xl text-gray-600 mb-8">Welcome to DAWAT — YOUR TABLE IS READY</p>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto mb-16">
-            <a href="/menus" class="p-4 bg-white border-2 border-orange-200 rounded-xl shadow-sm hover:shadow-orange-200 hover:scale-105 transition flex items-center justify-center gap-3">
+            <a href="/menus" data-link class="p-4 bg-white border-2 border-orange-200 rounded-xl shadow-sm hover:shadow-orange-200 hover:scale-105 transition flex items-center justify-center gap-3">
                 <i class="fa-solid fa-utensils text-orange-500"></i> Menu Management
             </a>
-            <a href="/billings" class="p-4 bg-white border-2 border-orange-200 rounded-xl shadow-sm hover:shadow-orange-200 hover:scale-105 transition flex items-center justify-center gap-3">
+            <a href="/billings" data-link class="p-4 bg-white border-2 border-orange-200 rounded-xl shadow-sm hover:shadow-orange-200 hover:scale-105 transition flex items-center justify-center gap-3">
                 <i class="fa-solid fa-file-invoice-dollar text-orange-500"></i> Billing System
             </a>
-            <a href="/staffs" class="p-4 bg-white border-2 border-orange-200 rounded-xl shadow-sm hover:shadow-orange-200 hover:scale-105 transition flex items-center justify-center gap-3">
+            <a href="/staffs" data-link class="p-4 bg-white border-2 border-orange-200 rounded-xl shadow-sm hover:shadow-orange-200 hover:scale-105 transition flex items-center justify-center gap-3">
                 <i class="fa-solid fa-users text-orange-500"></i> Staff Management
             </a>
-            <a href="/enrollments" class="p-4 bg-white border-2 border-orange-200 rounded-xl shadow-sm hover:shadow-orange-200 hover:scale-105 transition flex items-center justify-center gap-3">
-                <i class="fa-solid fa-clipboard-list text-orange-500"></i> Enrollment App
+            <a href="/receipts" data-link class="p-4 bg-white border-2 border-orange-200 rounded-xl shadow-sm hover:shadow-orange-200 hover:scale-105 transition flex items-center justify-center gap-3">
+                <i class="fa-solid fa-clipboard-list text-orange-500"></i> Receipt 
             </a>
-            
-         
-    <a href="/reports/enrollments" data-link class="p-4 bg-white border-2 border-orange-200 rounded-xl shadow-sm hover:shadow-orange-200 hover:scale-105 transition flex items-center justify-center gap-3">
-        <i class="fa-solid fa-chart-line text-orange-500"></i> Report
-    </a>
-
-    <a href="/events" data-link class="p-4 bg-white border-2 border-orange-200 rounded-xl shadow-sm hover:shadow-orange-200 hover:scale-105 transition flex items-center justify-center gap-3">
-        <i class="fa-solid fa-calendar-days text-orange-500"></i> Events
-    </a>
-</div>
+            <a href="/reports/receipts" data-link class="p-4 bg-white border-2 border-orange-200 rounded-xl shadow-sm hover:shadow-orange-200 hover:scale-105 transition flex items-center justify-center gap-3">
+                <i class="fa-solid fa-chart-line text-orange-500"></i> Report
+            </a>
+            <a href="/events" data-link class="p-4 bg-white border-2 border-orange-200 rounded-xl shadow-sm hover:shadow-orange-200 hover:scale-105 transition flex items-center justify-center gap-3">
+                <i class="fa-solid fa-calendar-days text-orange-500"></i> Events
+            </a>
         </div>
 
         <div class="flex justify-center mb-4">
             <lottie-player src="https://lottie.host/7604f36c-926d-4952-9f1c-6625866164f9/Tbe28X3VfV.json" 
-                background="transparent" 
-                speed="1" 
-                style="width: 200px; height: 200px;" 
-                loop 
-                autoplay>
+                background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay>
             </lottie-player>
         </div>   
 
@@ -87,6 +76,5 @@
             </p>
         </div>
     </div>
-
 </body>
 </html>

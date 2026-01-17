@@ -18,8 +18,8 @@ def db_create(data):
     conn = get_connection()
     now = datetime.now().isoformat()
     cur = conn.execute(
-        "INSERT INTO billings (order_by, total_items, amount, created_at) VALUES (?, ?, ?, ?)",
-        (data["order_by"], data["total_items"], data["amount"], now)
+        "INSERT INTO billings (order_by, total_items, total_amount, created_at) VALUES (?, ?, ?, ?)",
+        (data["order_by"], data["total_items"], data["total_amount"], now)
     )
     conn.commit()
     new_id = cur.lastrowid
@@ -31,8 +31,8 @@ def db_update(billing_id, data):
     conn = get_connection()
     now = datetime.now().isoformat()
     conn.execute(
-        "UPDATE billings SET order_by=?, total_items=?, amount=?, updated_at=? WHERE id=?",
-        (data["order_by"], data["total_items"], data["amount"], now, billing_id)
+        "UPDATE billings SET order_by=?, total_items=?, total_amount=?, updated_at=? WHERE id=?",
+        (data["order_by"], data["total_items"], data["total_amount"], now, billing_id)
     )
     conn.commit()
     conn.close()

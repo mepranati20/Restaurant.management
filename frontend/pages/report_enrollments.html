@@ -2,7 +2,7 @@
 
     <!-- Header -->
     <div class="flex items-center justify-between mb-6">
-        <h1 class="text-3xl font-bold">Enrollment Report (JOIN)</h1>
+        <h1 class="text-3xl font-bold">Receipt Report (JOIN)</h1>
         <a href="/home" data-link class="text-sm text-blue-600 underline">
             ← Back to Home
         </a>
@@ -19,7 +19,7 @@
         <ul class="list-disc list-inside mt-2">
             <li><strong>Billing</strong> — who the customer is</li>
             <li><strong>Menu</strong> — what is the order</li>
-            <li><strong>Enrollment</strong> — Which customer has what amount of bill</li>
+            <li><strong>Receipt</strong> — Which customer has what total_amount of bill</li>
         </ul>
 
         <p class="mt-2">
@@ -44,23 +44,23 @@
             <table class="min-w-full text-left border">
                 <thead class="bg-gray-200">
                     <tr>
-                        <th class="px-3 py-2">Enrollment ID</th>
+                        <th class="px-3 py-2">Receipt ID</th>
                         <th class="px-3 py-2">Billing</th>
                         <th class="px-3 py-2">Menu</th>
-                        <th class="px-3 py-2">Enrolled On</th>
+                        <th class="px-3 py-2">Receipt On</th>
                     </tr>
                 </thead>
                 <tbody id="reportTableBody"></tbody>
             </table>
 
             <p id="noRows" class="text-center text-gray-500 mt-3 hidden">
-                No joined rows found. Create an enrollment first.
+                No joined rows found. Create an receipt first.
             </p>
 
             <!-- Data Flow Hint -->
             <p class="text-xs text-gray-500 mt-4">
                 Data flow:
-                <strong>billings</strong> → <strong>enrollments</strong> → <strong>menus</strong>
+                <strong>billings</strong> → <strong>receipts</strong> → <strong>menus</strong>
             </p>
 
             <!-- Always-visible SQL block (documentation style) -->
@@ -76,11 +76,11 @@
 
                 <pre class="bg-white px-4 py-4 text-sm overflow-x-auto leading-relaxed">
 SELECT
-    e.id AS enrollment_id,
+    e.id AS receipt_id,
     b.order_by AS order_by,
     m.name AS menu_name,
-    e.enrolled_on
-FROM enrollments e
+    e.receipt_on
+FROM receipts e
 JOIN billings b ON e.billing_id = b.id
 JOIN menus m ON e.menu_id = m.id;
                 </pre>

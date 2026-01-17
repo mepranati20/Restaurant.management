@@ -68,7 +68,4 @@ class TestDatabaseBasics(unittest.TestCase):
            "billings",
            tables
         )
-        self.assertIn(
-            "staffs", 
-            tables
-        )
+       

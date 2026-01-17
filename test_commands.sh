@@ -51,7 +51,7 @@ curl -X POST "https://symmetrical-space-trout-jjvrjvxw7xvr35qr5-8000.app.github.
   -d '{
     "order_by": "aki",
     "total_items": "8",
-    "amount": "657"
+    "total_amount": "657"
   }'
 
 # D. Update billing
@@ -60,7 +60,7 @@ curl -X PUT "https://symmetrical-space-trout-jjvrjvxw7xvr35qr5-8000.app.github.d
   -d '{
     "order_by": "aki",
     "total_items": "30",
-    "amount": "4577"
+    "total_amount": "4577"
   }'
 
 # E. Delete billing

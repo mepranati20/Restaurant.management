@@ -4,14 +4,17 @@ import { editMenu, deleteMenuAction } from "../controllers/menuController.js";
 export function renderMenuTable(menus) {
   const body = $("menusTableBody");
   const empty = $("noMenus");
+  const noCourses = $("noCourses");
+
+  if (!body) return;
 
   body.innerHTML = "";
 
   if (!menus || menus.length === 0) {
-    empty.classList.remove("hidden");
+    if (noCourses) noCourses.classList.remove("hidden");
     return;
   }
-  empty.classList.add("hidden");
+
 
   menus.forEach(m => {
     const tr = document.createElement("tr");

@@ -8,7 +8,7 @@ import {
 
 import { showAlert } from "../components/Alert.js";
 import { renderBillingTable } from "../components/BillingTable.js";
-import { resetForm, fillForm } from "../components/BillingForm.js";
+import { resetBillingForm, fillBillingForm } from "../components/BillingForm.js";
 
 import { setState, getState } from "../state/store.js";
 import { $, createElement } from "../utils/dom.js";
@@ -30,7 +30,7 @@ export function initBillingController() {
     const data = {
       order_by: $("order_by").value.trim(), 
       total_items: $("total_items").value.trim(), 
-      amount: $("amount").value.trim()  
+      total_amount: $("total_amount").value.trim()  
   };
 
     // Check the application state to see if we are currently editing an existing record
@@ -49,7 +49,7 @@ export function initBillingController() {
     // Clear the editing state (set the ID to null)
     setState({ editingId: null });
     // Clear all input fields in the form
-    resetForm();
+    resetBillingForm();
   });
 }
 
@@ -83,7 +83,7 @@ export async function createNewBilling(data) {
   const res = await apiCreate(data);
   if (res.ok) {
     showAlert("Billing added!");
-    resetForm();
+    resetBillingForm();
     loadBillings();
   }
 }
@@ -93,7 +93,7 @@ export async function editBilling(id) {
   const billing = await apiGetOne(id);
 
   setState({ editingId: id });
-  fillForm(billing);
+  fillBillingForm(billing);
 
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
@@ -103,7 +103,7 @@ export async function updateBilling(id, data) {
   const res = await apiUpdate(id, data);
   if (res.ok) {
     showAlert("Updated!");
-    resetForm();
+    resetBillingForm();
     setState({ editingId: null });
     loadBillings();
   }

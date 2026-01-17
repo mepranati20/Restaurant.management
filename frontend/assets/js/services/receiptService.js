@@ -1,5 +1,5 @@
 const BASE = window.ENV.API_BASE_URL.replace("/billings", "");
-const API_URL = `${BASE}/enrollments`;
+const API_URL = `${BASE}/receipts`;
 
 async function safeJson(res) {
   try { return await res.json(); } catch { return null; }

@@ -1,4 +1,5 @@
 import { $ } from "../utils/dom.js";
+import { setState } from "../state/store.js";
 
 // Resets the input form to its default state for creating a new billing
 export function resetMenuForm() {
@@ -25,4 +26,5 @@ export function fillMenuForm(menu) {
 
   // Show the "Cancel" button, allowing the user to exit 'edit' mode
    $("cancelBtn").classList.remove("hidden");
+   setState({ editingCourseId: course.id });
 } 

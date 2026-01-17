@@ -1,4 +1,3 @@
-# Starts the API server and initializes the database
 
 from http.server import HTTPServer
 from router import restaurantRouter

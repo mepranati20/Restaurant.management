@@ -1,14 +1,11 @@
 // Base API URL from env.js
 
-const API_URL = window.ENV.API_staff_URL;
+const BASE = window.ENV.API_BASE_URL.replace("/billings", "");
+const API_URL = `${BASE}/staffs`;
 
 // Helper: safely parse JSON or return null
 async function safeJson(res) {
-  try {
-    return await res.json();
-  } catch (_) {
-    return null;
-  }
+ try { return await res.json(); } catch { return null; }
 }
 
 // Fetch all staffs
