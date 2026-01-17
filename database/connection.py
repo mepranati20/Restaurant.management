@@ -32,7 +32,7 @@ def init_database():
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             order_by TEXT,
             total_items INTEGER,
-            amount INTEGER,
+             total_amount INTEGER,
             created_at TEXT,
             updated_at TEXT
             

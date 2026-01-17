@@ -28,7 +28,7 @@ def enrollments_create(data: dict):
     enrolled_on = data.get("enrolled_on") or now
 
     cur = conn.execute(
-        "INSERT INTO enrollments (billing_id, menu_id, enrolled_on, created_at) VALUES (?, ?, ?, ?)",
+        "INSERT INTO enrollments (billing_id, menu_id, enrolled_on, created_at, ) VALUES (?, ?, ?, ?)",
         (data["billing_id"], data["menu_id"], enrolled_on, now)
     )
     conn.commit()
