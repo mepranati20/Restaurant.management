@@ -19,6 +19,7 @@
         <ul class="list-disc list-inside mt-2">
             <li><strong>Billing</strong> — who the customer is</li>
             <li><strong>Menu</strong> — what is the order</li>
+            <li><strong>Staff</strong> — who served the item</li>
             <li><strong>Receipt</strong> — Which customer has what total_amount of bill</li>
         </ul>
 
@@ -31,7 +32,7 @@
     <!-- Report Table -->
     <div class="bg-white p-5 rounded shadow">
         <h2 class="font-semibold mb-4 text-lg">
-            Billings ↔ Menus (Joined View)
+            Billings ↔ Menus (Joined View) ↔ Staffs (Joined View)
         </h2>
 
         <!-- Loading -->
@@ -47,6 +48,7 @@
                         <th class="px-3 py-2">Receipt ID</th>
                         <th class="px-3 py-2">Billing</th>
                         <th class="px-3 py-2">Menu</th>
+                        <th class="px-3 py-2">Staff</th>
                         <th class="px-3 py-2">Receipt On</th>
                     </tr>
                 </thead>

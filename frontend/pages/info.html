@@ -1,0 +1,118 @@
+<div class="max-w-6xl mx-auto p-6">
+
+  <!-- Header -->
+  <div class="flex items-center justify-between mb-6">
+    <div>
+      <h1 class="text-3xl font-bold">Student INFO</h1>
+      <p class="text-sm text-gray-600">Personal details and enrolled courses</p>
+    </div>
+
+    <a href="/infos" data-link
+      class="inline-flex items-center gap-2 px-4 py-2 rounded bg-blue-600 text-white text-sm hover:bg-blue-700">
+      ← Back to Directory
+    </a>
+    
+  </div>
+
+  <!-- MAIN GRID (fills space properly) -->
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+    <!-- LEFT: Basic Details -->
+    <div class="lg:col-span-1 bg-white rounded shadow border overflow-hidden">
+      <div class="p-4 border-b">
+        <h2 class="font-semibold text-lg">Basic Details</h2>
+        <p class="text-sm text-gray-600">Billing information</p>
+      </div>
+
+      <div class="p-4">
+        <div id="basicLoading" class="text-center py-6">
+          <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-500 mx-auto"></div>
+          <p class="text-sm text-gray-500 mt-2">Loading...</p>
+        </div>
+
+        <div id="basicDetails" class="hidden space-y-4">
+          <div class="border rounded p-3 bg-gray-50">
+            <div class="text-xs text-gray-500">Billing ID</div>
+            <div class="font-semibold text-gray-900" id="billingId">—</div>
+          </div>
+
+          <div class="border rounded p-3 bg-gray-50">
+            <div class="text-xs text-gray-500">Name</div>
+            <div class="font-semibold text-gray-900" id="billingOrder_by">—</div>
+          </div>
+
+          <div class="border rounded p-3 bg-gray-50">
+            <div class="text-xs text-gray-500">Email</div>
+            <div class="font-semibold text-gray-900" id="billingTotal_items">—</div>
+          </div>
+
+          <div class="border rounded p-3 bg-gray-50">
+            <div class="text-xs text-gray-500">Year</div>
+            <div class="font-semibold text-gray-900" id="billingTotal_amount">—</div>
+          </div>
+
+<div class="mt-4 bg-blue-50 border border-blue-200 rounded p-3 text-sm">
+  <div class="font-semibold text-blue-700">Total Receipts</div>
+  <div class="text-blue-900 font-bold">
+    <span id="totalReceipts">0</span>
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Receipts -->
+    <div class="lg:col-span-2 bg-white rounded shadow border overflow-hidden">
+<div class="p-4 border-b flex items-start justify-between gap-4">
+  <div>
+    <h2 class="font-semibold text-lg">receipt Billings</h2>
+    <p class="text-sm text-gray-600">Billing + Name + price + total item + total amount</p>
+  </div>
+
+  <!-- Export buttons -->
+  <div class="flex gap-2">
+    <button id="infoExportCsvBtn"
+      class="px-3 py-1.5 text-sm border rounded bg-white hover:bg-gray-50">
+      Export CSV
+    </button>
+
+    <button id="infoExportPdfBtn"
+      class="px-3 py-1.5 text-sm border rounded bg-white hover:bg-gray-50">
+      Export PDF
+    </button>
+  </div>
+</div>
+
+      <div class="p-4">
+        <div id="joinLoading" class="text-center py-6">
+          <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-500 mx-auto"></div>
+          <p class="text-sm text-gray-500 mt-2">Loading...</p>
+        </div>
+
+        <div id="joinTableContainer" class="hidden overflow-x-auto">
+          <table class="min-w-full text-left border">
+            <thead class="bg-gray-200">
+              <tr>
+                <th class="px-3 py-2">Receipt ID</th>
+                <th class="px-3 py-2">Menu</th>
+                <th class="px-3 py-2">Name</th>
+                <th class="px-3 py-2">Price</th>
+                <th class="px-3 py-2">Total item</th>
+                <th class="px-3 py-2">Total amount</th>
+                <th class="px-3 py-2">receipt On</th>
+              </tr>
+            </thead>
+            <tbody id="joinTableBody"></tbody>
+          </table>
+
+          <p id="noEnrollments" class="text-center text-gray-500 mt-3 hidden">
+            No enrollments found for this student.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="alertContainer" class="fixed top-4 right-4 space-y-2 z-50"></div>
+</div>

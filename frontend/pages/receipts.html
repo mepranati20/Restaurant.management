@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DAWAT - Enrollments</title>
+    <title>DAWAT - Receipt</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -31,9 +31,9 @@
 
     <section class="max-w-xl mx-auto mt-[5vh] mb-12">
         <div class="p-6">
-            <h2 class="font-bold mb-5 text-xl text-center text-blue-600 uppercase tracking-widest">Create New Enrollment</h2>
+            <h2 class="font-bold mb-5 text-xl text-center text-blue-600 uppercase tracking-widest">Create New receipt</h2>
             
-            <form id="enrollmentForm" class="space-y-4">
+            <form id="receiptForm" class="space-y-4">
                 <div class="relative">
                     <i class="fa-solid fa-receipt absolute left-3 top-3 text-blue-400"></i>
                     <select id="billing_id" required 
@@ -49,10 +49,17 @@
                         <option value="">Select Menu</option>
                     </select>
                 </div>
+                <div class="relative">
+                    <i class="fa-solid fa-pizza-slice absolute left-3 top-3 text-blue-400"></i>
+                    <select id="menu_id" required 
+                        class="w-full border-2 border-blue-100 rounded-xl px-10 py-2 focus:ring-2 focus:ring-blue-400 outline-none bg-white/70 appearance-none">
+                        <option value="">Select Staff</option>
+                    </select>
+                </div>
 
                 <button type="submit" id="submitBtn"
                     class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 rounded-xl shadow-lg transition transform hover:scale-105 active:scale-95">
-                    Enroll Billing & Menu
+                    Enroll Billing , Menu & Staff
                 </button>
             </form>
             
@@ -73,7 +80,7 @@
                 <p class="text-gray-500 mt-2">Connecting databases...</p>
             </div>
 
-            <div id="enrollmentsTableContainer" class="hidden overflow-hidden rounded-3xl glass-card shadow-xl">
+            <div id="receiptsTableContainer" class="hidden overflow-hidden rounded-3xl glass-card shadow-xl">
                 <table class="min-w-full text-left">
                     <thead class="bg-blue-500 text-white">
                         <tr>

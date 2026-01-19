@@ -1,8 +1,3 @@
-import { initBillingController } from "../controllers/billingController.js";
-import { initMenuController } from "../controllers/menuController.js";
-import { initStaffController } from "../controllers/staffController.js";
-import { initReceiptController } from "../controllers/receiptController.js";
-import { initReceiptReportController } from "../controllers/reportController.js";
 // Load a view into #app container
 async function loadView(path) {
 const res = await fetch(path);
@@ -24,48 +19,76 @@ export async function router() {
 
   if (path === "/" || path === "/home") {
     await loadView("/frontend/pages/home.html");
+     return;
   }
-else if (path === "/billings") {
+  if (path === "/billings") {
     await loadView("/frontend/pages/billings.html");
-    initBillingController();
+    const mod = await import("../controllers/billingController.js");
+    mod.initBillingController();
+     return;
   }
-  else if (path === "/menus") {
+  if (path === "/menus") {
     await loadView("/frontend/pages/menus.html");
-    initMenuController();
+    const mod = await import("../controllers/menuController.js");
+    mod.initMenuController();
+     return;
   }
-  else if (path === "/staffs") {
+   if (path === "/staffs") {
     await loadView("/frontend/pages/staffs.html");
-    initStaffController();
+    const mod = await import("../controllers/staffController.js");
+    mod.initStaffController();
+     return;
   }
-  else if (path === "/receipts") {
+  if (path === "/receipts") {
     await loadView("/frontend/pages/receipts.html");
-    initReceiptController();
+    const mod = await import("../controllers/receiptController.js");
+    mod.initReceiptController();
+     return;
   }
-  else if (path === "/events") {
-        await loadView("/frontend/pages/events.html");
-    }
 
-    
-   
-else if (path === "/reports/receipts") {
+  if (path === "/reports/receipts") {
     await loadView("/frontend/pages/report_receipts.html");
-    initReceiptReportController();
+    const mod = await import("../controllers/reportController.js");
+    mod.initReceiptReportController();
+     return;
   }
-  else {
+  if (path === "/infos") {
+    await loadView("/frontend/pages/infos.html");
+    const mod = await import("../controllers/infosController.js");
+    mod.initINFOsController();
+    return;
+  }
+  // --------------------
+  // INFO PAGE (dynamic): /infos/:id
+  // --------------------
+  if (path.startsWith("/infos/")) {
+    const idStr = path.split("/")[2]; // "/infos/1" -> "1"
+    const id = Number(idStr);
+
+    // If invalid id, show 404
+    if (!Number.isInteger(id)) {
+      await loadView("/frontend/pages/404.html");
+      return;
+    }
+    await loadView("/frontend/pages/info.html");
+    const mod = await import("../controllers/infoController.js");
+    mod.initINFOController(id);
+    return;
+  }
     await loadView("/frontend/pages/404.html");
-  }
+  
 }
 
 // Make links work without page reload
 export function initRouterEvents() {
   document.addEventListener("click", (e) => {
-    if (e.target.matches("[data-link]")) {
-      e.preventDefault();
-      history.pushState(null, "", e.target.href);
-      router();
-    }
-  });
+    const link = e.target.closest("[data-link]");
+    if (!link) return;
 
+    e.preventDefault();
+    history.pushState(null, "", link.getAttribute("href"));
+    router();
+  });
   // Back/forward buttons support
   window.addEventListener("popstate", router);
 }

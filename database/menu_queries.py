@@ -31,7 +31,7 @@ def db_update(menu_id, data):
     conn = get_connection()
     now = datetime.now().isoformat()
     conn.execute(
-        "UPDATE menus SET Category=?, name=?,  price=?, rating=?, updated_at=? WHERE id=?",
+        "UPDATE menus SET Category=?, name=?, price=?, rating=?, updated_at=? WHERE id=?",
         (data["Category"], data["name"], data["price"], data["rating"], now, menu_id)
     )
     conn.commit()

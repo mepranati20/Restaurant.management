@@ -1,5 +1,5 @@
-# services/enrollment_service.py
-# Business logic for enrollments (no HTTP here)
+# services/receipt_service.py
+# Business logic for receipts (no HTTP here)
 
 from database.receipt_queries import (
     receipts_get_all,

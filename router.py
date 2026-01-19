@@ -42,7 +42,7 @@ from core.responses import send_404
 from core.middleware import add_cors_headers
 
 
-FRONTEND_ROUTES = {"/", "/home", "/menus", "/billings", "/staffs", "/receipts", "/reports/receipts", "/docs"}
+FRONTEND_ROUTES = {"/", "/home", "/menus", "/billings", "/staffs", "/receipts", "reports/receipts", "/docs" ,"/infos"}
 
 def handle_ui_routes(handler, path):
     if path in FRONTEND_ROUTES:
@@ -65,6 +65,20 @@ def handle_ui_routes(handler, path):
         return True
 
     return False
+# -------------------------------
+# Helpers
+# -------------------------------
+
+def _last_path_id_or_404(handler, path):
+    """
+    Extract the last path segment and ensure it's a number.
+    If it's not a number, return None after sending 404 (no crash).
+    """
+    last = path.split("/")[-1]
+    if not last.isdigit():
+        send_404(handler)
+        return None
+    return int(last)
 
 
 class restaurantRouter(BaseHTTPRequestHandler):
@@ -86,9 +100,11 @@ class restaurantRouter(BaseHTTPRequestHandler):
 # ==================================================
         if path == "/api/menus":
             return get_all_menus(self)
-          
+        
         if path.startswith("/api/menus/"):
-            menu_id = int(path.split("/")[-1])
+            menu_id = _last_path_id_or_404(self, path)
+            if menu_id is None:
+                return
             return get_menu(self, menu_id)
              
 # ==================================================
@@ -99,7 +115,9 @@ class restaurantRouter(BaseHTTPRequestHandler):
         
         
         if path.startswith("/api/billings/"):
-            billing_id = int(path.split("/")[-1])
+            billing_id = _last_path_id_or_404(self, path)
+            if billing_id is None:
+                return
             return get_billing(self, billing_id)
                        
 # ==================================================
@@ -110,7 +128,9 @@ class restaurantRouter(BaseHTTPRequestHandler):
         
         
         if path.startswith("/api/staffs/"):
-            staff_id = int(path.split("/")[-1])
+            staff_id = _last_path_id_or_404(self, path)
+            if staff_id is None:
+                return
             return get_staff(self, staff_id)
     
 # ---------------------------
@@ -120,7 +140,9 @@ class restaurantRouter(BaseHTTPRequestHandler):
             return get_all_receipts(self)
 
         if path.startswith("/api/receipts/"):
-            receipt_id = int(path.split("/")[-1])
+            receipt_id = _last_path_id_or_404(self, path)
+            if receipt_id is None:
+                return
             return get_receipt(self, receipt_id)
   # ---------------------------
   # REPORTS (JOIN)
@@ -132,32 +154,41 @@ class restaurantRouter(BaseHTTPRequestHandler):
     
 # ---------- POST ----------
     def do_POST(self):
-        if self.path == "/api/menus":
+        path = urlparse(self.path).path
+
+        if path == "/api/menus":
             return create_menu(self)
 
-        if self.path == "/api/billings":
+        if path == "/api/billings":
             return create_billing(self)
         
-        if self.path == "/api/staffs":
+        if path == "/api/staffs":
             return create_staff(self)
-        if self.path == "/api/receipts":
+        
+        if path == "/api/receipts":
             return create_receipt(self)
         
         return send_404(self)
     
     # ---------- put ----------
     def do_PUT(self):
-
-        if self.path.startswith("/api/menus/"):
-            menu_id = int(self.path.split("/")[-1])
+        path = urlparse(self.path).path
+        if path.startswith("/api/menus/"):
+            menu_id = _last_path_id_or_404(self, path)
+            if menu_id is None:
+                return
             return update_menu(self, menu_id)
 
-        if self.path.startswith("/api/billings/"):
-            billing_id = int(self.path.split("/")[-1])
+        if path.startswith("/api/billings/"):
+            billing_id = _last_path_id_or_404(self, path)
+            if billing_id is None:
+                return
             return update_billing(self, billing_id)
         
-        if self.path.startswith("/api/staffs/"):
-            staff_id = int(self.path.split("/")[-1])
+        if path.startswith("/api/staffs/"):
+            staff_id = _last_path_id_or_404(self, path)
+            if staff_id is None:
+                return
             return update_staff(self, staff_id)
        
         
@@ -165,20 +196,27 @@ class restaurantRouter(BaseHTTPRequestHandler):
     
     # ---------- delete ----------
     def do_DELETE(self):
-        if self.path.startswith("/api/menus/"):
-             menu_id = int(self.path.split("/")[-1])
-             return delete_menu(self, menu_id)
+        path = urlparse(self.path).path
+        if path.startswith("/api/menus/"):
+            menu_id = _last_path_id_or_404(self, path)
+            if menu_id is None:
+                return
+            return delete_menu(self, menu_id)
 
 
-        if self.path.startswith("/api/billings/"):
-            billing_id = int(self.path.split("/")[-1])
+        if path.startswith("/api/billings/"):
+            billing_id = _last_path_id_or_404(self, path)
+            if billing_id is None:
+                return
             return delete_billing(self, billing_id)
         
-        if self.path.startswith("/api/staffs/"):
-             staff_id = int(self.path.split("/")[-1])
+        if path.startswith("/api/staffs/"):
+             staff_id = _last_path_id_or_404(self, path)
+             if staff_id is None:
+                return
              return delete_staff(self, staff_id)
         
-        if self.path.startswith("/api/receipts/"):
+        if path.startswith("/api/receipts/"):
             receipt_id = int(self.path.split("/")[-1])
             return delete_receipt(self, receipt_id)
 

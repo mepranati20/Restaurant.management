@@ -1,9 +1,9 @@
 import { 
-    apiGetAll, 
-    apiGetOne, 
-    apiCreate, 
-    apiUpdate, 
-    apiDelete 
+    apiGetAllmenus, 
+    apiGetmenu, 
+    apiCreatemenu, 
+    apiUpdatemenu, 
+    apiDeletemenu 
 } from "../services/menuService.js";
 
 import { showAlert } from "../components/Alert.js";
@@ -28,19 +28,19 @@ export function initMenuController() {
 
     // Collect data from the input fields using the custom '$' selector
     const data = {
-      name: $("name").value.trim(),
-      Category: $("Category").value.trim(), // Get name value
-      price: $("price").value.trim(), // Get price value
-      rating: $("rating").value.trim()    // Get rating value
+      Category: $("Category").value.trim(),   // Get Category value, remove whitespace
+      name: $("name").value.trim(), // Get name value
+      price: Number($("price").value), 
+      rating: Number($("rating").value)   
     };
 
     // Check the application state to see if we are currently editing an existing record
-    const { editingId } = getState();
+    const { editingMenuId } = getState();
 
     // Use a ternary operator to decide which action to take:
-    editingId
-      ? await updateMenu(editingId, data) // If editingId exists, update the Menu
-      : await createNewMenu(data);        // Otherwise, create a new Menu
+    editingMenuId
+      ? await updateMenu(editingMenuId, data) // If editingId exists, update the Menu
+      : await createMenu(data);        // Otherwise, create a new Menu
   });
 
   // --- Handle Cancel Button Click ---
@@ -48,7 +48,7 @@ export function initMenuController() {
   // Attach a listener to the 'click' event of the cancel button
   $("cancelBtn").addEventListener("click", () => {
     // Clear the editing state (set the ID to null)
-    setState({ editingId: null });
+    setState({ editingmenuId: null });
     // Clear all input fields in the form
     resetMenuForm();
   });
@@ -66,7 +66,7 @@ export async function loadMenus() {
   table.style.display = "none";
 
   // Asynchronously fetch all Menu records from the backend API
-  const menus = await apiGetAll();
+  const menus = await apiGetAllmenus();
 
   // Store the retrieved Menu array in the application's global state
   setState({ menus });
@@ -80,33 +80,36 @@ export async function loadMenus() {
 
 
 // Create a new Menu
-export async function createNewMenu(data) {
-  const res = await apiCreate(data);
+export async function createMenu(data) {
+  const res = await apiCreatemenu(data);
   if (res.ok) {
     showAlert("Menu added!");
     resetMenuForm();
     loadMenus();
+  }else {
+    showAlert("Failed to add menu", "error");
   }
 }
 
 // Load a Menu into the form for editing
 export async function editMenu(id) {
-  const menu = await apiGetOne(id);
+  const menu = await apiGetmenu(id);
+if (!menu) return;
 
-  setState({ editingId: id });
   fillMenuForm(menu);
-
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 // Update an existing Menu
 export async function updateMenu(id, data) {
-  const res = await apiUpdate(id, data);
+  const res = await apiUpdatemenu(id, data);
   if (res.ok) {
     showAlert("Updated!");
     resetMenuForm();
-    setState({ editingId: null });
+    setState({ editingMenuId: null });
     loadMenus();
+  }else {
+    showAlert("Failed to update menu", "error");
   }
 }
 
@@ -114,9 +117,11 @@ export async function updateMenu(id, data) {
 export async function deleteMenuAction(id) {
   if (!confirm("Delete this menu?")) return;
 
-  const res = await apiDelete(id);
+  const res = await apiDeletemenu(id);
  	if (res.ok) {
     showAlert("Deleted!");
     loadMenus();
+  }else {
+    showAlert("Failed to delete menu", "error");
   }
 }

@@ -15,7 +15,6 @@ def _column_exists(conn, table, column):
     cols = conn.execute(f"PRAGMA table_info({table})").fetchall()
     return any(c["name"] == column for c in cols)
 
-
 def init_database():
     conn = get_connection()
     conn.execute(""" 
@@ -60,14 +59,14 @@ def init_database():
             billing_id INTEGER NOT NULL,
             menu_id INTEGER NOT NULL,
             staff_id INTEGER NOT NULL,
-            recipt_on TEXT,
+            receipt_on TEXT,
             created_at TEXT,
             updated_at TEXT,
             FOREIGN KEY(billing_id) REFERENCES billings(id),
-            FOREIGN KEY(menu_id) REFERENCES menus(id)
-              FOREIGN KEY(staff_id) REFERENCES staffs(id)   
+            FOREIGN KEY(menu_id) REFERENCES menus(id),
+            FOREIGN KEY(staff_id) REFERENCES staffs(id)
         )
     """)
     conn.commit()
     conn.close()
-    print("✓ Database initialized")              
+    print("✓ Database initialized")        

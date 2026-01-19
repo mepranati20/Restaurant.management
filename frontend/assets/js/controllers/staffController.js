@@ -34,11 +34,11 @@ export function initStaffController() {
     };
 
     // Check the application state to see if we are currently editing an existing record
-    const { editingId } = getState();
+    const { editingStaffId } = getState();
 
     // Use a ternary operator to decide which action to take:
-    editingId
-      ? await updateStaff(editingId, data) // If editingId exists, update the Staff
+    editingStaffId
+      ? await updateStaff(editingStaffId, data) // If editingId exists, update the Staff
       : await createNewStaff(data);        // Otherwise, create a new Staff
   });
 
@@ -47,7 +47,7 @@ export function initStaffController() {
   // Attach a listener to the 'click' event of the cancel button
   $("cancelBtn").addEventListener("click", () => {
     // Clear the editing state (set the ID to null)
-    setState({ editingId: null });
+    setState({ editingStaffId: null });
     // Clear all input fields in the form
     resetStaffForm();
   });
@@ -92,7 +92,7 @@ export async function createNewStaff(data) {
 export async function editStaff(id) {
   const staff = await apiGetOne(id);
 
-  setState({ editingId: id });
+  setState({ editingStaffId: id });
   fillStaffForm(staff);
 
   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -104,7 +104,7 @@ export async function updateStaff(id, data) {
   if (res.ok) {
     showAlert("Updated!");
     resetStaffForm();
-    setState({ editingId: null });
+    setState({ editingStaffId: null });
     loadStaffs();
   }
 }

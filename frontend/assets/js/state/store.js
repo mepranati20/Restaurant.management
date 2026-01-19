@@ -1,8 +1,12 @@
 // Global app state
-let state = {
-  editingId: null,   // which item is being edited         
-  billings: [] ,         // list of all billing
- 
+let state = {                     
+  billings: [] ,
+  menus: [],
+  staffs: [],         
+  receipts: [], 
+  editingMenuId: null,
+  editingStaffId: null, 
+  editingId: null,
 };
 
 // Update part of the state

@@ -1,23 +1,22 @@
-const BASE = window.ENV.API_BASE_URL.replace("/billings", "");
-const API_URL = `${BASE}/menus`;
+const API_URL = "/api/menus";
 
 async function safeJson(res) {
   try { return await res.json(); } catch { return null; }
 }
 
-export async function apiGetAll() {
+export async function apiGetAllmenus() {
   const res = await fetch(API_URL);
   if (!res.ok) return [];
   return safeJson(res);
 }
 
-export async function apiGetOne(id) {
+export async function apiGetmenu(id) {
   const res = await fetch(`${API_URL}/${id}`);
   if (!res.ok) return null;
   return safeJson(res);
 }
 
-export function apiCreate(data) {
+export function apiCreatemenu(data) {
   return fetch(API_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -25,7 +24,7 @@ export function apiCreate(data) {
   });
 }
 
-export function apiUpdate(id, data) {
+export function apiUpdatemenu(id, data) {
   return fetch(`${API_URL}/${id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
@@ -33,6 +32,6 @@ export function apiUpdate(id, data) {
   });
 }
 
-export function apiDelete(id) {
+export function apiDeletemenu(id) {
   return fetch(`${API_URL}/${id}`, { method: "DELETE" });
 }

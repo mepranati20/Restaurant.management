@@ -48,7 +48,3 @@ def receipts_delete(receipt_id: int):
     conn.close()
     return receipt
 
-
-
-
-
