@@ -1,118 +1,155 @@
-<div class="max-w-6xl mx-auto p-6">
+
 
   <!-- Header -->
-  <div class="flex items-center justify-between mb-6">
-    <div>
-      <h1 class="text-3xl font-bold">Student INFO</h1>
-      <p class="text-sm text-gray-600">Personal details and enrolled courses</p>
+  <style>
+    /* 1. Global Styles & Animations */
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;
+        background-color: #fff5f5;
+        overflow-x: hidden;
+    }
+
+    .animated-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), 
+                    url('https://img.freepik.com/free-vector/hand-drawn-fast-food-background_23-2149013389.jpg');
+        background-size: cover;
+        animation: panBackground 100s linear infinite;
+    }
+
+    @keyframes panBackground {
+        from { background-position: 0 0; }
+        to { background-position: 1000px 1000px; }
+    }
+
+    .glass-card {
+        background: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 2px solid rgba(239, 68, 68, 0.1);
+    }
+</style>
+
+<div class="animated-bg"></div>
+
+<div class="min-h-screen p-4 md:p-8 relative">
+
+    <header class="flex items-center justify-between max-w-6xl mx-auto mb-8">
+        <div>
+            <h1 class="text-4xl font-bold text-gray-800">Restaurant INFO 🍽️</h1>
+            <p class="text-gray-600">Detailed Billing & Receipt Records</p>
+        </div>
+
+        <a href="/infos" data-link
+            class="flex items-center gap-2 bg-white/80 hover:bg-white px-4 py-2 rounded-xl border-2 border-green-100 transition shadow-sm text-gray-700 font-bold transform hover:scale-105 active:scale-95">
+            <i class="fa-solid fa-arrow-left text-green-500"></i>
+            <span>Back to Directory</span>
+        </a>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+
+        <div class="lg:col-span-1 glass-card rounded-3xl shadow-xl overflow-hidden h-fit">
+            <div class="p-6 bg-red-500 text-white">
+                <h2 class="font-bold text-xl flex items-center gap-2">
+                    <i class="fa-solid fa-circle-info"></i> Basic Details
+                </h2>
+                <p class="text-red-100 text-xs">Summary of this transaction</p>
+            </div>
+
+            <div class="p-6 space-y-4">
+                <div id="basicLoading" class="text-center py-6">
+                    <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-red-500 mx-auto"></div>
+                </div>
+
+                <div id="basicDetails" class="hidden space-y-4">
+                    <div class="bg-white/50 border-2 border-red-50 p-3 rounded-2xl shadow-sm">
+                        <label class="text-[10px] uppercase font-black text-red-400 block mb-1">Billing ID</label>
+                        <div class="text-lg font-bold text-gray-800" id="billingId">—</div>
+                    </div>
+
+                    <div class="bg-white/50 border-2 border-red-50 p-3 rounded-2xl shadow-sm">
+                        <label class="text-[10px] uppercase font-black text-red-400 block mb-1">Customer Name</label>
+                        <div class="text-lg font-bold text-gray-800" id="billingOrder_by">—</div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="bg-white/50 border-2 border-red-50 p-3 rounded-2xl shadow-sm">
+                            <label class="text-[10px] uppercase font-black text-red-400 block mb-1">Items</label>
+                            <div class="text-lg font-bold text-gray-800" id="billingTotal_items">—</div>
+                        </div>
+                        <div class="bg-white/50 border-2 border-red-50 p-3 rounded-2xl shadow-sm">
+                            <label class="text-[10px] uppercase font-black text-red-400 block mb-1">Amount</label>
+                            <div class="text-lg font-bold text-red-600" id="billingTotal_amount">₹ 0</div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 bg-green-500 text-white rounded-2xl p-4 text-center shadow-lg transform rotate-1">
+                        <div class="font-bold text-xs uppercase opacity-80">Total Receipts</div>
+                        <div class="text-4xl font-black" id="totalReceipts">0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="lg:col-span-2 glass-card rounded-3xl shadow-xl overflow-hidden">
+            <div class="p-6 border-b border-red-50 flex flex-col md:flex-row items-center justify-between gap-4">
+                <div>
+                    <h2 class="font-bold text-2xl text-gray-800">Billing Receipts 🧾</h2>
+                    <p class="text-sm text-gray-500">Itemized breakdown of the order</p>
+                </div>
+
+                <div class="flex gap-2 w-full md:w-auto">
+                    <button id="infoExportCsvBtn"
+                        class="flex-1 md:flex-none bg-white border-2 border-green-100 hover:border-green-400 px-4 py-2 rounded-xl text-sm font-bold text-gray-700 transition flex items-center gap-2 justify-center">
+                        <i class="fa-solid fa-file-csv text-green-500"></i> CSV
+                    </button>
+
+                    <button id="infoExportPdfBtn"
+                        class="flex-1 md:flex-none bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-xl text-sm font-bold shadow-md transition flex items-center gap-2 justify-center">
+                        <i class="fa-solid fa-file-pdf"></i> PDF
+                    </button>
+                </div>
+            </div>
+
+            <div class="p-6">
+                <div id="joinLoading" class="text-center py-10">
+                    <div class="animate-spin rounded-full h-10 w-10 border-b-4 border-red-500 mx-auto"></div>
+                    <p class="text-gray-500 mt-4 font-bold">Serving your data...</p>
+                </div>
+
+                <div id="joinTableContainer" class="hidden overflow-x-auto rounded-2xl border-2 border-red-50">
+                    <table class="min-w-full text-left">
+                        <thead class="bg-red-500 text-white text-xs uppercase tracking-wider">
+                            <tr>
+                                <th class="px-4 py-4">Receipt ID</th>
+                                <th class="px-4 py-4">Category</th>
+                                <th class="px-4 py-4">Item</th>
+                                <th class="px-4 py-4">Price</th>
+                                <th class="px-4 py-4">Staff</th>
+                                <th class="px-4 py-4">Email</th>
+                                <th class="px-4 py-4">Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="joinTableBody" class="divide-y divide-red-50 bg-white/40 text-sm font-medium text-gray-700">
+                            </tbody>
+                    </table>
+
+                    <p id="noReceipts" class="text-center text-gray-400 p-10 hidden italic">
+                        No receipts found for this entry.
+                    </p>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-    <a href="/infos" data-link
-      class="inline-flex items-center gap-2 px-4 py-2 rounded bg-blue-600 text-white text-sm hover:bg-blue-700">
-      ← Back to Directory
-    </a>
-    
-  </div>
-
-  <!-- MAIN GRID (fills space properly) -->
-  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-
-    <!-- LEFT: Basic Details -->
-    <div class="lg:col-span-1 bg-white rounded shadow border overflow-hidden">
-      <div class="p-4 border-b">
-        <h2 class="font-semibold text-lg">Basic Details</h2>
-        <p class="text-sm text-gray-600">Billing information</p>
-      </div>
-
-      <div class="p-4">
-        <div id="basicLoading" class="text-center py-6">
-          <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-500 mx-auto"></div>
-          <p class="text-sm text-gray-500 mt-2">Loading...</p>
-        </div>
-
-        <div id="basicDetails" class="hidden space-y-4">
-          <div class="border rounded p-3 bg-gray-50">
-            <div class="text-xs text-gray-500">Billing ID</div>
-            <div class="font-semibold text-gray-900" id="billingId">—</div>
-          </div>
-
-          <div class="border rounded p-3 bg-gray-50">
-            <div class="text-xs text-gray-500">Name</div>
-            <div class="font-semibold text-gray-900" id="billingOrder_by">—</div>
-          </div>
-
-          <div class="border rounded p-3 bg-gray-50">
-            <div class="text-xs text-gray-500">Email</div>
-            <div class="font-semibold text-gray-900" id="billingTotal_items">—</div>
-          </div>
-
-          <div class="border rounded p-3 bg-gray-50">
-            <div class="text-xs text-gray-500">Year</div>
-            <div class="font-semibold text-gray-900" id="billingTotal_amount">—</div>
-          </div>
-
-<div class="mt-4 bg-blue-50 border border-blue-200 rounded p-3 text-sm">
-  <div class="font-semibold text-blue-700">Total Receipts</div>
-  <div class="text-blue-900 font-bold">
-    <span id="totalReceipts">0</span>
-  </div>
-</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- RIGHT: Receipts -->
-    <div class="lg:col-span-2 bg-white rounded shadow border overflow-hidden">
-<div class="p-4 border-b flex items-start justify-between gap-4">
-  <div>
-    <h2 class="font-semibold text-lg">receipt Billings</h2>
-    <p class="text-sm text-gray-600">Billing + Name + price + total item + total amount</p>
-  </div>
-
-  <!-- Export buttons -->
-  <div class="flex gap-2">
-    <button id="infoExportCsvBtn"
-      class="px-3 py-1.5 text-sm border rounded bg-white hover:bg-gray-50">
-      Export CSV
-    </button>
-
-    <button id="infoExportPdfBtn"
-      class="px-3 py-1.5 text-sm border rounded bg-white hover:bg-gray-50">
-      Export PDF
-    </button>
-  </div>
-</div>
-
-      <div class="p-4">
-        <div id="joinLoading" class="text-center py-6">
-          <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-500 mx-auto"></div>
-          <p class="text-sm text-gray-500 mt-2">Loading...</p>
-        </div>
-
-        <div id="joinTableContainer" class="hidden overflow-x-auto">
-          <table class="min-w-full text-left border">
-            <thead class="bg-gray-200">
-              <tr>
-                <th class="px-3 py-2">Receipt ID</th>
-                <th class="px-3 py-2">Menu</th>
-                <th class="px-3 py-2">Name</th>
-                <th class="px-3 py-2">Price</th>
-                <th class="px-3 py-2">Total item</th>
-                <th class="px-3 py-2">Total amount</th>
-                <th class="px-3 py-2">receipt On</th>
-              </tr>
-            </thead>
-            <tbody id="joinTableBody"></tbody>
-          </table>
-
-          <p id="noEnrollments" class="text-center text-gray-500 mt-3 hidden">
-            No enrollments found for this student.
-          </p>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <div id="alertContainer" class="fixed top-4 right-4 space-y-2 z-50"></div>
+    <div id="alertContainer" class="fixed top-4 right-4 space-y-2 z-50"></div>
 </div>

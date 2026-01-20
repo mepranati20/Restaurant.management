@@ -3,7 +3,11 @@ const API_URL = "/api/staffs";
 
 // Helper: safely parse JSON or return null
 async function safeJson(res) {
-  try { return await res.json(); } catch { return null; }
+  try {
+    return await res.json();
+  } catch (_) {
+    return null;
+  }
 }
 // Fetch all staffs
 export async function apiGetAll() {

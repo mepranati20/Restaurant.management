@@ -34,14 +34,22 @@ export function renderBillingTable(billings) {
       <td class="px-3 py-2">${billing.total_amount}</td>
 
       <td class="px-3 py-2 flex space-x-2">
-        <!-- Buttons are created with data attributes holding the billing ID -->
-        <button class="bg-yellow-400 hover:bg-yellow-500 text-black py-1 px-3 rounded"
-          data-edit="${billing.id}">Edit</button>
+            <button
+          class="bg-yellow-400 hover:bg-yellow-500 text-black py-1 px-3 rounded"
+          data-edit="${billing.id}"
+        >
+          Edit
+        </button>
 
-        <button class="bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded"
-          data-delete="${billing.id}">Delete</button>
+        <button
+          class="bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded"
+          data-delete="${billing.id}"
+        >
+          Delete
+        </button>
       </td>
     `;
+      
 
     // --- Attach event listeners to the newly created buttons ---
 

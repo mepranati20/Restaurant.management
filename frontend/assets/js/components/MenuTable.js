@@ -3,37 +3,48 @@ import { editMenu, deleteMenuAction } from "../controllers/menuController.js";
 
 export function renderMenuTable(menus) {
   const body = $("menusTableBody");
-  const empty = $("noMenus");
+  const noMenus = $("noMenus");
+
+ if (!body) return;
 
   body.innerHTML = "";
 
   if (!menus || menus.length === 0) {
-    empty.classList.remove("hidden");
+    if (noMenus) noMenus.classList.remove("hidden");
     return;
   }
-  empty.classList.add("hidden");
+  noMenus.classList.add("hidden");
 
-  menus.forEach(m => {
+  menus.forEach((m) => {
     const tr = document.createElement("tr");
+    tr.className = "border-b";
     tr.innerHTML = `
       <td class="px-3 py-2 border">${m.id ?? "-"}</td>
-      <td class="px-3 py-2 border">${m.name ?? "-"}</td>
       <td class="px-3 py-2 border">${m.Category ?? "-"}</td>
+      <td class="px-3 py-2 border">${m.name ?? "-"}</td>
       <td class="px-3 py-2 border">${m.price ?? "-"}</td>
       <td class="px-3 py-2 border">${m.rating ?? "-"}</td>
-      <td class="px-3 py-2 border">
-        <button class="bg-yellow-400 hover:bg-yellow-500 text-black py-1 px-3 rounded" data-edit="${m.id}">Edit</button>
-        <button class="bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded" data-del="${m.id}">Delete</button>
+      <td class="px-3 py-2">
+       <div class="flex gap-2">
+          <button
+            type="button"
+            class="px-3 py-1 rounded border text-blue-600 hover:bg-blue-50"
+            data-edit>
+            Edit
+          </button>
+          <button
+            type="button"
+            class="px-3 py-1 rounded border text-red-600 hover:bg-red-50"
+            data-delete>
+            Delete
+          </button>
+        </div>
       </td>
     `;
-    body.appendChild(tr);
-  });
 
-  body.querySelectorAll("[data-edit]").forEach(btn => {
-    btn.addEventListener("click", () => editMenu(Number(btn.dataset.edit)));
-  });
+    tr.querySelector("[data-edit]").addEventListener("click", () => editMenu(m.id));
+    tr.querySelector("[data-delete]").addEventListener("click", () => deleteMenuAction(m.id));
 
-  body.querySelectorAll("[data-del]").forEach(btn => {
-    btn.addEventListener("click", () => deleteMenuAction(Number(btn.dataset.del)));
+  body.appendChild(tr);
   });
 }

@@ -11,7 +11,7 @@ import { renderMenuTable } from "../components/MenuTable.js";
 import { resetMenuForm, fillMenuForm } from "../components/MenuForm.js";
 
 import { setState, getState } from "../state/store.js";
-import { $, createElement } from "../utils/dom.js";
+import { $} from "../utils/dom.js";
 
 // Setup event listeners and load initial data
 // Initialize the main logic and set up all necessary event listeners
@@ -48,7 +48,7 @@ export function initMenuController() {
   // Attach a listener to the 'click' event of the cancel button
   $("cancelBtn").addEventListener("click", () => {
     // Clear the editing state (set the ID to null)
-    setState({ editingmenuId: null });
+    setState({ editingMenuId: null });
     // Clear all input fields in the form
     resetMenuForm();
   });
@@ -61,23 +61,18 @@ export async function loadMenus() {
   const spinner = $("loadingSpinner");
   const table = $("menusTableContainer");
 
-  // Show the spinner and hide the table to indicate a loading state
-  spinner.style.display = "block";
-  table.style.display = "none";
+ // show spinner, hide table
+  spinner.classList.remove("hidden");
+  table.classList.add("hidden");
 
-  // Asynchronously fetch all Menu records from the backend API
   const menus = await apiGetAllmenus();
-
-  // Store the retrieved Menu array in the application's global state
   setState({ menus });
-  // Render the fetched Menu data into the HTML table structure
   renderMenuTable(menus);
 
-  // Hide the spinner and show the table now that the data is loaded and displayed
-  spinner.style.display = "none";
-  table.style.display = "block";
+ // hide spinner, show table
+  spinner.classList.add("hidden");
+  table.classList.remove("hidden");
 }
-
 
 // Create a new Menu
 export async function createMenu(data) {

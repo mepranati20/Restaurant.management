@@ -22,6 +22,9 @@ export function renderReceiptReportTable(rows) {
       <td class="px-3 py-2 border">
         ${r.menu_name ?? ""} <span class="text-xs text-gray-500">(ID: ${r.menu_id ?? ""})</span>
       </td>
+      <td class="px-3 py-2 border">
+        ${r.staff_name ?? ""} <span class="text-xs text-gray-500">(ID: ${r.staff_id ?? ""})</span>
+      </td>
       
       <td class="px-3 py-2 border">${r.receipt_on ?? ""}</td>
     `;

@@ -11,7 +11,7 @@ import { renderStaffTable } from "../components/StaffTable.js";
 import { resetStaffForm, fillStaffForm } from "../components/StaffForm.js";
 
 import { setState, getState } from "../state/store.js";
-import { $, createElement } from "../utils/dom.js";
+import { $ } from "../utils/dom.js";
 
 // Setup event listeners and load initial data
 // Initialize the main logic and set up all necessary event listeners
@@ -30,7 +30,7 @@ export function initStaffController() {
     const data = {
       name: $("name").value.trim(),   // Get name value, remove whitespace
       email: $("email").value.trim(), // Get email value
-      age: $("age").value.trim(), // Get age value
+      age: Number($("age").value) // Get age value
     };
 
     // Check the application state to see if we are currently editing an existing record
@@ -61,8 +61,8 @@ export async function loadStaffs() {
   const table = $("staffsTableContainer");
 
   // Show the spinner and hide the table to indicate a loading state
-  spinner.style.display = "block";
-  table.style.display = "none";
+  spinner.classList.remove("hidden");
+  table.classList.add("hidden");
 
   // Asynchronously fetch all Staff records from the backend API
   const staffs = await apiGetAll();
@@ -73,8 +73,8 @@ export async function loadStaffs() {
   renderStaffTable(staffs);
 
   // Hide the spinner and show the table now that the data is loaded and displayed
-  spinner.style.display = "none";
-  table.style.display = "block";
+  spinner.classList.add("hidden");
+  table.classList.remove("hidden");
 }
 
 
@@ -85,6 +85,8 @@ export async function createNewStaff(data) {
     showAlert("Staff added!");
     resetStaffForm();
     loadStaffs();
+  }else {
+    showAlert("Failed to add staff", "error");
   }
 }
 
@@ -106,6 +108,8 @@ export async function updateStaff(id, data) {
     resetStaffForm();
     setState({ editingStaffId: null });
     loadStaffs();
+  }else {
+    showAlert("Failed to update staff", "error");
   }
 }
 
@@ -117,5 +121,7 @@ export async function deleteStaffAction(id) {
  	if (res.ok) {
     showAlert("Deleted!");
     loadStaffs();
-  }
+  }else {
+    showAlert("Failed to delete staff", "error");
+}
 }

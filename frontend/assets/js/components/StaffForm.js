@@ -12,4 +12,5 @@ export function fillStaffForm(staff) {
    $("age").value = staff.age;
    $("cancelBtn").classList.remove("hidden");
    $("submitBtn").textContent = "Update Menu";
+   setState({ editingStaffId: staff.id });
  }

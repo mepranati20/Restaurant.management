@@ -13,4 +13,5 @@ export function fillMenuForm(menu) {
   $("rating").value = menu.rating ?? "";
   $("cancelBtn").classList.remove("hidden");
   $("submitBtn").textContent = "Update Menu";
+  setState({ editingMenuId: menu.id });
 }

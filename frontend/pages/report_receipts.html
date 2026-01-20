@@ -78,13 +78,14 @@
 
                 <pre class="bg-white px-4 py-4 text-sm overflow-x-auto leading-relaxed">
 SELECT
-    e.id AS receipt_id,
+    r.id AS receipt_id,
     b.order_by AS order_by,
     m.name AS menu_name,
-    e.receipt_on
-FROM receipts e
-JOIN billings b ON e.billing_id = b.id
-JOIN menus m ON e.menu_id = m.id;
+    s.name AS satff_name,
+    r.receipt_on
+FROM receipts r
+JOIN billings b ON r.billing_id = b.id
+JOIN menus m ON r.menu_id = m.id;
                 </pre>
 
                 <div class="bg-gray-50 px-4 py-3 text-xs text-gray-600">

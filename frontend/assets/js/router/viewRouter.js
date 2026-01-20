@@ -58,9 +58,13 @@ export async function router() {
     mod.initINFOsController();
     return;
   }
+   if (path === "/events") {
+    await loadView("/frontend/pages/events.html")
+     return;
+   }
   // --------------------
   // INFO PAGE (dynamic): /infos/:id
-  // --------------------
+  // -------------------
   if (path.startsWith("/infos/")) {
     const idStr = path.split("/")[2]; // "/infos/1" -> "1"
     const id = Number(idStr);

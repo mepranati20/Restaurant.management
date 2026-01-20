@@ -63,6 +63,9 @@ def handle_ui_routes(handler, path):
     if path == "/openapi.yaml":
         serve_static(handler, "openapi.yaml")
         return True
+    if path.startswith("/infos/"):
+        serve_static(handler, "frontend/pages/index.html")
+        return True
 
     return False
 # -------------------------------
@@ -217,8 +220,10 @@ class restaurantRouter(BaseHTTPRequestHandler):
              return delete_staff(self, staff_id)
         
         if path.startswith("/api/receipts/"):
-            receipt_id = int(self.path.split("/")[-1])
-            return delete_receipt(self, receipt_id)
+             receipt_id = _last_path_id_or_404(self, path)
+             if receipt_id is None:
+                return
+             return delete_receipt(self, receipt_id)
 
         
         return send_404(self)
