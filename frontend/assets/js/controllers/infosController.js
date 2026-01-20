@@ -56,7 +56,7 @@ function getRows() {
   const sortKey = $("sortBy")?.value ?? "id";
   const sortDir = $("sortDir")?.value ?? "asc";
 
-  const filtered = filterList(allBillings, q, ["id", "order_by ", "total_items", "total_amount"]);
+  const filtered = filterList(allBillings, q, ["id", "order_by", "total_items", "total_amount"]);
   return sortList(filtered, sortKey, sortDir);
 }
 
