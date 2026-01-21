@@ -13,7 +13,7 @@ export function renderMenuTable(menus) {
     if (noMenus) noMenus.classList.remove("hidden");
     return;
   }
-  noMenus.classList.add("hidden");
+  if (noMenus) noMenus.classList.add("hidden");
 
   menus.forEach((m) => {
     const tr = document.createElement("tr");
