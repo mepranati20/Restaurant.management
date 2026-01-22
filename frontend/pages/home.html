@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
     <style>
         @keyframes float {
             0% { transform: translateY(0px); }
@@ -14,8 +15,9 @@
             100% { transform: translateY(0px); }
         }
         .animate-cartoon { animation: float 4s ease-in-out infinite; }
+
         body {
-            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), 
+            background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)),
                         url('https://img.freepik.com/free-vector/hand-drawn-fast-food-background_23-2149013389.jpg');
             background-size: cover;
             background-attachment: fixed;
@@ -23,61 +25,82 @@
         }
     </style>
 </head>
+
 <body class="min-h-screen">
 
-    <nav class="bg-white/90 backdrop-blur shadow-md sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold text-orange-500">DAWAT 🍱</div>
-            <div class="hidden md:flex space-x-8 font-medium">
-                <a href="/staffs" data-link class="hover:text-orange-500 transition">Staffs</a>
-                <a href="/billings" data-link class="hover:text-orange-500 transition">Billings</a>
-                <a href="/menus" data-link class="hover:text-orange-500 transition">Menus</a>
-                <a href="/receipts" data-link class="hover:text-orange-500 transition">Receipt</a>
-                <a href="/events" data-link class="hover:text-orange-500 transition">Events</a>
-                 <a href="/infos" data-link class="hover:text-orange-500 transition">Infos</a>
-               
-            </div>
-        </div>
-    </nav>
- 
-    <div class="max-w-4xl mx-auto p-6 text-center mt-10">
-        <h1 class="text-4xl font-bold mb-2 text-gray-800 animate-cartoon">WELCOME HOME 😊</h1>
-        <p class="text-xl text-gray-600 mb-8">Welcome to DAWAT — YOUR TABLE IS READY</p>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto mb-16">
-            <a href="/menus" data-link class="p-4 bg-white border-2 border-orange-200 rounded-xl shadow-sm hover:shadow-orange-200 hover:scale-105 transition flex items-center justify-center gap-3">
-                <i class="fa-solid fa-utensils text-orange-500"></i> Menu Management
-            </a>
-            <a href="/billings" data-link class="p-4 bg-white border-2 border-orange-200 rounded-xl shadow-sm hover:shadow-orange-200 hover:scale-105 transition flex items-center justify-center gap-3">
-                <i class="fa-solid fa-file-invoice-dollar text-orange-500"></i> Billing System
-            </a>
-            <a href="/staffs" data-link class="p-4 bg-white border-2 border-orange-200 rounded-xl shadow-sm hover:shadow-orange-200 hover:scale-105 transition flex items-center justify-center gap-3">
-                <i class="fa-solid fa-users text-orange-500"></i> Staff Management
-            </a>
-            <a href="/receipts" data-link class="p-4 bg-white border-2 border-orange-200 rounded-xl shadow-sm hover:shadow-orange-200 hover:scale-105 transition flex items-center justify-center gap-3">
-                <i class="fa-solid fa-clipboard-list text-orange-500"></i> Receipt 
-            </a>
-
-            <a href="/events" data-link class="p-4 bg-white border-2 border-orange-200 rounded-xl shadow-sm hover:shadow-orange-200 hover:scale-105 transition flex items-center justify-center gap-3">
-                <i class="fa-solid fa-calendar-days text-orange-500"></i> Events
-            </a>
-          <a href="/infos" data-link class="p-4 bg-white border-2 border-orange-200 rounded-xl shadow-sm hover:shadow-orange-200 hover:scale-105 transition flex items-center justify-center gap-3">
-                <i class="fa-solid fa-calendar-days text-orange-500"></i> Infos
-            </a>
-        </div>
-
-        <div class="flex justify-center mb-4">
-            <lottie-player src="https://lottie.host/7604f36c-926d-4952-9f1c-6625866164f9/Tbe28X3VfV.json" 
-                background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay>
-            </lottie-player>
-        </div>   
-
-        <div class="bg-orange-500 text-white p-8 rounded-3xl shadow-lg mb-10">
-            <h3 class="text-xl font-bold mb-2">Order Now or Book a Table</h3>
-            <p class="text-3xl font-black flex items-center justify-center gap-3">
-                <i class="fa-solid fa-phone-volume"></i> +91 8260999133
-            </p>
+<!-- NAVBAR -->
+<nav class="bg-white/90 backdrop-blur shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="text-2xl lg:text-3xl font-bold text-orange-500">DAWAT 🍱</div>
+        <div class="hidden md:flex space-x-8 font-medium text-lg">
+            <a href="/staffs" data-link class="hover:text-orange-500">Staffs</a>
+            <a href="/billings" data-link class="hover:text-orange-500">Billings</a>
+            <a href="/menus" data-link class="hover:text-orange-500">Menus</a>
+            <a href="/receipts" data-link class="hover:text-orange-500">Receipt</a>
+            <a href="/events" data-link class="hover:text-orange-500">Events</a>
+            <a href="/infos" data-link class="hover:text-orange-500">Infos</a>
         </div>
     </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<div class="max-w-7xl mx-auto px-6 py-10 text-center">
+
+    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 text-gray-800 animate-cartoon">
+        WELCOME HOME 😊
+    </h1>
+
+    <p class="text-lg sm:text-xl lg:text-2xl text-gray-600 mb-10">
+        Welcome to DAWAT — YOUR TABLE IS READY
+    </p>
+
+    <!-- BUTTON GRID -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto mb-16">
+
+        <a href="/menus" data-link class="p-5 bg-white border-2 border-orange-200 rounded-xl shadow hover:scale-105 transition flex items-center justify-center gap-3 text-lg">
+            <i class="fa-solid fa-utensils text-orange-500"></i> Menu Management
+        </a>
+
+        <a href="/billings" data-link class="p-5 bg-white border-2 border-orange-200 rounded-xl shadow hover:scale-105 transition flex items-center justify-center gap-3 text-lg">
+            <i class="fa-solid fa-file-invoice-dollar text-orange-500"></i> Billing System
+        </a>
+
+        <a href="/staffs" data-link class="p-5 bg-white border-2 border-orange-200 rounded-xl shadow hover:scale-105 transition flex items-center justify-center gap-3 text-lg">
+            <i class="fa-solid fa-users text-orange-500"></i> Staff Management
+        </a>
+
+        <a href="/receipts" data-link class="p-5 bg-white border-2 border-orange-200 rounded-xl shadow hover:scale-105 transition flex items-center justify-center gap-3 text-lg">
+            <i class="fa-solid fa-clipboard-list text-orange-500"></i> Receipt
+        </a>
+
+        <a href="/events" data-link class="p-5 bg-white border-2 border-orange-200 rounded-xl shadow hover:scale-105 transition flex items-center justify-center gap-3 text-lg">
+            <i class="fa-solid fa-calendar-days text-orange-500"></i> Events
+        </a>
+
+        <a href="/infos" data-link class="p-5 bg-white border-2 border-orange-200 rounded-xl shadow hover:scale-105 transition flex items-center justify-center gap-3 text-lg">
+            <i class="fa-solid fa-circle-info text-orange-500"></i> Infos
+        </a>
+
+    </div>
+
+    <!-- ANIMATION -->
+    <div class="flex justify-center mb-8">
+        <lottie-player src="https://lottie.host/7604f36c-926d-4952-9f1c-6625866164f9/Tbe28X3VfV.json"
+            background="transparent" speed="1"
+            class="w-40 h-40 sm:w-48 sm:h-48 lg:w-56 lg:h-56"
+            loop autoplay>
+        </lottie-player>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="bg-orange-500 text-white p-8 lg:p-10 rounded-3xl shadow-lg max-w-3xl mx-auto">
+        <h3 class="text-xl lg:text-2xl font-bold mb-3">Order Now or Book a Table</h3>
+        <p class="text-2xl lg:text-3xl font-black flex items-center justify-center gap-3">
+            <i class="fa-solid fa-phone-volume"></i> +91 8260999133
+        </p>
+    </div>
+
+</div>
+
 </body>
 </html>
