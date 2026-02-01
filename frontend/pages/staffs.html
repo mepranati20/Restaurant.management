@@ -21,25 +21,19 @@
 <body class="min-h-screen px-4 py-6 lg:px-10">
 
 <!-- HEADER -->
-<header class="max-w-7xl mx-auto mb-10">
-    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <a href="/" class="inline-flex items-center gap-2 bg-white/80 hover:bg-white px-4 py-2 rounded-xl border-2 border-green-100 transition shadow-sm text-gray-700 font-bold w-fit">
-            <i class="fa-solid fa-house text-green-500"></i> Home
-        </a>
-
-        <div class="text-center sm:text-right">
-            <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800">
-                Staff Management 🧑‍🍳
-            </h1>
-            <p class="text-gray-600">
-                Manage your DAWAT team members below
-            </p>
-        </div>
-    </div>
+<header class="max-w-7xl mx-auto mb-10 text-center">
+    <h1 class="text-4xl font-bold text-gray-800">
+        Staff Management 🧑‍🍳
+    </h1>
+    <p class="text-gray-600 mt-2">
+        Manage your DAWAT team members below
+    </p>
 </header>
 
+
 <!-- MAIN GRID -->
-<main class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 mb-20">
+<main class="max-w-6xl mx-auto space-y-14 mb-20">
+
 
 <!-- ADD STAFF FORM -->
 <section class="bg-white/40 backdrop-blur-md rounded-3xl border-2 border-orange-100 shadow p-8">
@@ -128,10 +122,7 @@
 </main>
 
 <!-- FLOATING HOME BUTTON -->
-<a href="/"
-   class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center transition transform hover:scale-110 active:scale-95 z-50">
-    <i class="fa-solid fa-house text-xl"></i>
-</a>
+
 
 <div id="alertContainer" class="fixed bottom-4 right-4 space-y-2 z-50"></div>
 
