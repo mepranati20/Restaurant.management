@@ -13,16 +13,22 @@
 
     <style>
         body {
-            background: linear-gradient(
-                rgba(255, 255, 255, 0.85),
-                rgba(255, 255, 255, 0.85)
-            ),
-            url('https://img.freepik.com/free-vector/hand-drawn-fast-food-background_23-2149013389.jpg');
-            background-size: cover;
-            background-attachment: fixed;
-            font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;
-        }
-    </style>
+    background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)),
+                url('https://img.freepik.com/free-vector/hand-drawn-fast-food-background_23-2149013389.jpg');
+    background-size: 120%;
+    background-repeat: repeat;
+    animation: zoomOutBg 20s ease-in-out infinite alternate;
+    font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;
+}
+@keyframes zoomOutBg {
+    from {
+        background-size: 140%;
+    }
+    to {
+        background-size: 100%;
+    }
+}
+           </style>
 </head>
 
 <body class="min-h-screen p-4 md:p-8">
