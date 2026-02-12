@@ -40,7 +40,9 @@
 </header>
   
 
-    <section class="max-w-xl mx-auto mt-[5vh] mb-12">
+    <section class="max-w-xl mx-auto mt-[5vh] mb-12
+bg-white/40 backdrop-blur-md rounded-3xl border-2 border-red-100 shadow">
+
         <div class="p-6">
             <h2 class="font-bold mb-5 text-xl text-center text-red-500 uppercase">Create New Dish</h2>
             <form id="menuForm" class="space-y-4">
@@ -95,11 +97,15 @@
                 <p class="text-gray-500 mt-2">Cooking up your list...</p>
             </div>
 
-          <div id="menusTableContainer"
-     class="hidden w-full rounded-2xl border-2 border-orange-100 bg-white/60">
+          <!-- Outer container (card style) -->
+<div class="rounded-2xl border-2 border-red-100 bg-white/70 p-2">
 
+    <!-- Scroll wrapper -->
+    <div id="menusTableContainer"
+         class="hidden w-full overflow-x-auto">
 
-               <table class="w-full text-left border-collapse">
+        <table class="min-w-[1000px] text-left border-collapse">
+
 
 
                     <thead class="bg-red-500 text-white">
