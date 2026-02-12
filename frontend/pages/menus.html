@@ -84,10 +84,9 @@ bg-white/40 backdrop-blur-md rounded-3xl border-2 border-red-100 shadow">
         </div>
     </section>
 
+<section class="max-w-7xl mx-auto mb-20">
 
-    <section class="max-w-7xl mx-auto mb-20">
-
-    <!-- BIG CONTAINER CARD -->
+    <!-- SINGLE BIG CONTAINER -->
     <div class="bg-white/40 backdrop-blur-md rounded-3xl border-2 border-red-100 shadow p-6">
 
         <h2 class="font-bold text-2xl text-gray-800 mb-6 flex items-center gap-2">
@@ -99,39 +98,38 @@ bg-white/40 backdrop-blur-md rounded-3xl border-2 border-red-100 shadow">
             <p class="text-gray-500 mt-2">Cooking up your list...</p>
         </div>
 
-        <!-- Inner scroll container -->
-        <div class="rounded-2xl border-2 border-red-100 bg-white/70 p-2">
+        <!-- Table scroll area -->
+        <div id="menusTableContainer"
+             class="hidden w-full overflow-x-auto">
 
-            <div id="menusTableContainer"
-                 class="hidden w-full overflow-x-auto">
+            <table class="min-w-[1000px] text-left border-collapse">
 
-                <table class="min-w-[1000px] text-left border-collapse">
+                <thead class="bg-red-500 text-white">
+                    <tr>
+                        <th class="px-6 py-4">Dish ID</th>
+                        <th class="px-6 py-4">Category</th>
+                        <th class="px-6 py-4">Dish Name</th>
+                        <th class="px-6 py-4">Price (₹)</th>
+                        <th class="px-3 py-2">Rating</th>
+                        <th class="px-8 py-6 text-xl">Actions</th>
+                    </tr>
+                </thead>
 
-                    <thead class="bg-red-500 text-white">
-                        <tr>
-                            <th class="px-6 py-4">Dish ID</th>
-                            <th class="px-6 py-4">Category</th>
-                            <th class="px-6 py-4">Dish Name</th>
-                            <th class="px-6 py-4">Price (₹)</th>
-                            <th class="px-3 py-2">Rating</th>
-                            <th class="px-8 py-6 text-xl">Actions</th>
-                        </tr>
-                    </thead>
+                <tbody id="menusTableBody" class="divide-y divide-red-100">
+                </tbody>
 
-                    <tbody id="menusTableBody" class="divide-y divide-red-100">
-                    </tbody>
+            </table>
 
-                </table>
+            <p id="noMenus" class="text-center text-gray-500 p-10 hidden">
+                The kitchen is empty! Add a dish above.
+            </p>
 
-                <p id="noMenus" class="text-center text-gray-500 p-10 hidden">
-                    The kitchen is empty! Add a dish above.
-                </p>
-
-            </div>
         </div>
 
     </div>
+
 </section>
+
 
 
     <div id="alertContainer" class="fixed top-4 right-4 space-y-2 z-50"></div>
